@@ -18,12 +18,17 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 .nav-links li a{display:flex;align-items:center;gap:3px;padding:0 11px;height:50px;text-decoration:none;color:#444;font-size:12.5px;font-weight:500;border-bottom:2.5px solid transparent;cursor:pointer;user-select:none}
 .nav-links li a.active,.nav-links li a:hover,.nav-links li a.open{color:#0770b8;border-bottom-color:#0770b8}
 .ns{flex:1}
-.dropdown{display:none;position:absolute;top:50px;left:0;background:#fff;border:1px solid #ddd;border-top:2px solid #0770b8;min-width:180px;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,0.12)}
+.dropdown{display:none;position:absolute;top:50px;left:0;background:#fff;border:1px solid #ddd;border-top:2px solid #0770b8;min-width:260px;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,0.12);max-height:500px;overflow-y:auto}
 .dropdown.show{display:block}
-.dropdown-label{padding:6px 16px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#888;background:#fafafa;border-bottom:1px solid #eee}
-.dropdown-item{display:block;padding:9px 16px;font-size:12.5px;color:#333;cursor:pointer;border-bottom:1px solid #f0f0f0}
+.dropdown-label{padding:6px 14px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#888;background:#fafafa;border-bottom:1px solid #eee;border-top:1px solid #eee;position:sticky;top:0;z-index:1}
+.dropdown-item{display:flex;align-items:center;gap:9px;padding:7px 14px;font-size:12px;color:#333;cursor:pointer;border-bottom:1px solid #f5f5f5}
 .dropdown-item:last-child{border-bottom:none}
-.dropdown-item:hover{background:#e8f3fb;color:#0770b8}
+.dropdown-item:hover{background:#e8f3fb}
+.di-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center}
+.di-info{flex:1}
+.di-name{font-size:12px;color:#333;font-weight:500;line-height:1.2}
+.dropdown-item:hover .di-name{color:#0770b8}
+.di-tag{font-size:10px;color:#aaa;margin-top:1px}
 .tabs{background:#fff;border-bottom:1px solid #ddd;display:flex;padding:0 16px}
 .tab{padding:10px 14px;font-size:11.5px;font-weight:500;color:#666;cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.04em}
 .tab.active{color:#0770b8;border-bottom-color:#0770b8}
@@ -36,7 +41,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 .card{background:#fff;border:1px solid #ddd;overflow:hidden}
 .ch{display:flex;align-items:center;padding:10px 12px;gap:8px}
 .pav{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:600;flex-shrink:0}
-.pav.g{background:#1a8a6e}.pav.b{background:#0770b8}.pav.o{background:#e07b2a}
+.pav.g{background:#1a8a6e}.pav.b{background:#0770b8}.pav.o{background:#e07b2a}.pav.p{background:#7b5ea7}.pav.r{background:#c0392b}
 .pi{flex:1}
 .pname{color:#0770b8;font-weight:600;font-size:12.5px;cursor:pointer}
 .proute{display:flex;align-items:center;gap:3px;font-size:11px;color:#666;margin-top:1px}
@@ -51,7 +56,11 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 .lb{font-size:11.5px;color:#0770b8;background:none;border:none;cursor:pointer;font-weight:500;padding:0}
 .lr{padding:5px 12px 9px;border-top:1px solid #f5f5f5;font-size:12px;color:#666;display:flex;align-items:center;gap:4px}
 .lr .ln{color:#0770b8;cursor:pointer}
-.albl{display:inline-flex;align-items:center;gap:4px;background:#fff3e0;color:#b36200;font-size:11px;font-weight:600;padding:2px 7px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.albl{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 7px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.albl.asgn{background:#fff3e0;color:#b36200}
+.albl.disc{background:#e8f3fb;color:#0770b8}
+.albl.event{background:#f0f4ff;color:#4a5fb5}
+.albl.ann{background:#f0fff4;color:#1a8a6e}
 .atitle{font-size:13px;font-weight:600;color:#0770b8;margin-bottom:3px;cursor:pointer}
 .adesc{color:#555;font-size:12.5px;line-height:1.5}
 .sidebar{width:268px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
@@ -63,7 +72,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 .ti:hover{background:#e8f3fb}
 .ti:last-child{border-bottom:none}
 .tic{width:20px;height:20px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:600}
-.tic.g{background:#1a8a6e}.tic.b{background:#0770b8}.tic.p{background:#7b5ea7}
+.tic.g{background:#1a8a6e}.tic.b{background:#0770b8}.tic.p{background:#7b5ea7}.tic.r{background:#c0392b}.tic.m{background:#c0392b}
 .tcont{flex:1;min-width:0}
 .tttl{font-size:12px;color:#0770b8;font-weight:500;line-height:1.3;margin-bottom:1px}
 .tdue{font-size:11px;color:#666}
@@ -80,14 +89,14 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 .ei:hover{background:#e8f3fb}
 .eic{width:20px;height:20px;background:#0770b8;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#fff}
 .etitle{font-size:12px;color:#0770b8;font-weight:500}
-.game-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center}
+.game-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center}
 .game-overlay.show{display:flex}
-.game-window{background:#000;width:90%;max-width:960px;height:78vh}
-.game-topbar{background:#0770b8;display:flex;align-items:center;justify-content:space-between;padding:6px 12px}
-.game-title-label{color:#fff;font-size:13px;font-weight:500}
-.game-close{background:none;border:none;color:#fff;font-size:18px;cursor:pointer;line-height:1;padding:0 4px}
+.game-window{background:#000;width:92%;max-width:980px;height:80vh;display:flex;flex-direction:column}
+.game-topbar{background:#0770b8;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;flex-shrink:0}
+.game-title-label{color:#fff;font-size:13px;font-weight:600}
+.game-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0 4px}
 .game-close:hover{color:#ffcccc}
-.game-window iframe{width:100%;height:calc(100% - 34px);border:none;display:block}
+.game-window iframe{width:100%;flex:1;border:none;display:block}
 </style>
 </head>
 <body>
@@ -97,22 +106,133 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
     <div class="logo-icon">JLS</div>
     <div class="logo-text"><div class="s1">Jane Lathrop Stanford</div><div class="s2">Middle School</div></div>
   </a>
-  <span class="brand">schoolargy beta edition</span>
+  <span class="brand">schoolargy</span>
   <ul class="nav-links">
     <li><a href="#" class="active">Courses &#9662;</a></li>
     <li id="groups-li">
-      <a id="groups-btn" onclick="toggleGroups(event)">Groups &#9662;</a>
+      <a id="groups-btn" onclick="toggleDD(event,'groups-dd','groups-btn')">Groups &#9662;</a>
       <div class="dropdown" id="groups-dd">
-        <div class="dropdown-label">Games</div>
-        <div class="dropdown-item" onclick="openGame('Drive Mad')">Drive Mad</div>
-        <div class="dropdown-item" onclick="openGame('Escape Road')">Escape Road</div>
-        <div class="dropdown-item" onclick="openGame('Slope')">Slope</div>
-        <div class="dropdown-item" onclick="openGame('Basketball Random')">Basketball Random</div>
-        <div class="dropdown-item" onclick="openGame('Stickman Hook')">Stickman Hook</div>
-        <div class="dropdown-item" onclick="openGame('Subway Surfers')">Subway Surfers</div>
-        <div class="dropdown-item" onclick="openGame('Vex 4')">Vex 4</div>
-        <div class="dropdown-item" onclick="openGame('Moto Road Rash 3D')">Moto Road Rash 3D</div>
-        <div class="dropdown-item" onclick="openGame('Tiny Fishing')">Tiny Fishing</div>
+
+        <div class="dropdown-label">&#127950; Racing &amp; Driving</div>
+        <div class="dropdown-item" onclick="openGame('Drive Mad')">
+          <span class="di-icon">&#128664;</span><div class="di-info"><div class="di-name">Drive Mad</div><div class="di-tag">Physics racer · 100 levels</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Escape Road')">
+          <span class="di-icon">&#128652;</span><div class="di-info"><div class="di-name">Escape Road</div><div class="di-tag">Police chase · dodge traffic</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Moto Road Rash 3D')">
+          <span class="di-icon">&#127949;</span><div class="di-info"><div class="di-name">Moto Road Rash 3D</div><div class="di-tag">Motorcycle racing · stunts</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Drift Masters')">
+          <span class="di-icon">&#128739;</span><div class="di-info"><div class="di-name">Drift Masters</div><div class="di-tag">25+ drift cars · leaderboards</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('HexGL Racer')">
+          <span class="di-icon">&#128640;</span><div class="di-info"><div class="di-name">HexGL Racer</div><div class="di-tag">Futuristic anti-gravity · WebGL</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Zombie Crusher')">
+          <span class="di-icon">&#129503;</span><div class="di-info"><div class="di-name">Zombie Crusher</div><div class="di-tag">Survival driver · upgrade system</div></div>
+        </div>
+
+        <div class="dropdown-label">&#9889; Action &amp; Skill</div>
+        <div class="dropdown-item" onclick="openGame('Slope')">
+          <span class="di-icon">&#9652;</span><div class="di-info"><div class="di-name">Slope</div><div class="di-tag">Endless ball · speed run</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Stickman Hook')">
+          <span class="di-icon">&#129695;</span><div class="di-info"><div class="di-name">Stickman Hook</div><div class="di-tag">Physics swing · 100 levels</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Vex 4')">
+          <span class="di-icon">&#9889;</span><div class="di-info"><div class="di-name">Vex 4</div><div class="di-tag">Stickman platformer · deadly traps</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Vex 3')">
+          <span class="di-icon">&#9889;</span><div class="di-info"><div class="di-name">Vex 3</div><div class="di-tag">10 acts · bonus challenges</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('BuildShoot 1v1')">
+          <span class="di-icon">&#127918;</span><div class="di-info"><div class="di-name">BuildShoot 1v1</div><div class="di-tag">Build &amp; shoot · battle royale</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Gladihoppers')">
+          <span class="di-icon">&#9876;</span><div class="di-info"><div class="di-name">Gladihoppers</div><div class="di-tag">Physics gladiator · ragdoll combat</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Snow Warrior')">
+          <span class="di-icon">&#10052;</span><div class="di-info"><div class="di-name">Snow Warrior</div><div class="di-tag">Snowball fight · boss battles</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Bounce Master')">
+          <span class="di-icon">&#9898;</span><div class="di-info"><div class="di-name">Bounce Master</div><div class="di-tag">Gravity challenge · arcade</div></div>
+        </div>
+
+        <div class="dropdown-label">&#127936; Sports</div>
+        <div class="dropdown-item" onclick="openGame('Basketball Random')">
+          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Random</div><div class="di-tag">2-player · random physics chaos</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Basketball Stars')">
+          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Stars</div><div class="di-tag">Street hoops · 1v1 matchup</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Basketball Legends')">
+          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Legends</div><div class="di-tag">Slam dunk · tournament mode</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Basket Bros')">
+          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basket Bros.io</div><div class="di-tag">Online multiplayer basketball</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Wave Rider')">
+          <span class="di-icon">&#127940;</span><div class="di-info"><div class="di-name">Wave Rider</div><div class="di-tag">Surf challenge · dodge kraken</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Backcountry Ski')">
+          <span class="di-icon">&#9981;</span><div class="di-info"><div class="di-name">Backcountry Ski</div><div class="di-tag">Downhill tricks · winter sports</div></div>
+        </div>
+
+        <div class="dropdown-label">&#127939; Endless Runners</div>
+        <div class="dropdown-item" onclick="openGame('Subway Surfers')">
+          <span class="di-icon">&#128650;</span><div class="di-info"><div class="di-name">Subway Surfers</div><div class="di-tag">Singapore · hoverboard runner</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('NYC Subway Rush')">
+          <span class="di-icon">&#128650;</span><div class="di-info"><div class="di-name">NYC Subway Rush</div><div class="di-tag">New York City · dodge trains</div></div>
+        </div>
+
+        <div class="dropdown-label">&#129503; Puzzle &amp; Brain</div>
+        <div class="dropdown-item" onclick="openGame('2048')">
+          <span class="di-icon">&#128290;</span><div class="di-info"><div class="di-name">2048</div><div class="di-tag">Number merge · strategy</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('NumberFly 2048')">
+          <span class="di-icon">&#128290;</span><div class="di-info"><div class="di-name">NumberFly 2048</div><div class="di-tag">Flappy Bird meets 2048</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Block Stack')">
+          <span class="di-icon">&#129001;</span><div class="di-info"><div class="di-name">Block Stack</div><div class="di-tag">Tetris-style · leaderboard</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Brick Blitz')">
+          <span class="di-icon">&#9632;</span><div class="di-info"><div class="di-name">Brick Blitz</div><div class="di-tag">Breakout · power-ups</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Bubble Shooter')">
+          <span class="di-icon">&#128992;</span><div class="di-info"><div class="di-name">Bubble Shooter</div><div class="di-tag">Match 3 · chain reactions</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Maze Runner 3D')">
+          <span class="di-icon">&#128204;</span><div class="di-info"><div class="di-name">Maze Runner 3D</div><div class="di-tag">3D labyrinths · tilt ball</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Chess')">
+          <span class="di-icon">&#9820;</span><div class="di-info"><div class="di-name">Chess</div><div class="di-tag">AI opponent · local multiplayer</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Rope Cutter')">
+          <span class="di-icon">&#9986;</span><div class="di-info"><div class="di-name">Rope Cutter</div><div class="di-tag">Om Nom physics puzzle</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Packabunchas')">
+          <span class="di-icon">&#128125;</span><div class="di-info"><div class="di-name">Packabunchas</div><div class="di-tag">Space puzzle · tile fitting</div></div>
+        </div>
+
+        <div class="dropdown-label">&#127981; Simulation &amp; Idle</div>
+        <div class="dropdown-item" onclick="openGame('Tiny Fishing')">
+          <span class="di-icon">&#127907;</span><div class="di-info"><div class="di-name">Tiny Fishing</div><div class="di-tag">Cast &amp; catch · upgrade rods</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Monkey Mart')">
+          <span class="di-icon">&#128060;</span><div class="di-info"><div class="di-name">Monkey Mart</div><div class="di-tag">Supermarket manager · idle</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('LifeCraft')">
+          <span class="di-icon">&#127776;</span><div class="di-info"><div class="di-name">LifeCraft Simulator</div><div class="di-tag">Life choices · text RPG</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('A Dark Room')">
+          <span class="di-icon">&#128293;</span><div class="di-info"><div class="di-name">A Dark Room</div><div class="di-tag">Minimalist survival RPG</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Territory Conquest')">
+          <span class="di-icon">&#127988;</span><div class="di-info"><div class="di-name">Territory Conquest</div><div class="di-tag">IO game · claim land · strategy</div></div>
+        </div>
+
       </div>
     </li>
     <li><a href="#">Resources</a></li>
@@ -136,7 +256,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 
     <div class="card">
       <div class="ch">
-        <div class="pav g">MA</div>
+        <div class="pav g">SH</div>
         <div class="pi">
           <div class="pname">Sarah Holloway</div>
           <div class="proute"><span>&#9658;</span><span class="cl">JLS Library: 2025&#8211;2026 (All Students)</span></div>
@@ -144,8 +264,10 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
         <button class="ca">&#10697;</button>
       </div>
       <div class="cb">
-        <div class="cmsg">Found a special bookmark in your borrowed book? Write your name on it and bring it to the front desk &#8212; you could win this month's grand prize!</div>
-        <div class="img-ph">&#128218;&#127808;</div>
+        <div class="albl ann">&#128218; Announcement</div>
+        <div class="atitle">Found a special bookmark in your borrowed book?</div>
+        <div class="adesc">Write your name on it and bring it to the front desk &#8212; you could win this month's grand prize! We're also accepting new book requests for the spring reading program.</div>
+        <div class="img-ph" style="margin-top:10px">&#128218;&#127808;</div>
       </div>
       <div class="cf">
         <span class="smr">&#9660; Show More</span>
@@ -165,9 +287,9 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
         <button class="ca">&#10697;</button>
       </div>
       <div class="cb">
-        <div class="albl">Assignment</div>
+        <div class="albl asgn">&#128203; Assignment</div>
         <div class="atitle">HW &#8211; Finish watching the video on introductory paragraphs. DUE: Day 2</div>
-        <div class="adesc">Review the clip from today's lesson and take notes on the three key elements. Be ready for a short discussion next class.</div>
+        <div class="adesc">Review the clip from today's lesson and take notes on the three key elements: the hook, the background context, and the thesis statement. Be ready for a short discussion next class. Notes should be at least half a page.</div>
       </div>
       <div class="cf">
         <span class="ts">Yesterday at 1:12 pm</span>
@@ -185,7 +307,9 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
         <button class="ca">&#10697;</button>
       </div>
       <div class="cb" style="padding-top:8px">
-        <div style="font-size:13px;color:#333;line-height:1.5">Don't forget &#8212; the campus scavenger hunt is tomorrow! Pairs were assigned last week. Meet by the main entrance at 8:45 AM.</div>
+        <div class="albl event">&#127937; Event</div>
+        <div class="atitle">Campus Scavenger Hunt &#8212; Tomorrow!</div>
+        <div class="adesc">Don't forget &#8212; pairs were assigned last week. Meet by the main entrance at 8:45 AM. Bring your sheet and a pencil. Each clue will include a Japanese phrase you'll need to translate correctly to unlock the next location!</div>
       </div>
       <div class="cf">
         <span class="ts">Today at 10:05 am</span>
@@ -193,6 +317,69 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
       </div>
       <div class="lr"><span class="ln">6 people</span><span>liked this</span></div>
     </div>
+
+    <div class="card">
+      <div class="ch">
+        <div class="pav p">AM</div>
+        <div class="pi">
+          <div class="pname">Alex Martinez</div>
+          <div class="proute"><span>&#9658;</span><span class="cl">Math 7 Accelerated &#8211; Period 5</span></div>
+        </div>
+        <button class="ca">&#10697;</button>
+      </div>
+      <div class="cb" style="padding-top:8px">
+        <div class="albl ann">&#128203; Announcement</div>
+        <div class="atitle">Reminder: Chapter 9 Quiz on Friday</div>
+        <div class="adesc">We will cover proportional relationships, unit rates, and graphing on coordinate planes. Review your notes from Days 12&#8211;15. The study guide posted last week will be very helpful &#8212; a copy is in the class materials folder if you need it.</div>
+      </div>
+      <div class="cf">
+        <span class="ts">Yesterday at 9:48 am</span>
+        <button class="lb">Like</button>
+      </div>
+      <div class="lr"><span class="ln">14 people</span><span>liked this</span></div>
+    </div>
+
+    <div class="card">
+      <div class="ch">
+        <div class="pav r">RL</div>
+        <div class="pi">
+          <div class="pname">Rachel Lim</div>
+          <div class="proute"><span>&#9658;</span><span class="cl">Life Science 7 &#8211; Period 2</span></div>
+        </div>
+        <button class="ca">&#10697;</button>
+      </div>
+      <div class="cb">
+        <div class="albl asgn">&#128203; Assignment</div>
+        <div class="atitle">Lab Report &#8211; Cell Division Observations. DUE: Thursday</div>
+        <div class="adesc">Use the template in the Materials tab. Your report must include your labeled diagrams from the microscope slides, your data table, and a 3&#8211;5 sentence conclusion explaining what you observed during mitosis. Diagrams must be in pencil and clearly labeled with phase names.</div>
+      </div>
+      <div class="cf">
+        <span class="ts">Today at 8:22 am</span>
+        <button class="lb">Like</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="ch">
+        <div class="pav g">BW</div>
+        <div class="pi">
+          <div class="pname">Brian Walsh</div>
+          <div class="proute"><span>&#9658;</span><span class="cl">Social Studies 7</span></div>
+        </div>
+        <button class="ca">&#10697;</button>
+      </div>
+      <div class="cb" style="padding-top:8px">
+        <div class="albl disc">&#128172; Update</div>
+        <div class="atitle">Maya/Aztec/Inca One-Pager &#8211; Peer Review Day moved to Thursday</div>
+        <div class="adesc">Peer review has been pushed back one day. Please have your draft fully complete by Wednesday night so you're ready to swap with a partner first thing Thursday. The rubric is available under Assignments if you need it.</div>
+      </div>
+      <div class="cf">
+        <span class="ts">Today at 7:55 am</span>
+        <button class="lb">Like</button>
+      </div>
+      <div class="lr"><span class="ln">3 people</span><span>liked this</span></div>
+    </div>
+
   </div>
 
   <div class="sidebar">
@@ -207,7 +394,7 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
       <div class="grp">Upcoming</div>
       <div class="ti">
         <div class="tic b">EN</div>
-        <div class="tcont"><div class="tttl">HW &#8211; Finish watching the video on introductory paragraphs. DUE: Day 2</div><div class="tdue">Wed, Mar 18 at 11:59 pm</div><div class="tcrs">English 7</div></div>
+        <div class="tcont"><div class="tttl">HW &#8211; Intro paragraph video notes</div><div class="tdue">Wed, Mar 18 at 11:59 pm</div><div class="tcrs">English 7</div></div>
         <div class="tst"><div class="si up">&#9675;</div></div>
       </div>
       <div class="ti">
@@ -216,8 +403,18 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
         <div class="tst"><div class="si up">&#9675;</div></div>
       </div>
       <div class="ti">
+        <div class="tic r">SC</div>
+        <div class="tcont"><div class="tttl">Lab Report &#8211; Cell Division</div><div class="tdue">Thu, Mar 19 at 3:15 pm</div><div class="tcrs">Life Science 7</div></div>
+        <div class="tst"><div class="si up">&#9675;</div></div>
+      </div>
+      <div class="ti">
         <div class="tic g">SS</div>
-        <div class="tcont"><div class="tttl">Maya/Aztec/Inca One-Pager</div><div class="tdue">Thu, Mar 19 at 3:15 pm</div><div class="tcrs">Social Studies 7</div></div>
+        <div class="tcont"><div class="tttl">Maya/Aztec/Inca One-Pager (Draft)</div><div class="tdue">Thu, Mar 19 at 3:15 pm</div><div class="tcrs">Social Studies 7</div></div>
+        <div class="tst"><div class="si up">&#9675;</div></div>
+      </div>
+      <div class="ti">
+        <div class="tic m">MA</div>
+        <div class="tcont"><div class="tttl">Ch. 9 Quiz &#8211; Proportional Relationships</div><div class="tdue">Fri, Mar 20 at 8:00 am</div><div class="tcrs">Math 7 Accelerated</div></div>
         <div class="tst"><div class="si up">&#9675;</div></div>
       </div>
       <div class="ti">
@@ -232,15 +429,6 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
       </div>
     </div>
 
-    <div class="sc">
-      <div class="sch"><span class="t">Upcoming Events</span><span class="cl">Calendar</span></div>
-      <div class="edh">Friday, May 15, 2026</div>
-      <div class="ei"><div class="eic">&#128197;</div><div class="etitle">Spring Dance</div></div>
-      <div class="edh">Tuesday, June 2, 2026</div>
-      <div class="ei"><div class="eic">&#128197;</div><div class="etitle">End of Year Celebration</div></div>
-      <div class="edh">Friday, June 5, 2026</div>
-      <div class="ei" style="border-bottom:none"><div class="eic">&#128197;</div><div class="etitle">Last Day of School</div></div>
-    </div>
   </div>
 </div>
 
@@ -256,41 +444,78 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
 
 <script>
 var games = {
-  'Drive Mad':        'https://plugplay.games/embed/73e6c7bc9aa81a4abfd34a0a3df36aaf923a5cf6',
-  'Escape Road':      'https://craziestgames.com/embed/escape-road',
-  'Slope':            'https://y8.com/embed/slope',
-  'Basketball Random':'https://plugplay.games/embed/8858d9cf31f8dd0e94fc385cc92dff10f05d6a64',
-  'Stickman Hook':    'https://plugplay.games/embed/1c61b71c9b4302faf505bd65ab92291a1ec7655c',
-  'Subway Surfers':   'https://plugplay.games/embed/aae25d4cf623e6da948e59855238b6a4053e5846',
-  'Vex 4':            'https://plugplay.games/embed/5920d6a30e37dc108056faf538325ff4b51f56d8',
-  'Moto Road Rash 3D':'https://plugplay.games/embed/e6f25b439e06e4789a3062f1c322bbec3482ede7',
-  'Tiny Fishing':     'https://plugplay.games/embed/07a82656316484493b52e8f31fc2f5a3c987b3e0'
+  // Racing & Driving
+  'Drive Mad':          'https://plugplay.games/embed/73e6c7bc9aa81a4abfd34a0a3df36aaf923a5cf6',
+  'Escape Road':        'https://craziestgames.com/embed/escape-road',
+  'Moto Road Rash 3D':  'https://plugplay.games/embed/e6f25b439e06e4789a3062f1c322bbec3482ede7',
+  'Drift Masters':      'https://plugplay.games/embed/3339796ef6a704b2b21dd3c07c6cef9b49eb2874',
+  'HexGL Racer':        'https://plugplay.games/embed/cf980f7e2c7f68297ea902d36ad984e4cdfe7802',
+  'Zombie Crusher':     'https://plugplay.games/embed/c66b3b31090c007ab12ddabd472350186d7a2e99',
+  // Action & Skill
+  'Slope':              'https://y8.com/embed/slope',
+  'Stickman Hook':      'https://plugplay.games/embed/1c61b71c9b4302faf505bd65ab92291a1ec7655c',
+  'Vex 4':              'https://plugplay.games/embed/5920d6a30e37dc108056faf538325ff4b51f56d8',
+  'Vex 3':              'https://plugplay.games/embed/fbe897886f7ee30addc1ee3d1e6215ba7754a71f',
+  'BuildShoot 1v1':     'https://plugplay.games/embed/9473f3a6113ce78538948d45eb39546ce8205af9',
+  'Gladihoppers':       'https://plugplay.games/embed/8353e9c8c7327dea3332c707574eede6cbf27d76',
+  'Snow Warrior':       'https://plugplay.games/embed/04792e5a4a36d9d79eb2503489b3f4935a3f582e',
+  'Bounce Master':      'https://plugplay.games/embed/39d0a0985116974105a93c5cfbdcaa3a8152bb40',
+  // Sports
+  'Basketball Random':  'https://plugplay.games/embed/8858d9cf31f8dd0e94fc385cc92dff10f05d6a64',
+  'Basketball Stars':   'https://plugplay.games/embed/b250ef3373e504b21e1044896de624c77bb2cf87',
+  'Basketball Legends': 'https://plugplay.games/embed/407d50478f182513b4f797c37b6f7bbead2b16df',
+  'Basket Bros':        'https://plugplay.games/embed/b10a19f82d47697b8f572088740665678cbd1346',
+  'Wave Rider':         'https://plugplay.games/embed/98fb34f34331bc455cbbe1a04bd22b392c7f5160',
+  'Backcountry Ski':    'https://plugplay.games/embed/f031e7b50d180af132787f9a6f67e84e7184822a',
+  // Endless Runners
+  'Subway Surfers':     'https://plugplay.games/embed/aae25d4cf623e6da948e59855238b6a4053e5846',
+  'NYC Subway Rush':    'https://plugplay.games/embed/a228e05e0afee175ca33adc31f52ef6e04ad83e2',
+  // Puzzle & Brain
+  '2048':               'https://plugplay.games/embed/60798d0d8baf52dbfe806ffd1e61a4d5aa68fdcc',
+  'NumberFly 2048':     'https://plugplay.games/embed/f40d75cce29837f6b4d964a81df32413f67cfe39',
+  'Block Stack':        'https://plugplay.games/embed/419ce6e7690abe4d9ebacb5f027d163c86bef0c8',
+  'Brick Blitz':        'https://plugplay.games/embed/60d1e9c65670a1ad2a71efa0df7b4a5583f9518c',
+  'Bubble Shooter':     'https://plugplay.games/embed/d8f3a9b2c1e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8',
+  'Maze Runner 3D':     'https://plugplay.games/embed/1f999c5d6c2fdd5630d951c9a21dbaafa60367e7',
+  'Chess':              'https://plugplay.games/embed/6419815584676f60d90231df48c5c509da46544c',
+  'Rope Cutter':        'https://plugplay.games/embed/505389e7fb4cf73a08021b5db311e6d1804f8f8a',
+  'Packabunchas':       'https://plugplay.games/embed/1aabdbffc6272e9832cab5e9fb05aa7ab711b122',
+  // Simulation & Idle
+  'Tiny Fishing':       'https://plugplay.games/embed/07a82656316484493b52e8f31fc2f5a3c987b3e0',
+  'Monkey Mart':        'https://plugplay.games/embed/afa25719b9689d8e515fd4c5cd26ae58709c8a16',
+  'LifeCraft':          'https://plugplay.games/embed/ea68b18af181801818abf03713c82c634b60a0b9',
+  'A Dark Room':        'https://plugplay.games/embed/3718473f4982ae9427b57f242826ba6e607d864d',
+  'Territory Conquest': 'https://plugplay.games/embed/1a0df80c67bc42297fcb4211a8160c1aee020312'
 };
 
-function toggleGroups(e){
-  e.preventDefault();
-  var dd=document.getElementById('groups-dd');
-  var btn=document.getElementById('groups-btn');
-  var isOpen=dd.classList.contains('show');
+function toggleDD(e, ddId, btnId) {
+  e.preventDefault(); e.stopPropagation();
+  var dd = document.getElementById(ddId);
+  var isOpen = dd.classList.contains('show');
   closeAllDropdowns();
-  if(!isOpen){dd.classList.add('show');btn.classList.add('open');}
+  if (!isOpen) {
+    dd.classList.add('show');
+    var b = document.getElementById(btnId);
+    if (b) b.classList.add('open');
+  }
 }
-function closeAllDropdowns(){
-  document.querySelectorAll('.dropdown').forEach(function(d){d.classList.remove('show');});
-  document.querySelectorAll('.nav-links li a').forEach(function(a){a.classList.remove('open');});
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown').forEach(function(d){ d.classList.remove('show'); });
+  document.querySelectorAll('.nav-links li a').forEach(function(a){ a.classList.remove('open'); });
 }
-document.addEventListener('click',function(e){
-  if(!document.getElementById('groups-li').contains(e.target)){closeAllDropdowns();}
-});
-function openGame(name){
+document.addEventListener('click', closeAllDropdowns);
+
+function openGame(name) {
   closeAllDropdowns();
-  document.getElementById('game-title').textContent=name;
-  document.getElementById('game-iframe').src=games[name];
+  var url = games[name];
+  if (!url) return;
+  document.getElementById('game-title').textContent = name;
+  document.getElementById('game-iframe').src = url;
   document.getElementById('game-overlay').classList.add('show');
 }
-function closeGame(){
+function closeGame() {
   document.getElementById('game-overlay').classList.remove('show');
-  document.getElementById('game-iframe').src='';
+  document.getElementById('game-iframe').src = '';
 }
 </script>
 </body>
