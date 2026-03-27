@@ -233,6 +233,17 @@ body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;
           <span class="di-icon">&#127988;</span><div class="di-info"><div class="di-name">Territory Conquest</div><div class="di-tag">IO game · claim land · strategy</div></div>
         </div>
 
+        <div class="dropdown-label">&#127381; Big Games</div>
+        <div class="dropdown-item" onclick="openGame('Eaglercraft')">
+          <span class="di-icon">&#9974;&#65039;</span><div class="di-info"><div class="di-name">Eaglercraft</div><div class="di-tag">Minecraft 1.8.8 · browser edition</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Undertale')">
+          <span class="di-icon">&#10084;&#65039;</span><div class="di-info"><div class="di-name">Undertale</div><div class="di-tag">Indie RPG · spare or fight</div></div>
+        </div>
+        <div class="dropdown-item" onclick="openGame('Hollow Knight')">
+          <span class="di-icon">&#9876;&#65039;</span><div class="di-info"><div class="di-name">Hollow Knight</div><div class="di-tag">Metroidvania · explore Hallownest</div></div>
+        </div>
+
       </div>
     </li>
     <li><a href="#">Resources</a></li>
@@ -485,7 +496,11 @@ var games = {
   'Monkey Mart':        'https://plugplay.games/embed/afa25719b9689d8e515fd4c5cd26ae58709c8a16',
   'LifeCraft':          'https://plugplay.games/embed/ea68b18af181801818abf03713c82c634b60a0b9',
   'A Dark Room':        'https://plugplay.games/embed/3718473f4982ae9427b57f242826ba6e607d864d',
-  'Territory Conquest': 'https://plugplay.games/embed/1a0df80c67bc42297fcb4211a8160c1aee020312'
+  'Territory Conquest': 'https://plugplay.games/embed/1a0df80c67bc42297fcb4211a8160c1aee020312',
+  // Big Games
+  'Eaglercraft':        'https://eaglercraft.q13x.com/',
+  'Undertale':          'https://www.miniplay.com/embed/undertale',
+  'Hollow Knight':      'https://www.snokido.com/game/hollow-knight'
 };
 
 function toggleDD(e, ddId, btnId) {
