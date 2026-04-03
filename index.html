@@ -543,7 +543,7 @@
 <div class="resources-page" id="resources-page">
   <div class="resources-topbar">
 
-    <div class="game-tab active" data-url="https://store.steampowered.com/app/391960/Bad_Time_Simulator/" data-game="Bad Time Simulator" onclick="switchGame(this)">
+    <div class="game-tab active" data-game="Bad Time Simulator" onclick="switchGame(this)">
       <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="22" cy="22" r="14" stroke="#e94560" stroke-width="2"/>
         <circle cx="22" cy="22" r="3" fill="#e94560"/>
@@ -555,7 +555,7 @@
       Bad Time Simulator
     </div>
 
-    <div class="game-tab" data-url="https://eaglercraft.com/mc/1.8.8/" data-game="Eagle Craft" onclick="switchGame(this)">
+    <div class="game-tab" data-game="Eagle Craft" onclick="switchGame(this)">
       <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="6" y="24" width="32" height="14" fill="#4a6a20"/>
         <rect x="10" y="14" width="10" height="10" fill="#8b6914"/>
@@ -567,7 +567,7 @@
       Eagle Craft
     </div>
 
-    <div class="game-tab" data-url="https://slope-game.com/" data-game="Slope" onclick="switchGame(this)">
+    <div class="game-tab" data-game="Slope" onclick="switchGame(this)">
       <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <polyline points="0,38 12,20 24,28 36,10 44,16" stroke="#00e5ff" stroke-width="2.5"/>
         <circle cx="24" cy="22" r="5" fill="#00b8d4"/>
@@ -575,7 +575,7 @@
       Slope
     </div>
 
-    <div class="game-tab" data-url="https://drive-mad.com/" data-game="Drive Mad" onclick="switchGame(this)">
+    <div class="game-tab" data-game="Drive Mad" onclick="switchGame(this)">
       <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="6" y="22" width="32" height="10" fill="#e05000"/>
         <rect x="10" y="16" width="24" height="10" fill="#ff7020"/>
@@ -591,29 +591,50 @@
   </div>
 
   <div class="game-frame-wrap">
-    <iframe id="game-iframe" src="" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>
+    <iframe id="game-iframe" allowfullscreen allow="fullscreen; pointer-lock" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;background:#000;"></iframe>
   </div>
 </div>
 
 <script>
-  const games = {
-    'Bad Time Simulator': 'https://jcw87.github.io/c2-sans-fight/',
-    'Eagle Craft':        'https://eaglercraft.com/mc/1.8.8/',
-    'Slope':              'https://slope-game.com/',
-    'Drive Mad':          'https://drive-mad.com/'
+  var BTS_HTML = `<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<style>* { padding:0; margin:0; } html,body { background:#000; color:#fff; overflow:hidden; } canvas { display:block; }</style>
+<script src="https://cdn.jsdelivr.net/gh/CFiltered/Matt@50f9c1bd0d376b40cb8545519b147a4030598724/other/sansfight/jquery-3.4.1.min.js"><\/script>
+</head><body>
+<div id="c2canvasdiv" style="width:640px;height:480px;margin-left:auto;margin-right:auto;margin-top:60px;">
+<canvas id="c2canvas" width="640" height="480" style="width:640px;height:480px;"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0a2ab35563e2d7dddbad3ad3d9e5fa42e599e28c/build/bts-sans/c2.js"><\/script>
+<script>
+jQuery(document).ready(function(){ cr_createRuntime("c2canvas"); });
+function onVisibilityChanged(){
+  if(document.hidden||document.mozHidden||document.webkitHidden||document.msHidden) cr_setSuspended(true); else cr_setSuspended(false);
+}
+document.addEventListener("visibilitychange",onVisibilityChanged,false);
+<\/script>
+</body></html>`;
+
+  var games = {
+    'Bad Time Simulator': { type: 'srcdoc', content: BTS_HTML },
+    'Eagle Craft':        { type: 'src', url: 'https://eaglercraft.com/mc/1.8.8/' },
+    'Slope':              { type: 'src', url: 'https://slope-game.com/' },
+    'Drive Mad':          { type: 'src', url: 'https://drive-mad.com/' }
   };
 
   document.getElementById('resources-btn').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('resources-page').classList.add('open');
-    var activeTab = document.querySelector('.game-tab.active');
-    if (activeTab && !document.getElementById('game-iframe').src.includes('http')) {
-      loadGame(activeTab.dataset.game);
-    }
+    var active = document.querySelector('.game-tab.active');
+    if (active) loadGame(active.dataset.game);
   });
 
   function closeResources() {
     document.getElementById('resources-page').classList.remove('open');
+    var iframe = document.getElementById('game-iframe');
+    iframe.removeAttribute('src');
+    iframe.removeAttribute('srcdoc');
   }
 
   function switchGame(el) {
@@ -623,11 +644,17 @@
   }
 
   function loadGame(name) {
-    var url = games[name];
-    if (url) document.getElementById('game-iframe').src = url;
+    var g = games[name];
+    var iframe = document.getElementById('game-iframe');
+    iframe.removeAttribute('src');
+    iframe.removeAttribute('srcdoc');
+    if (!g) return;
+    if (g.type === 'srcdoc') {
+      iframe.srcdoc = g.content;
+    } else {
+      iframe.src = g.url;
+    }
   }
-
-  document.querySelector('.game-tab.active') && loadGame('Bad Time Simulator');
 </script>
 </body>
 </html>
