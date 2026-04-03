@@ -3,553 +3,631 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schoology</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAGOUlEQVR4nLWXa2wcVxXHf+fO7K69u37s2rHjJEoJlQrUJaIlQkglaVZNk9oJoW0aV+IDUiFqPgSJFFVCCmqciFaNikBUSJVCFfEoKsIJaVM7m7jGuESIqMJREC1VZaBpU9P4tU9vbO/O4/Bh7XUScCRvw1+a0cy9597zu+eeOTMjnE5/SCC4FjsIAG4JxMzgOlvoaDgPQF/6JeoavoXnCmLKdlI5gSp4LrilGeBfGOscyut88N4Qezc4AAwN2SQSLjfIpja6lrnCBZziD8uTsZGW+D6mnOaKleHTOHM+xeI3MVYW3zfIgncALKAeZA1G7sL3t2Pb+1j3uXH6p4+Rm/opiXVjqJbHiOji0CHHJ5k+Ubk/ndnFsCp92Qcrbcn0IKfThRvpb6pk5m7O5l9goOAyOOvSn/tupa9bzWIEQBAJMjRkAzBH3TylXDehiNAzHoWWWaJX4vihowSCq/G8EEIOY42A/AlPBumMjNIZuwhcJPnxM9h1z9BU/yN+f3Ur6dTX6ZI03Wo4LL6ZD7uSSLgkEi6++kuuqsb16RIPP9pMPP4wrhtDGMbXHL53L+r/nKB8xEDhdXqzXwKgc9UkW+v2Mp59mGBgG81NQ5zMNXEIpVuNWdLZzRTyi/g4GP0FHY172B7bSUfjnahZjefuBe6iueEt3ij8mO53ggypzfbYa0xlNxMKroe3MWd5gJABMjRkAzBH3TylXDehiNAzHoWWWaJX4vihowSCq/G8EEIOY42A/AlPBumMjNIZuwhcJPnxM9h1z9BU/yN+f3Ur6dTX6ZI03Wo4LL6ZD7uSSLgkEi6++kuuqsb16RIPP9pMPP4wrhtDGMbXHL53L+r/nKB8xEDhdXqzXwKgc9UkW+v2Mp59mGBgG81NQ5zMNXEIpVuNWdLZzRTyi/g4GP0FHY172B7bSUfjnahZjefuBe6iueEt3ij8mO53ggypzfbYa0xlNxMKroe3MWd5gJGgJT5m3MDh7OwAd0Stsq/8ZD0RvJz99gFjkSb7yqT5CBEiOhHik5Y9MZfawsn4T4amn6BJveQBzXjl71eTIZf6Bse7H9QdQ/snAzAV60zsB6FHDtvrnGE/tojHyAOnMy3TeUeTocICvtRxjNHueUO1B+qdblgdwdR6gI3qFidx6GqNrcbzbKM3tRj2Xttgp+tJH6BKPoUs17Gg+yVjqIGtiuziTf4S9GxxUBV+fpSESxnO/YS8LYEHdanhc5oA5IAVcBk5wNvsCa2Lf43T6byTir3B0OIDV9DwThe/gO08DJxFR+vVNUvkC6GPV5cAhFFVBVejuNhwdDqAqnG94konCGMgBmC86nVLEKSUJRb7AqbFWALbJVTzvPUQ+X10E4NpqpnDYJ6YWh8WjN/U2RjbyDgHav+jwhApncyOEQ0op2AqMgwqSnSAUDlUXAaASAVVhSG3+ThkoGLgT5APacbhAeYG+34CngjEz8/SKaC1OSasHENHKkRCXw+LTn3uO1rrVqD6LiPI+goiiupV8Lk2+4TIAPWrh81nc0uXqtkBEGdYAE9QyOxmh1robu+YpYuEE/84eYUf81yRHQnRKkVcnN7Myvp7xzBG6pISqMFhop6ahjVz+xeUBRKxyYiXzKxjPDmNbbYSDBitgYcwFJjJfZXu8j6SWnR8bWUFD5GVyM1dQ8zw9aiHi0ZvaT6gWlJeWB7BQB1rqssymn8AO1eP5edSMsKX2UsWuU4q8NvoZ6uO9WNJCNn8fO1uziCi/m7iH5sbHSeV+y474X6vbgg3iAP3/s+/UWCuh2n3UhJ/Gd0eZyG5id9tbAPzy3SZikRMUSykI7qdbTXUAqobk1D2EojGcGYNPI8a6AzGbEUkgBpziT8ikf0DX2jQAr3y4ipUrzmCb25jIJ3i0ZYwetZYH0BQsPzVncuswgb+UGy0weIikMeZtVPYzM3OCh1Z8XBl3JreTUPBXGAyp6ft5tOUcPWrRJV51EbDFUBOF6eyLBO2DOPUOHZK/zqanx6JuawLLPkBjJEF+5g9M5ffQ1XZpwTlA9ZUQ4wMlRtNXiXgh+sZXYgVXgWlH2ISYDsLR1czOvEuq0EVH3fEy2KLz6gF8VYqzhlB4P63m26AGqTFYNviuB+Z9jLzK1dnf8GDkz0C5ch5CrnW+fIBUqfy5lm+4RDhzHzXhOIJBRREt4Prj1OlHbKzLXDdu4fkHvXHK6iLwmPFQPbdkv6rwJhaTKF3i3bjqTw7g+8JxDLuB49e070YBnX9T/tdPyK0DAG62quWo+rfhLdLSETAYetQq32RkSbtPKINqed8WpAvXkq8kkOL8vwBs7IAgGlhEkgA+4DvbSGZawQMxq/BVKQVv+ZbZFGcnURbrtuoEBadEoOb7BIKgfjk+c7MXuXeVW/nDvUX6D9LFniNCXwMOAAAAAElFTkSuQmCC">
+<title>Schoolargy – Jane Lathrop Stanford Middle School</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f5f5;color:#333;font-size:13px}
-.nav{background:#fff;border-bottom:1px solid #ddd;display:flex;align-items:center;padding:0 12px;height:50px;position:sticky;top:0;z-index:200;box-shadow:0 1px 3px rgba(0,0,0,0.08)}
-.logo{display:flex;align-items:center;gap:8px;margin-right:8px;text-decoration:none}
-.logo-icon{width:34px;height:34px;background:#0770b8;display:flex;align-items:center;justify-content:center;color:#fff;font-size:9px;font-weight:600;flex-shrink:0}
-.logo-text .s1{font-size:12px;font-weight:600;color:#333}
-.logo-text .s2{font-size:11px;color:#666}
-.brand{font-size:17px;font-weight:600;color:#0770b8;font-style:italic;margin-right:12px}
-.nav-links{display:flex;height:50px;list-style:none}
-.nav-links li{position:relative}
-.nav-links li a{display:flex;align-items:center;gap:3px;padding:0 11px;height:50px;text-decoration:none;color:#444;font-size:12.5px;font-weight:500;border-bottom:2.5px solid transparent;cursor:pointer;user-select:none}
-.nav-links li a.active,.nav-links li a:hover,.nav-links li a.open{color:#0770b8;border-bottom-color:#0770b8}
-.ns{flex:1}
-.dropdown{display:none;position:absolute;top:50px;left:0;background:#fff;border:1px solid #ddd;border-top:2px solid #0770b8;min-width:260px;z-index:300;box-shadow:0 4px 12px rgba(0,0,0,0.12);max-height:500px;overflow-y:auto}
-.dropdown.show{display:block}
-.dropdown-label{padding:6px 14px 4px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#888;background:#fafafa;border-bottom:1px solid #eee;border-top:1px solid #eee;position:sticky;top:0;z-index:1}
-.dropdown-item{display:flex;align-items:center;gap:9px;padding:7px 14px;font-size:12px;color:#333;cursor:pointer;border-bottom:1px solid #f5f5f5}
-.dropdown-item:last-child{border-bottom:none}
-.dropdown-item:hover{background:#e8f3fb}
-.di-icon{font-size:15px;flex-shrink:0;width:20px;text-align:center}
-.di-info{flex:1}
-.di-name{font-size:12px;color:#333;font-weight:500;line-height:1.2}
-.dropdown-item:hover .di-name{color:#0770b8}
-.di-tag{font-size:10px;color:#aaa;margin-top:1px}
-.tabs{background:#fff;border-bottom:1px solid #ddd;display:flex;padding:0 16px}
-.tab{padding:10px 14px;font-size:11.5px;font-weight:500;color:#666;cursor:pointer;border-bottom:2px solid transparent;text-transform:uppercase;letter-spacing:.04em}
-.tab.active{color:#0770b8;border-bottom-color:#0770b8}
-.layout{display:flex;gap:16px;padding:16px;max-width:1100px;margin:0 auto;align-items:flex-start}
-.feed{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
-.filter-bar{background:#fff;border:1px solid #ddd;display:flex;align-items:center;padding:8px 12px;gap:8px;font-size:12.5px;color:#666}
-.filter-bar label{font-weight:500;color:#333}
-.filter-bar select{border:1px solid #ddd;background:#fff;padding:3px 7px;font-size:12px;color:#333;cursor:pointer}
-.fsort{margin-left:auto;color:#0770b8;font-weight:500;cursor:pointer;font-size:12px}
-.card{background:#fff;border:1px solid #ddd;overflow:hidden}
-.ch{display:flex;align-items:center;padding:10px 12px;gap:8px}
-.pav{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;font-weight:600;flex-shrink:0}
-.pav.g{background:#1a8a6e}.pav.b{background:#0770b8}.pav.o{background:#e07b2a}.pav.p{background:#7b5ea7}.pav.r{background:#c0392b}
-.pi{flex:1}
-.pname{color:#0770b8;font-weight:600;font-size:12.5px;cursor:pointer}
-.proute{display:flex;align-items:center;gap:3px;font-size:11px;color:#666;margin-top:1px}
-.proute .cl{color:#0770b8;cursor:pointer}
-.ca{width:26px;height:26px;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:13px}
-.cb{padding:2px 12px 12px}
-.cmsg{font-size:14px;font-weight:600;color:#2c5282;text-align:center;font-family:'Courier New',monospace;line-height:1.5;padding:6px 0 10px}
-.img-ph{width:100%;max-width:340px;height:180px;margin:0 auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);font-size:36px;border:1px solid #ddd}
-.cf{padding:7px 12px;border-top:1px solid #f5f5f5;display:flex;align-items:center;gap:12px}
-.smr{font-size:11.5px;color:#666;cursor:pointer}
-.ts{font-size:11.5px;color:#666}
-.lb{font-size:11.5px;color:#0770b8;background:none;border:none;cursor:pointer;font-weight:500;padding:0}
-.lr{padding:5px 12px 9px;border-top:1px solid #f5f5f5;font-size:12px;color:#666;display:flex;align-items:center;gap:4px}
-.lr .ln{color:#0770b8;cursor:pointer}
-.albl{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 7px;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
-.albl.asgn{background:#fff3e0;color:#b36200}
-.albl.disc{background:#e8f3fb;color:#0770b8}
-.albl.event{background:#f0f4ff;color:#4a5fb5}
-.albl.ann{background:#f0fff4;color:#1a8a6e}
-.atitle{font-size:13px;font-weight:600;color:#0770b8;margin-bottom:3px;cursor:pointer}
-.adesc{color:#555;font-size:12.5px;line-height:1.5}
-.sidebar{width:268px;flex-shrink:0;display:flex;flex-direction:column;gap:12px}
-.sc{background:#fff;border:1px solid #ddd;overflow:hidden}
-.sct{font-size:13px;font-weight:700;color:#444;padding:10px 12px;border-bottom:1px solid #f5f5f5}
-.grp{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#666;padding:6px 12px 3px;background:#fafafa;border-bottom:1px solid #f5f5f5}
-.grp.od{color:#c0392b}
-.ti{display:flex;align-items:flex-start;padding:8px 12px;gap:8px;border-bottom:1px solid #f5f5f5;cursor:pointer}
-.ti:hover{background:#e8f3fb}
-.ti:last-child{border-bottom:none}
-.tic{width:20px;height:20px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:600}
-.tic.g{background:#1a8a6e}.tic.b{background:#0770b8}.tic.p{background:#7b5ea7}.tic.r{background:#c0392b}.tic.m{background:#c0392b}
-.tcont{flex:1;min-width:0}
-.tttl{font-size:12px;color:#0770b8;font-weight:500;line-height:1.3;margin-bottom:1px}
-.tdue{font-size:11px;color:#666}
-.tcrs{font-size:10.5px;color:#888}
-.tst{flex-shrink:0;margin-top:2px}
-.si{width:18px;height:18px;border-radius:50%;border:1.5px solid #ddd;display:flex;align-items:center;justify-content:center;font-size:9px}
-.si.od{border-color:#e07b2a;color:#e07b2a}
-.si.up{border-color:#0770b8;color:#0770b8}
-.sch{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #f5f5f5}
-.sch .t{font-size:13px;font-weight:700;color:#444}
-.sch .cl{font-size:11.5px;color:#0770b8;cursor:pointer}
-.edh{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#666;padding:6px 12px 3px;background:#fafafa;border-bottom:1px solid #f5f5f5}
-.ei{display:flex;align-items:center;padding:8px 12px;gap:8px;border-bottom:1px solid #f5f5f5;cursor:pointer}
-.ei:hover{background:#e8f3fb}
-.eic{width:20px;height:20px;background:#0770b8;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:#fff}
-.etitle{font-size:12px;color:#0770b8;font-weight:500}
-.game-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1000;align-items:center;justify-content:center}
-.game-overlay.show{display:flex}
-.game-window{background:#000;width:92%;max-width:980px;height:80vh;display:flex;flex-direction:column}
-.game-topbar{background:#0770b8;display:flex;align-items:center;justify-content:space-between;padding:6px 12px;flex-shrink:0}
-.game-title-label{color:#fff;font-size:13px;font-weight:600}
-.game-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;padding:0 4px}
-.game-close:hover{color:#ffcccc}
-.game-window iframe{width:100%;flex:1;border:none;display:block}
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  body { background: #f5f5f5; min-height: 100vh; }
+
+  /* NAV */
+  .nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-right: 24px;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
+  }
+  .nav-logo-s {
+    width: 36px; height: 36px;
+    background: #eaf3fb;
+    border: 2px solid #0770a2;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 700; color: #0770a2;
+  }
+  .nav-logo-text { font-size: 9px; color: #aaa; line-height: 1.5; }
+  .nav-brand { font-size: 15px; font-weight: 700; color: #0770a2; letter-spacing: -0.3px; }
+  .nav-link {
+    padding: 0 14px; height: 52px;
+    display: flex; align-items: center;
+    font-size: 14px; color: #333; cursor: pointer;
+    border-bottom: 2px solid transparent; gap: 4px;
+    text-decoration: none;
+  }
+  .nav-link:hover { color: #0770a2; }
+  .caret { font-size: 9px; }
+  .nav-right { margin-left: auto; display: flex; align-items: center; gap: 16px; }
+  .nav-icon {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    color: #555; cursor: pointer; position: relative;
+  }
+  .nav-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .nav-icon.bell svg { stroke: #cc3333; }
+  .badge {
+    position: absolute; top: -2px; right: -2px;
+    background: #cc3333; color: #fff;
+    width: 14px; height: 14px; font-size: 9px;
+    display: flex; align-items: center; justify-content: center; font-weight: 700;
+  }
+  .user-avatar {
+    width: 32px; height: 32px;
+    flex-shrink: 0;
+  }
+  .user-avatar svg { width: 32px; height: 32px; display: block; }
+  .user-name { font-size: 13px; color: #333; cursor: pointer; }
+
+  /* LAYOUT */
+  .layout { display: flex; max-width: 1200px; margin: 0 auto; }
+  .main { flex: 1; padding: 16px; min-width: 0; }
+  .sidebar { width: 300px; padding: 16px; flex-shrink: 0; }
+
+  /* TABS */
+  .tabs { display: flex; border-bottom: 1px solid #ccc; margin-bottom: 16px; }
+  .tab {
+    padding: 10px 20px; font-size: 13px; font-weight: 600; color: #666;
+    cursor: pointer; border-bottom: 3px solid transparent;
+    text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .tab.active { color: #333; border-bottom-color: #333; }
+
+  /* POST BAR */
+  .post-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .post-label { font-size: 13px; color: #555; display: flex; align-items: center; gap: 8px; }
+  .post-type {
+    background: #fff; border: 1px solid #ccc;
+    padding: 4px 10px; font-size: 12px; color: #c07020;
+    display: flex; align-items: center; gap: 5px; cursor: pointer;
+  }
+  .post-type svg { width: 13px; height: 13px; fill: none; stroke: #c07020; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .most-recent { font-size: 13px; color: #0770a2; cursor: pointer; }
+
+  /* POST ITEM */
+  .post-item { background: #fff; border: 1px solid #ddd; padding: 16px; margin-bottom: 12px; }
+  .post-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .avatar {
+    width: 40px; height: 40px;
+    flex-shrink: 0;
+  }
+  .avatar svg { width: 40px; height: 40px; display: block; }
+  .post-meta { flex: 1; }
+  .post-author { font-size: 13px; font-weight: 600; color: #0770a2; cursor: pointer; }
+  .post-course { font-size: 12px; color: #0770a2; cursor: pointer; }
+  .post-arrow { color: #0770a2; font-size: 11px; }
+  .post-title { font-size: 15px; font-weight: 700; color: #333; margin: 4px 0 2px; }
+  .announce-tag {
+    display: inline-block; background: #f5d800; color: #7a6800;
+    font-size: 12px; font-weight: 600; padding: 2px 8px; margin-bottom: 6px;
+  }
+  .section-label { font-size: 14px; font-weight: 700; color: #cc0000; margin: 10px 0 2px; }
+  .post-body { font-size: 14px; color: #333; line-height: 1.6; }
+  .greeting { color: #0770a2; font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .show-more { color: #0770a2; font-size: 13px; cursor: pointer; margin-top: 4px; display: flex; align-items: center; gap: 4px; }
+  .post-footer { margin-top: 10px; display: flex; align-items: center; gap: 12px; }
+  .post-time { font-size: 12px; color: #999; }
+  .post-like { font-size: 12px; color: #0770a2; cursor: pointer; }
+  .dot-sep { color: #ccc; }
+  .likes {
+    display: flex; align-items: center; gap: 6px;
+    margin-top: 8px; font-size: 13px; color: #555;
+    border-top: 1px solid #f0f0f0; padding-top: 8px;
+  }
+  .like-dot {
+    width: 18px; height: 18px; background: #ddd;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #555;
+  }
+  .likes a { color: #0770a2; cursor: pointer; text-decoration: none; }
+
+  /* SPIRIT DAY BANNER */
+  .spirit-banner {
+    background: #1a3a5c; border: 3px solid #2a6496;
+    padding: 24px; text-align: center; margin: 8px 0;
+  }
+  .spirit-eyebrow { font-size: 11px; letter-spacing: 3px; color: #7ab3d8; text-transform: uppercase; margin-bottom: 6px; }
+  .spirit-title { font-size: 28px; font-weight: 700; color: #ffffff; letter-spacing: 1px; line-height: 1.1; }
+  .spirit-ribbon {
+    background: #c8a000; color: #fff;
+    font-size: 16px; font-weight: 900; padding: 4px 24px;
+    margin: 10px auto; display: inline-block; letter-spacing: 2px;
+  }
+  .spirit-date { font-size: 22px; font-weight: 900; color: #f0c040; margin-top: 4px; }
+  .spirit-school { font-size: 12px; color: #aacce0; letter-spacing: 2px; margin: 4px 0; }
+  .spirit-caption { font-size: 13px; color: #ddeeff; margin-top: 6px; }
+  .spirit-caption strong { font-size: 16px; display: block; color: #fff; }
+
+  /* SIDEBAR */
+  .sidebar-card { background: #fff; border: 1px solid #ddd; padding: 14px; margin-bottom: 14px; }
+  .sidebar-title { font-size: 13px; font-weight: 700; color: #333; margin-bottom: 10px; }
+  .sidebar-section-label {
+    font-size: 10px; color: #888; letter-spacing: 1px;
+    text-transform: uppercase; margin-bottom: 8px; font-weight: 600;
+  }
+  .todo-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f0f0f0; }
+  .todo-item:last-child { border-bottom: none; }
+  .todo-icon {
+    width: 24px; height: 24px; background: #e8f4fb;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; flex-shrink: 0; color: #0770a2;
+    font-weight: 700; border: 1px solid #b8d8f0;
+  }
+  .todo-content { flex: 1; }
+  .todo-name { font-size: 13px; color: #0770a2; font-weight: 600; cursor: pointer; }
+  .todo-due { font-size: 11px; color: #555; }
+  .todo-course { font-size: 11px; color: #777; }
+  .todo-clock { margin-left: auto; flex-shrink: 0; color: #0770a2; }
+  .todo-clock svg { width: 16px; height: 16px; fill: none; stroke: #0770a2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .sidebar-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .calendar-link { font-size: 12px; color: #0770a2; cursor: pointer; font-weight: 600; text-decoration: none; }
+  .event-date-label {
+    font-size: 11px; color: #888; letter-spacing: 1px;
+    text-transform: uppercase; margin: 6px 0; font-weight: 600;
+  }
+  .event-item { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0; }
+  .event-icon {
+    width: 24px; height: 24px; background: #e8f8e8;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #2a8a2a; flex-shrink: 0;
+    border: 1px solid #b0d8b0; font-weight: 700;
+  }
+  .event-name { font-size: 13px; color: #0770a2; cursor: pointer; font-weight: 600; }
+  .event-time { font-size: 12px; color: #555; }
+  .recently-label { font-size: 13px; color: #777; margin: 8px 0; }
+  .load-link { font-size: 13px; color: #0770a2; cursor: pointer; display: flex; align-items: center; gap: 6px; text-decoration: none; }
+  .load-link svg { width: 13px; height: 13px; fill: none; stroke: #0770a2; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* RESOURCES OVERLAY */
+  .overlay {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+  }
+  .overlay.open { display: block; }
+  .resources-panel {
+    position: absolute; top: 52px; left: 0; right: 0; bottom: 0;
+    background: #f5f5f5; overflow-y: auto;
+  }
+  .resources-inner { max-width: 900px; margin: 0 auto; padding: 28px 20px; }
+  .resources-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; padding-bottom: 14px;
+    border-bottom: 2px solid #ddd;
+  }
+  .resources-title { font-size: 20px; font-weight: 700; color: #222; }
+  .resources-close {
+    width: 32px; height: 32px; background: #fff; border: 1px solid #ccc;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 18px; color: #555; flex-shrink: 0;
+  }
+  .resources-close:hover { background: #f0f0f0; }
+  .resources-subtitle { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 14px; }
+  .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+  .game-card {
+    background: #fff; border: 1px solid #ddd;
+    padding: 20px 16px; cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .game-card:hover { border-color: #0770a2; }
+  .game-icon { width: 44px; height: 44px; margin-bottom: 12px; }
+  .game-name { font-size: 14px; font-weight: 700; color: #222; margin-bottom: 4px; }
+  .game-desc { font-size: 12px; color: #777; line-height: 1.4; }
+  /* RESOURCES PAGE */
+  .resources-page {
+    display: none;
+    position: fixed; top: 52px; left: 0; right: 0; bottom: 0;
+    background: #f5f5f5; z-index: 200; flex-direction: column;
+  }
+  .resources-page.open { display: flex; }
+  .resources-topbar {
+    background: #fff; border-bottom: 1px solid #ddd;
+    display: flex; align-items: center; gap: 0; flex-shrink: 0; height: 48px;
+  }
+  .game-tab {
+    padding: 0 20px; height: 48px; display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 600; color: #666; cursor: pointer;
+    border-bottom: 3px solid transparent; border-right: 1px solid #eee;
+    white-space: nowrap;
+  }
+  .game-tab:hover { color: #0770a2; background: #fafafa; }
+  .game-tab.active { color: #0770a2; border-bottom-color: #0770a2; background: #fff; }
+  .game-tab svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .resources-close-btn {
+    margin-left: auto; width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #888; cursor: pointer; border-left: 1px solid #eee;
+    flex-shrink: 0;
+  }
+  .resources-close-btn:hover { background: #f5f5f5; color: #333; }
+  .game-frame-wrap { flex: 1; position: relative; background: #222; }
+  .game-frame-wrap iframe {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    border: none; display: block;
+  }
+  .game-placeholder {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #aaa; font-size: 14px; gap: 12px;
+  }
+  .game-placeholder svg { width: 40px; height: 40px; opacity: 0.4; }
+
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
-  <a class="logo" href="#">
-    <div class="logo-icon">JLS</div>
-    <div class="logo-text"><div class="s1">Jane Lathrop Stanford</div><div class="s2">Middle School</div></div>
-  </a>
-  <span class="brand">schoolargy beta</span>
-  <ul class="nav-links">
-    <li><a href="#" class="active">Courses &#9662;</a></li>
-    <li id="groups-li">
-      <a id="groups-btn" onclick="toggleDD(event,'groups-dd','groups-btn')">Groups &#9662;</a>
-      <div class="dropdown" id="groups-dd">
-
-        <div class="dropdown-label">&#127950; Racing &amp; Driving</div>
-        <div class="dropdown-item" onclick="openGame('Drive Mad')">
-          <span class="di-icon">&#128664;</span><div class="di-info"><div class="di-name">Drive Mad</div><div class="di-tag">Physics racer · 100 levels</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Escape Road')">
-          <span class="di-icon">&#128652;</span><div class="di-info"><div class="di-name">Escape Road</div><div class="di-tag">Police chase · dodge traffic</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Moto Road Rash 3D')">
-          <span class="di-icon">&#127949;</span><div class="di-info"><div class="di-name">Moto Road Rash 3D</div><div class="di-tag">Motorcycle racing · stunts</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Drift Masters')">
-          <span class="di-icon">&#128739;</span><div class="di-info"><div class="di-name">Drift Masters</div><div class="di-tag">25+ drift cars · leaderboards</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('HexGL Racer')">
-          <span class="di-icon">&#128640;</span><div class="di-info"><div class="di-name">HexGL Racer</div><div class="di-tag">Futuristic anti-gravity · WebGL</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Zombie Crusher')">
-          <span class="di-icon">&#129503;</span><div class="di-info"><div class="di-name">Zombie Crusher</div><div class="di-tag">Survival driver · upgrade system</div></div>
-        </div>
-
-        <div class="dropdown-label">&#9889; Action &amp; Skill</div>
-        <div class="dropdown-item" onclick="openGame('Slope')">
-          <span class="di-icon">&#9652;</span><div class="di-info"><div class="di-name">Slope</div><div class="di-tag">Endless ball · speed run</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Stickman Hook')">
-          <span class="di-icon">&#129695;</span><div class="di-info"><div class="di-name">Stickman Hook</div><div class="di-tag">Physics swing · 100 levels</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Vex 4')">
-          <span class="di-icon">&#9889;</span><div class="di-info"><div class="di-name">Vex 4</div><div class="di-tag">Stickman platformer · deadly traps</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Vex 3')">
-          <span class="di-icon">&#9889;</span><div class="di-info"><div class="di-name">Vex 3</div><div class="di-tag">10 acts · bonus challenges</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('BuildShoot 1v1')">
-          <span class="di-icon">&#127918;</span><div class="di-info"><div class="di-name">BuildShoot 1v1</div><div class="di-tag">Build &amp; shoot · battle royale</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Gladihoppers')">
-          <span class="di-icon">&#9876;</span><div class="di-info"><div class="di-name">Gladihoppers</div><div class="di-tag">Physics gladiator · ragdoll combat</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Snow Warrior')">
-          <span class="di-icon">&#10052;</span><div class="di-info"><div class="di-name">Snow Warrior</div><div class="di-tag">Snowball fight · boss battles</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Bounce Master')">
-          <span class="di-icon">&#9898;</span><div class="di-info"><div class="di-name">Bounce Master</div><div class="di-tag">Gravity challenge · arcade</div></div>
-        </div>
-
-        <div class="dropdown-label">&#127936; Sports</div>
-        <div class="dropdown-item" onclick="openGame('Basketball Random')">
-          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Random</div><div class="di-tag">2-player · random physics chaos</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Basketball Stars')">
-          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Stars</div><div class="di-tag">Street hoops · 1v1 matchup</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Basketball Legends')">
-          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basketball Legends</div><div class="di-tag">Slam dunk · tournament mode</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Basket Bros')">
-          <span class="di-icon">&#127944;</span><div class="di-info"><div class="di-name">Basket Bros.io</div><div class="di-tag">Online multiplayer basketball</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Wave Rider')">
-          <span class="di-icon">&#127940;</span><div class="di-info"><div class="di-name">Wave Rider</div><div class="di-tag">Surf challenge · dodge kraken</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Backcountry Ski')">
-          <span class="di-icon">&#9981;</span><div class="di-info"><div class="di-name">Backcountry Ski</div><div class="di-tag">Downhill tricks · winter sports</div></div>
-        </div>
-
-        <div class="dropdown-label">&#127939; Endless Runners</div>
-        <div class="dropdown-item" onclick="openGame('Subway Surfers')">
-          <span class="di-icon">&#128650;</span><div class="di-info"><div class="di-name">Subway Surfers</div><div class="di-tag">Singapore · hoverboard runner</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('NYC Subway Rush')">
-          <span class="di-icon">&#128650;</span><div class="di-info"><div class="di-name">NYC Subway Rush</div><div class="di-tag">New York City · dodge trains</div></div>
-        </div>
-
-        <div class="dropdown-label">&#129503; Puzzle &amp; Brain</div>
-        <div class="dropdown-item" onclick="openGame('2048')">
-          <span class="di-icon">&#128290;</span><div class="di-info"><div class="di-name">2048</div><div class="di-tag">Number merge · strategy</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('NumberFly 2048')">
-          <span class="di-icon">&#128290;</span><div class="di-info"><div class="di-name">NumberFly 2048</div><div class="di-tag">Flappy Bird meets 2048</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Block Stack')">
-          <span class="di-icon">&#129001;</span><div class="di-info"><div class="di-name">Block Stack</div><div class="di-tag">Tetris-style · leaderboard</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Brick Blitz')">
-          <span class="di-icon">&#9632;</span><div class="di-info"><div class="di-name">Brick Blitz</div><div class="di-tag">Breakout · power-ups</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Bubble Shooter')">
-          <span class="di-icon">&#128992;</span><div class="di-info"><div class="di-name">Bubble Shooter</div><div class="di-tag">Match 3 · chain reactions</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Maze Runner 3D')">
-          <span class="di-icon">&#128204;</span><div class="di-info"><div class="di-name">Maze Runner 3D</div><div class="di-tag">3D labyrinths · tilt ball</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Chess')">
-          <span class="di-icon">&#9820;</span><div class="di-info"><div class="di-name">Chess</div><div class="di-tag">AI opponent · local multiplayer</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Rope Cutter')">
-          <span class="di-icon">&#9986;</span><div class="di-info"><div class="di-name">Rope Cutter</div><div class="di-tag">Om Nom physics puzzle</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Packabunchas')">
-          <span class="di-icon">&#128125;</span><div class="di-info"><div class="di-name">Packabunchas</div><div class="di-tag">Space puzzle · tile fitting</div></div>
-        </div>
-
-        <div class="dropdown-label">&#127981; Simulation &amp; Idle</div>
-        <div class="dropdown-item" onclick="openGame('Tiny Fishing')">
-          <span class="di-icon">&#127907;</span><div class="di-info"><div class="di-name">Tiny Fishing</div><div class="di-tag">Cast &amp; catch · upgrade rods</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Monkey Mart')">
-          <span class="di-icon">&#128060;</span><div class="di-info"><div class="di-name">Monkey Mart</div><div class="di-tag">Supermarket manager · idle</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('LifeCraft')">
-          <span class="di-icon">&#127776;</span><div class="di-info"><div class="di-name">LifeCraft Simulator</div><div class="di-tag">Life choices · text RPG</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('A Dark Room')">
-          <span class="di-icon">&#128293;</span><div class="di-info"><div class="di-name">A Dark Room</div><div class="di-tag">Minimalist survival RPG</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Territory Conquest')">
-          <span class="di-icon">&#127988;</span><div class="di-info"><div class="di-name">Territory Conquest</div><div class="di-tag">IO game · claim land · strategy</div></div>
-        </div>
-
-        <div class="dropdown-label">&#127381; Big Games</div>
-        <div class="dropdown-item" onclick="openGame('Eaglercraft')">
-          <span class="di-icon">&#9974;&#65039;</span><div class="di-info"><div class="di-name">Eaglercraft</div><div class="di-tag">Minecraft 1.8.8 · browser edition</div></div>
-        </div>
-        <div class="dropdown-item" onclick="openGame('Bad Time Simulator')">
-          <span class="di-icon">&#10084;&#65039;</span><div class="di-info"><div class="di-name">Bad Time Simulator</div><div class="di-tag">Undertale · fight Sans · dodge attacks</div></div>
-        </div>
-
-      </div>
-    </li>
-    <li><a href="#">Resources</a></li>
-    <li><a href="#">Grades &#9662;</a></li>
-  </ul>
-  <div class="ns"></div>
+  <div class="nav-logo">
+    <div class="nav-logo-s">S</div>
+    <div>
+      <div class="nav-brand">Schoolargy</div>
+      <div class="nav-logo-text">Jane Lathrop Stanford MS</div>
+    </div>
+  </div>
+  <a class="nav-link" href="#">Courses <span class="caret">&#9660;</span></a>
+  <a class="nav-link" href="#">Groups <span class="caret">&#9660;</span></a>
+  <a class="nav-link" href="#" id="resources-btn">Resources</a>
+  <a class="nav-link" href="#">Grades <span class="caret">&#9660;</span></a>
+  <div class="nav-right">
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    </div>
+    <div class="nav-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </div>
+    <div class="nav-icon bell">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <div class="badge">3</div>
+    </div>
+    <div class="user-avatar">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="32" fill="#1a3a5c"/>
+        <circle cx="10" cy="10" r="6" fill="#4a9fd4"/>
+        <circle cx="22" cy="10" r="4" fill="#2a6496"/>
+        <circle cx="16" cy="22" r="7" fill="#2f7cbf"/>
+        <circle cx="16" cy="22" r="3" fill="#6bb8e8"/>
+      </svg>
+    </div>
+    <div class="user-name">Generic User <span class="caret">&#9660;</span></div>
+  </div>
 </nav>
 
-<div class="tabs">
-  <div class="tab active">Recent Activity</div>
-  <div class="tab">Course Dashboard</div>
-</div>
-
+<!-- BODY -->
 <div class="layout">
-  <div class="feed">
-    <div class="filter-bar">
-      <label>Post:</label>
-      <select><option>Event</option><option>Announcement</option><option>Assignment</option></select>
-      <div class="fsort">Most Recent &#9662;</div>
+  <main class="main">
+    <div class="tabs">
+      <div class="tab active">Recent Activity</div>
+      <div class="tab">Course Dashboard</div>
     </div>
 
-    <div class="card">
-      <div class="ch">
-        <div class="pav g">SH</div>
-        <div class="pi">
-          <div class="pname">Sarah Holloway</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">JLS Library: 2025&#8211;2026 (All Students)</span></div>
+    <div class="post-bar">
+      <div class="post-label">
+        Post:
+        <div class="post-type">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Announcement
         </div>
-        <button class="ca">&#10697;</button>
       </div>
-      <div class="cb">
-        <div class="albl ann">&#128218; Announcement</div>
-        <div class="atitle">Found a special bookmark in your borrowed book?</div>
-        <div class="adesc">Write your name on it and bring it to the front desk &#8212; you could win this month's grand prize! We're also accepting new book requests for the spring reading program.</div>
-        <div class="img-ph" style="margin-top:10px">&#128218;&#127808;</div>
-      </div>
-      <div class="cf">
-        <span class="smr">&#9660; Show More</span>
-        <span class="ts">Today at 3:29 pm</span>
-        <button class="lb">Like</button>
-      </div>
-      <div class="lr"><span class="ln">11 people</span><span>liked this</span></div>
+      <div class="most-recent">Most Recent <span class="caret">&#9660;</span></div>
     </div>
 
-    <div class="card">
-      <div class="ch">
-        <div class="pav b">TR</div>
-        <div class="pi">
-          <div class="pname">Thomas Rivera</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">English 7 &#8211; Period 3</span></div>
+    <!-- POST 1: Morning Announcements -->
+    <div class="post-item">
+      <div class="post-header">
+        <div class="avatar">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" fill="#2a5298"/>
+            <rect x="0" y="0" width="40" height="13" fill="#4a72c8"/>
+            <rect x="0" y="14" width="40" height="12" fill="#3a62b8"/>
+            <rect x="0" y="27" width="40" height="13" fill="#5b8dee"/>
+            <rect x="12" y="0" width="8" height="40" fill="rgba(255,255,255,0.08)"/>
+          </svg>
         </div>
-        <button class="ca">&#10697;</button>
-      </div>
-      <div class="cb">
-        <div class="albl asgn">&#128203; Assignment</div>
-        <div class="atitle">HW &#8211; Finish watching the video on introductory paragraphs. DUE: Day 2</div>
-        <div class="adesc">Review the clip from today's lesson and take notes on the three key elements: the hook, the background context, and the thesis statement. Be ready for a short discussion next class. Notes should be at least half a page.</div>
-      </div>
-      <div class="cf">
-        <span class="ts">Yesterday at 1:12 pm</span>
-        <button class="lb">Like</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="ch">
-        <div class="pav o">JK</div>
-        <div class="pi">
-          <div class="pname">Julia Kwan</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">Japanese 1A</span></div>
+        <div class="post-meta">
+          <div>
+            <span class="post-author">Sandra Chen</span>
+            <span class="post-arrow"> &#9658; </span>
+            <span class="post-course">JLS: 8th Grade Panthers (Grade 08)</span>
+          </div>
+          <div class="post-title">Good Morning Cardinal Nation,</div>
+          <div class="announce-tag">PA Announcements today</div>
         </div>
-        <button class="ca">&#10697;</button>
       </div>
-      <div class="cb" style="padding-top:8px">
-        <div class="albl event">&#127937; Event</div>
-        <div class="atitle">Campus Scavenger Hunt &#8212; Tomorrow!</div>
-        <div class="adesc">Don't forget &#8212; pairs were assigned last week. Meet by the main entrance at 8:45 AM. Bring your sheet and a pencil. Each clue will include a Japanese phrase you'll need to translate correctly to unlock the next location!</div>
+      <div class="post-body">
+        <div class="greeting">GOOD MORNING PANTHERS!</div>
+        <p style="margin-bottom:6px">This is Marcus and Priya bringing you your Friday morning announcements.</p>
+        <p>Today is Friday, April 3rd, 2026.</p>
+        <p>Expect partly cloudy skies with a high of 68 and a low of 52.</p>
+        <p style="margin-bottom:8px">A great day to spend time outside at lunch!</p>
+        <div class="section-label">Club News:</div>
+        <p style="margin-bottom:8px">Robotics Club meets today in Room 14 from 3:30 to 5:00 pm. Bring your project materials!</p>
+        <div class="section-label">School News:</div>
+        <p style="margin-bottom:8px">The Spring Art Show submissions are due by next Wednesday, April 8th. Drop off your artwork to Ms. Rivera in the art room.</p>
+        <div class="section-label">School Lunch:</div>
+        <p style="font-weight:700;margin-bottom:8px">Pasta bar with garlic bread and caesar salad</p>
+        <p style="color:#555">Please remember to return your trays and clean up your area before leaving the cafeteria...</p>
+        <div class="show-more"><span style="font-size:9px">&#9660;</span> Show More</div>
       </div>
-      <div class="cf">
-        <span class="ts">Today at 10:05 am</span>
-        <button class="lb">Like</button>
+      <div class="post-footer">
+        <span class="post-time">Today at 8:15 am</span>
+        <span class="dot-sep">·</span>
+        <span class="post-like">Like</span>
       </div>
-      <div class="lr"><span class="ln">6 people</span><span>liked this</span></div>
+      <div class="likes">
+        <div class="like-dot">+</div>
+        <a>7 people</a> liked this
+      </div>
     </div>
 
-    <div class="card">
-      <div class="ch">
-        <div class="pav p">AM</div>
-        <div class="pi">
-          <div class="pname">Alex Martinez</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">Math 7 Accelerated &#8211; Period 5</span></div>
+    <!-- POST 2: Spirit Day Banner -->
+    <div class="post-item">
+      <div class="post-header">
+        <div class="avatar">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" fill="#7b3fa0"/>
+            <rect x="8" y="8" width="11" height="11" fill="#c07de0"/>
+            <rect x="21" y="8" width="11" height="11" fill="#9b5cc0"/>
+            <rect x="8" y="21" width="11" height="11" fill="#9b5cc0"/>
+            <rect x="21" y="21" width="11" height="11" fill="#c07de0"/>
+            <rect x="14" y="14" width="12" height="12" fill="#7b3fa0"/>
+          </svg>
         </div>
-        <button class="ca">&#10697;</button>
-      </div>
-      <div class="cb" style="padding-top:8px">
-        <div class="albl ann">&#128203; Announcement</div>
-        <div class="atitle">Reminder: Chapter 9 Quiz on Friday</div>
-        <div class="adesc">We will cover proportional relationships, unit rates, and graphing on coordinate planes. Review your notes from Days 12&#8211;15. The study guide posted last week will be very helpful &#8212; a copy is in the class materials folder if you need it.</div>
-      </div>
-      <div class="cf">
-        <span class="ts">Yesterday at 9:48 am</span>
-        <button class="lb">Like</button>
-      </div>
-      <div class="lr"><span class="ln">14 people</span><span>liked this</span></div>
-    </div>
-
-    <div class="card">
-      <div class="ch">
-        <div class="pav r">RL</div>
-        <div class="pi">
-          <div class="pname">Rachel Lim</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">Life Science 7 &#8211; Period 2</span></div>
+        <div class="post-meta">
+          <div>
+            <span class="post-author">Tom Walsh</span>
+            <span class="post-arrow"> &#9658; </span>
+            <span class="post-course">JLS: Student Council</span>
+          </div>
         </div>
-        <button class="ca">&#10697;</button>
       </div>
-      <div class="cb">
-        <div class="albl asgn">&#128203; Assignment</div>
-        <div class="atitle">Lab Report &#8211; Cell Division Observations. DUE: Thursday</div>
-        <div class="adesc">Use the template in the Materials tab. Your report must include your labeled diagrams from the microscope slides, your data table, and a 3&#8211;5 sentence conclusion explaining what you observed during mitosis. Diagrams must be in pencil and clearly labeled with phase names.</div>
+      <div class="spirit-banner">
+        <div class="spirit-eyebrow">— Upcoming Event —</div>
+        <div class="spirit-title">Decades<br>Day</div>
+        <div class="spirit-ribbon">SPIRIT DAY!</div>
+        <div class="spirit-date">APRIL 18</div>
+        <div class="spirit-school">— JANE LATHROP STANFORD MS —</div>
+        <div class="spirit-caption">Dress from your favorite decade &amp;<strong>show your Panther pride!</strong></div>
       </div>
-      <div class="cf">
-        <span class="ts">Today at 8:22 am</span>
-        <button class="lb">Like</button>
+      <div class="post-footer" style="margin-top:12px">
+        <span class="post-time">Yesterday at 2:40 pm</span>
+        <span class="dot-sep">·</span>
+        <span class="post-like">Like</span>
+      </div>
+      <div class="likes">
+        <div class="like-dot">+</div>
+        <a>12 people</a> liked this
       </div>
     </div>
 
-    <div class="card">
-      <div class="ch">
-        <div class="pav g">BW</div>
-        <div class="pi">
-          <div class="pname">Brian Walsh</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">Social Studies 7</span></div>
+    <!-- POST 3: Library notice -->
+    <div class="post-item">
+      <div class="post-header">
+        <div class="avatar">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" fill="#2d6a3f"/>
+            <ellipse cx="20" cy="20" rx="14" ry="8" fill="#4caf72"/>
+            <ellipse cx="20" cy="20" rx="8" ry="14" fill="#3d8f5a"/>
+            <circle cx="20" cy="20" r="4" fill="#a8e6bc"/>
+          </svg>
         </div>
-        <button class="ca">&#10697;</button>
-      </div>
-      <div class="cb" style="padding-top:8px">
-        <div class="albl disc">&#128172; Update</div>
-        <div class="atitle">Maya/Aztec/Inca One-Pager &#8211; Peer Review Day moved to Thursday</div>
-        <div class="adesc">Peer review has been pushed back one day. Please have your draft fully complete by Wednesday night so you're ready to swap with a partner first thing Thursday. The rubric is available under Assignments if you need it.</div>
-      </div>
-      <div class="cf">
-        <span class="ts">Today at 7:55 am</span>
-        <button class="lb">Like</button>
-      </div>
-      <div class="lr"><span class="ln">3 people</span><span>liked this</span></div>
-    </div>
-
-    <div class="card">
-      <div class="ch">
-        <div class="pav" style="background:#00BFFF;font-size:10px">DEV</div>
-        <div class="pi">
-          <div class="pname" style="color:#00BFFF">schoolargy dev team</div>
-          <div class="proute"><span>&#9658;</span><span class="cl">Schoolargy Beta &#8211; All Users</span></div>
+        <div class="post-meta">
+          <div>
+            <span class="post-author">Lisa Brandt</span>
+            <span class="post-arrow"> &#9658; </span>
+            <span class="post-course">JLS: Library &amp; Media Center</span>
+          </div>
+          <div class="post-title">Library Closure — Monday April 6</div>
         </div>
-        <button class="ca">&#10697;</button>
       </div>
-      <div class="cb" style="padding-top:8px">
-        <div class="albl" style="background:#e8f8ff;color:#007bb8">&#128276; Platform Notice</div>
-        <div class="atitle" style="color:#007bb8">Why Hollow Knight &amp; Undertale Are Not Available</div>
-        <div class="adesc">Hi everyone &#8212; we wanted to be transparent about why certain requested games are missing from the Groups section.<br><br><strong>Hollow Knight</strong> and <strong>Undertale</strong> are commercial titles owned by Team Cherry and Toby Fox respectively. Neither game has an official browser version, and embedding or redistributing them without a license would violate copyright law. Any third-party sites claiming to host the full games are running unauthorized copies or fan remakes &#8212; we will not link to these.<br><br>We have added <strong>Bad Time Simulator</strong> as a fan-made Undertale alternative that is freely and legally available in the browser. We are continuing to look for legitimate browser-playable content to add to the platform.<br><br>If you have suggestions for games you'd like to see added, please reach out to the team below. Thank you for understanding.</div>
+      <div class="post-body">
+        <p>Please note that the library will be closed on Monday, April 6th for inventory and reshelving. All book returns should be placed in the drop box outside the main entrance.</p>
+        <p style="margin-top:8px">The library will reopen Tuesday morning at 7:30 am as usual. Thank you for your patience!</p>
       </div>
-      <div class="cf">
-        <span class="ts">Today at 12:00 am</span>
-        <a href="/cdn-cgi/l/email-protection#7506161d071a111114161401351218141c195b161a184a0600171f1016014826161d1a1a191407120c504745371001145047455850474532141810504745260012121006011c1a1b" style="font-size:11.5px;color:#00BFFF;font-weight:600;text-decoration:none;margin-left:auto">&#9993; Contact Team</a>
+      <div class="post-footer">
+        <span class="post-time">Yesterday at 11:05 am</span>
+        <span class="dot-sep">·</span>
+        <span class="post-like">Like</span>
       </div>
-      <div class="lr"><span class="ln">2 people</span><span>liked this</span></div>
+      <div class="likes">
+        <div class="like-dot">+</div>
+        <a>3 people</a> liked this
+      </div>
     </div>
+  </main>
 
-  </div>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">To Do</div>
+      <div class="sidebar-section-label">Upcoming</div>
 
-  <div class="sidebar">
-    <div class="sc">
-      <div class="sct">To Do</div>
-      <div class="grp od">Overdue</div>
-      <div class="ti">
-        <div class="tic g">SS</div>
-        <div class="tcont"><div class="tttl">Maya/Aztec/Inca One-Pager Research Notes</div><div class="tdue">Due earlier today</div><div class="tcrs">Social Studies 7</div></div>
-        <div class="tst"><div class="si od">!</div></div>
+      <div class="todo-item">
+        <div class="todo-icon">Quiz</div>
+        <div class="todo-content">
+          <div class="todo-name">Chapter 9 Reading Quiz</div>
+          <div class="todo-due">Due today, April 3, 2026 at 11:59 pm</div>
+          <div class="todo-course">English Language Arts 8B</div>
+        </div>
+        <div class="todo-clock">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
       </div>
-      <div class="grp">Upcoming</div>
-      <div class="ti">
-        <div class="tic b">EN</div>
-        <div class="tcont"><div class="tttl">HW &#8211; Intro paragraph video notes</div><div class="tdue">Wed, Mar 18 at 11:59 pm</div><div class="tcrs">English 7</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
+
+      <div class="todo-item">
+        <div class="todo-icon">HW</div>
+        <div class="todo-content">
+          <div class="todo-name">Equations Practice Set 4</div>
+          <div class="todo-due">Due Monday, April 6, 2026 at 8:00 am</div>
+          <div class="todo-course">Pre-Algebra Period 3</div>
+        </div>
+        <div class="todo-clock">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
       </div>
-      <div class="ti">
-        <div class="tic p">JP</div>
-        <div class="tcont"><div class="tttl">Campus Scavenger Hunt</div><div class="tdue">Wed, Mar 18 at 11:59 pm</div><div class="tcrs">Japanese 1A</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
-      </div>
-      <div class="ti">
-        <div class="tic r">SC</div>
-        <div class="tcont"><div class="tttl">Lab Report &#8211; Cell Division</div><div class="tdue">Thu, Mar 19 at 3:15 pm</div><div class="tcrs">Life Science 7</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
-      </div>
-      <div class="ti">
-        <div class="tic g">SS</div>
-        <div class="tcont"><div class="tttl">Maya/Aztec/Inca One-Pager (Draft)</div><div class="tdue">Thu, Mar 19 at 3:15 pm</div><div class="tcrs">Social Studies 7</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
-      </div>
-      <div class="ti">
-        <div class="tic m">MA</div>
-        <div class="tcont"><div class="tttl">Ch. 9 Quiz &#8211; Proportional Relationships</div><div class="tdue">Fri, Mar 20 at 8:00 am</div><div class="tcrs">Math 7 Accelerated</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
-      </div>
-      <div class="ti">
-        <div class="tic p">JP</div>
-        <div class="tcont"><div class="tttl">Time Expression Assessment</div><div class="tdue">Fri, Mar 20 at 11:59 pm</div><div class="tcrs">Japanese 1A</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
-      </div>
-      <div class="ti">
-        <div class="tic g">SS</div>
-        <div class="tcont"><div class="tttl">Maya/Aztec/Inca Unit Assessment</div><div class="tdue">Tue, Mar 24 at 11:59 pm</div><div class="tcrs">Social Studies 7</div></div>
-        <div class="tst"><div class="si up">&#9675;</div></div>
+
+      <div class="todo-item">
+        <div class="todo-icon">Lab</div>
+        <div class="todo-content">
+          <div class="todo-name">Ecosystem Lab Report</div>
+          <div class="todo-due">Due Wednesday, April 8, 2026 at 11:59 pm</div>
+          <div class="todo-course">Life Science 8A</div>
+        </div>
+        <div class="todo-clock">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
       </div>
     </div>
 
-  </div>
+    <div class="sidebar-card">
+      <div class="sidebar-header-row">
+        <div class="sidebar-title" style="margin:0">Upcoming Events</div>
+        <a class="calendar-link" href="#">Calendar</a>
+      </div>
+
+      <div class="event-date-label">Monday, April 6, 2026</div>
+      <div class="event-item">
+        <div class="event-icon">6</div>
+        <div>
+          <div class="event-name">Library Closed</div>
+          <div class="event-time">All day</div>
+        </div>
+      </div>
+
+      <div class="event-date-label">Friday, April 18, 2026</div>
+      <div class="event-item">
+        <div class="event-icon">18</div>
+        <div>
+          <div class="event-name">Decades Day Spirit Day</div>
+          <div class="event-time">All day</div>
+        </div>
+      </div>
+
+      <div class="event-date-label">Thursday, April 23, 2026</div>
+      <div class="event-item">
+        <div class="event-icon">23</div>
+        <div>
+          <div class="event-name">Spring Art Show</div>
+          <div class="event-time">6:00 pm – 8:00 pm</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Recently Completed</div>
+      <div class="recently-label">Recently Completed items are collapsed by default</div>
+      <a class="load-link" href="#">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Click here to load the Recently Completed items
+      </a>
+    </div>
+  </aside>
 </div>
 
-<div class="game-overlay" id="game-overlay">
-  <div class="game-window">
-    <div class="game-topbar">
-      <span class="game-title-label" id="game-title">Game</span>
-      <button class="game-close" onclick="closeGame()">&#10005;</button>
+<!-- RESOURCES PAGE WITH EMBEDDED GAMES -->
+<div class="resources-page" id="resources-page">
+  <div class="resources-topbar">
+
+    <div class="game-tab active" data-url="https://store.steampowered.com/app/391960/Bad_Time_Simulator/" data-game="Bad Time Simulator" onclick="switchGame(this)">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="14" stroke="#e94560" stroke-width="2"/>
+        <circle cx="22" cy="22" r="3" fill="#e94560"/>
+        <line x1="22" y1="8" x2="22" y2="16" stroke="#e94560" stroke-width="2"/>
+        <line x1="22" y1="28" x2="22" y2="36" stroke="#e94560" stroke-width="2"/>
+        <line x1="8" y1="22" x2="16" y2="22" stroke="#e94560" stroke-width="2"/>
+        <line x1="28" y1="22" x2="36" y2="22" stroke="#e94560" stroke-width="2"/>
+      </svg>
+      Bad Time Simulator
     </div>
-    <iframe id="game-iframe" src="" allowfullscreen></iframe>
+
+    <div class="game-tab" data-url="https://eaglercraft.com/mc/1.8.8/" data-game="Eagle Craft" onclick="switchGame(this)">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="24" width="32" height="14" fill="#4a6a20"/>
+        <rect x="10" y="14" width="10" height="10" fill="#8b6914"/>
+        <rect x="24" y="10" width="10" height="14" fill="#8b6914"/>
+        <rect x="14" y="6" width="6" height="8" fill="#2a7a2a"/>
+        <rect x="28" y="4" width="6" height="6" fill="#2a7a2a"/>
+        <rect x="6" y="24" width="32" height="4" fill="#5c9a3c"/>
+      </svg>
+      Eagle Craft
+    </div>
+
+    <div class="game-tab" data-url="https://slope-game.com/" data-game="Slope" onclick="switchGame(this)">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polyline points="0,38 12,20 24,28 36,10 44,16" stroke="#00e5ff" stroke-width="2.5"/>
+        <circle cx="24" cy="22" r="5" fill="#00b8d4"/>
+      </svg>
+      Slope
+    </div>
+
+    <div class="game-tab" data-url="https://drive-mad.com/" data-game="Drive Mad" onclick="switchGame(this)">
+      <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="22" width="32" height="10" fill="#e05000"/>
+        <rect x="10" y="16" width="24" height="10" fill="#ff7020"/>
+        <circle cx="13" cy="33" r="5" fill="#222" stroke="#888" stroke-width="2"/>
+        <circle cx="31" cy="33" r="5" fill="#222" stroke="#888" stroke-width="2"/>
+        <rect x="28" y="18" width="6" height="5" fill="#aaddff"/>
+        <rect x="10" y="18" width="8" height="5" fill="#aaddff"/>
+      </svg>
+      Drive Mad
+    </div>
+
+    <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
+  </div>
+
+  <div class="game-frame-wrap">
+    <iframe id="game-iframe" src="" allowfullscreen sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>
   </div>
 </div>
 
 <script>
-var games = {
-  // Racing & Driving
-  'Drive Mad':          'https://plugplay.games/embed/73e6c7bc9aa81a4abfd34a0a3df36aaf923a5cf6',
-  'Escape Road':        'https://craziestgames.com/embed/escape-road',
-  'Moto Road Rash 3D':  'https://plugplay.games/embed/e6f25b439e06e4789a3062f1c322bbec3482ede7',
-  'Drift Masters':      'https://plugplay.games/embed/3339796ef6a704b2b21dd3c07c6cef9b49eb2874',
-  'HexGL Racer':        'https://plugplay.games/embed/cf980f7e2c7f68297ea902d36ad984e4cdfe7802',
-  'Zombie Crusher':     'https://plugplay.games/embed/c66b3b31090c007ab12ddabd472350186d7a2e99',
-  // Action & Skill
-  'Slope':              'https://y8.com/embed/slope',
-  'Stickman Hook':      'https://plugplay.games/embed/1c61b71c9b4302faf505bd65ab92291a1ec7655c',
-  'Vex 4':              'https://plugplay.games/embed/5920d6a30e37dc108056faf538325ff4b51f56d8',
-  'Vex 3':              'https://plugplay.games/embed/fbe897886f7ee30addc1ee3d1e6215ba7754a71f',
-  'BuildShoot 1v1':     'https://plugplay.games/embed/9473f3a6113ce78538948d45eb39546ce8205af9',
-  'Gladihoppers':       'https://plugplay.games/embed/8353e9c8c7327dea3332c707574eede6cbf27d76',
-  'Snow Warrior':       'https://plugplay.games/embed/04792e5a4a36d9d79eb2503489b3f4935a3f582e',
-  'Bounce Master':      'https://plugplay.games/embed/39d0a0985116974105a93c5cfbdcaa3a8152bb40',
-  // Sports
-  'Basketball Random':  'https://plugplay.games/embed/8858d9cf31f8dd0e94fc385cc92dff10f05d6a64',
-  'Basketball Stars':   'https://plugplay.games/embed/b250ef3373e504b21e1044896de624c77bb2cf87',
-  'Basketball Legends': 'https://plugplay.games/embed/407d50478f182513b4f797c37b6f7bbead2b16df',
-  'Basket Bros':        'https://plugplay.games/embed/b10a19f82d47697b8f572088740665678cbd1346',
-  'Wave Rider':         'https://plugplay.games/embed/98fb34f34331bc455cbbe1a04bd22b392c7f5160',
-  'Backcountry Ski':    'https://plugplay.games/embed/f031e7b50d180af132787f9a6f67e84e7184822a',
-  // Endless Runners
-  'Subway Surfers':     'https://plugplay.games/embed/aae25d4cf623e6da948e59855238b6a4053e5846',
-  'NYC Subway Rush':    'https://plugplay.games/embed/a228e05e0afee175ca33adc31f52ef6e04ad83e2',
-  // Puzzle & Brain
-  '2048':               'https://plugplay.games/embed/60798d0d8baf52dbfe806ffd1e61a4d5aa68fdcc',
-  'NumberFly 2048':     'https://plugplay.games/embed/f40d75cce29837f6b4d964a81df32413f67cfe39',
-  'Block Stack':        'https://plugplay.games/embed/419ce6e7690abe4d9ebacb5f027d163c86bef0c8',
-  'Brick Blitz':        'https://plugplay.games/embed/60d1e9c65670a1ad2a71efa0df7b4a5583f9518c',
-  'Bubble Shooter':     'https://plugplay.games/embed/d8f3a9b2c1e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8',
-  'Maze Runner 3D':     'https://plugplay.games/embed/1f999c5d6c2fdd5630d951c9a21dbaafa60367e7',
-  'Chess':              'https://plugplay.games/embed/6419815584676f60d90231df48c5c509da46544c',
-  'Rope Cutter':        'https://plugplay.games/embed/505389e7fb4cf73a08021b5db311e6d1804f8f8a',
-  'Packabunchas':       'https://plugplay.games/embed/1aabdbffc6272e9832cab5e9fb05aa7ab711b122',
-  // Simulation & Idle
-  'Tiny Fishing':       'https://plugplay.games/embed/07a82656316484493b52e8f31fc2f5a3c987b3e0',
-  'Monkey Mart':        'https://plugplay.games/embed/afa25719b9689d8e515fd4c5cd26ae58709c8a16',
-  'LifeCraft':          'https://plugplay.games/embed/ea68b18af181801818abf03713c82c634b60a0b9',
-  'A Dark Room':        'https://plugplay.games/embed/3718473f4982ae9427b57f242826ba6e607d864d',
-  'Territory Conquest': 'https://plugplay.games/embed/1a0df80c67bc42297fcb4211a8160c1aee020312',
-  // Big Games
-  'Eaglercraft':          'https://eaglercraft.q13x.com/',
-  'Bad Time Simulator':   'https://jcw87.github.io/c2-sans-fight/'
-};
+  const games = {
+    'Bad Time Simulator': 'https://jcw87.github.io/c2-sans-fight/',
+    'Eagle Craft':        'https://eaglercraft.com/mc/1.8.8/',
+    'Slope':              'https://slope-game.com/',
+    'Drive Mad':          'https://drive-mad.com/'
+  };
 
-function toggleDD(e, ddId, btnId) {
-  e.preventDefault(); e.stopPropagation();
-  var dd = document.getElementById(ddId);
-  var isOpen = dd.classList.contains('show');
-  closeAllDropdowns();
-  if (!isOpen) {
-    dd.classList.add('show');
-    var b = document.getElementById(btnId);
-    if (b) b.classList.add('open');
+  document.getElementById('resources-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('resources-page').classList.add('open');
+    var activeTab = document.querySelector('.game-tab.active');
+    if (activeTab && !document.getElementById('game-iframe').src.includes('http')) {
+      loadGame(activeTab.dataset.game);
+    }
+  });
+
+  function closeResources() {
+    document.getElementById('resources-page').classList.remove('open');
   }
-}
-function closeAllDropdowns() {
-  document.querySelectorAll('.dropdown').forEach(function(d){ d.classList.remove('show'); });
-  document.querySelectorAll('.nav-links li a').forEach(function(a){ a.classList.remove('open'); });
-}
-document.addEventListener('click', closeAllDropdowns);
 
-function openGame(name) {
-  closeAllDropdowns();
-  var url = games[name];
-  if (!url) return;
-  document.getElementById('game-title').textContent = name;
-  document.getElementById('game-iframe').src = url;
-  document.getElementById('game-overlay').classList.add('show');
-}
-function closeGame() {
-  document.getElementById('game-overlay').classList.remove('show');
-  document.getElementById('game-iframe').src = '';
-}
+  function switchGame(el) {
+    document.querySelectorAll('.game-tab').forEach(function(t){ t.classList.remove('active'); });
+    el.classList.add('active');
+    loadGame(el.dataset.game);
+  }
+
+  function loadGame(name) {
+    var url = games[name];
+    if (url) document.getElementById('game-iframe').src = url;
+  }
+
+  document.querySelector('.game-tab.active') && loadGame('Bad Time Simulator');
 </script>
 </body>
 </html>
