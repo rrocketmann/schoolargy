@@ -596,31 +596,11 @@
 </div>
 
 <script>
-  var BTS_HTML = `<!DOCTYPE html>
-<html><head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-<style>* { padding:0; margin:0; } html,body { background:#000; color:#fff; overflow:hidden; } canvas { display:block; }</style>
-<script src="https://cdn.jsdelivr.net/gh/CFiltered/Matt@50f9c1bd0d376b40cb8545519b147a4030598724/other/sansfight/jquery-3.4.1.min.js"><\/script>
-</head><body>
-<div id="c2canvasdiv" style="width:640px;height:480px;margin-left:auto;margin-right:auto;margin-top:60px;">
-<canvas id="c2canvas" width="640" height="480" style="width:640px;height:480px;"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@0a2ab35563e2d7dddbad3ad3d9e5fa42e599e28c/build/bts-sans/c2.js"><\/script>
-<script>
-jQuery(document).ready(function(){ cr_createRuntime("c2canvas"); });
-function onVisibilityChanged(){
-  if(document.hidden||document.mozHidden||document.webkitHidden||document.msHidden) cr_setSuspended(true); else cr_setSuspended(false);
-}
-document.addEventListener("visibilitychange",onVisibilityChanged,false);
-<\/script>
-</body></html>`;
-
   var games = {
-    'Bad Time Simulator': { type: 'srcdoc', content: BTS_HTML },
-    'Eagle Craft':        { type: 'src', url: 'https://eaglercraft.com/mc/1.8.8/' },
-    'Slope':              { type: 'src', url: 'https://slope-game.com/' },
-    'Drive Mad':          { type: 'src', url: 'https://drive-mad.com/' }
+    'Bad Time Simulator': 'https://jcw87.github.io/c2-sans-fight/',
+    'Eagle Craft':        'https://resent4-0.vercel.app/',
+    'Slope':              'https://mathadventure1.github.io/slope/slope/index.html',
+    'Drive Mad':          'https://ubg77.github.io/game131022/drive-mad/'
   };
 
   document.getElementById('resources-btn').addEventListener('click', function(e) {
@@ -632,9 +612,7 @@ document.addEventListener("visibilitychange",onVisibilityChanged,false);
 
   function closeResources() {
     document.getElementById('resources-page').classList.remove('open');
-    var iframe = document.getElementById('game-iframe');
-    iframe.removeAttribute('src');
-    iframe.removeAttribute('srcdoc');
+    document.getElementById('game-iframe').src = 'about:blank';
   }
 
   function switchGame(el) {
@@ -644,16 +622,8 @@ document.addEventListener("visibilitychange",onVisibilityChanged,false);
   }
 
   function loadGame(name) {
-    var g = games[name];
-    var iframe = document.getElementById('game-iframe');
-    iframe.removeAttribute('src');
-    iframe.removeAttribute('srcdoc');
-    if (!g) return;
-    if (g.type === 'srcdoc') {
-      iframe.srcdoc = g.content;
-    } else {
-      iframe.src = g.url;
-    }
+    var url = games[name];
+    if (url) document.getElementById('game-iframe').src = url;
   }
 </script>
 </body>
