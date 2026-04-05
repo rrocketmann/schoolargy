@@ -8,6 +8,7 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
   body { background: #f5f5f5; min-height: 100vh; }
+  body.no-page-scroll { overflow: hidden; }
 
   /* NAV */
   .nav {
@@ -21,6 +22,7 @@
     top: 0;
     z-index: 100;
   }
+  .nav.resources-open { background: #8f8f8f; border-bottom-color: #757575; }
   .nav-logo {
     display: flex;
     align-items: center;
@@ -194,10 +196,20 @@
   .resources-page {
     display: none;
     position: fixed; top: 56px; left: 0; right: 0; bottom: 0;
-    background: #f5f5f5; z-index: 200; overflow-y: auto;
+    background: rgba(0,0,0,0.45); z-index: 200;
+    padding: 24px; overflow: auto;
   }
-  .resources-page.open { display: block; }
-  .resources-inner { max-width: 1400px; margin: 0 auto; padding: 40px 80px; }
+  .resources-page.open { display: flex; align-items: center; justify-content: center; }
+  .resources-inner {
+    width: min(1280px, calc(100vw - 48px));
+    max-height: calc(100vh - 104px);
+    margin: 0;
+    padding: 36px 56px;
+    overflow-y: auto;
+    background: #f5f5f5;
+    border: 1px solid #d8d8d8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
   .resources-header {
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid #ddd;
@@ -263,6 +275,13 @@
     cursor: pointer; font-size: 16px; color: #666;
   }
   .game-modal-close:hover { background: #eee; color: #333; }
+  .game-modal-actions { display: flex; align-items: center; gap: 8px; }
+  .game-modal-home {
+    height: 34px; padding: 0 12px; border: 1px solid #cfdbe4;
+    background: #edf6fc; color: #055a80; font-size: 12px; font-weight: 700;
+    cursor: pointer;
+  }
+  .game-modal-home:hover { background: #dbeefa; }
   .game-modal-frame { flex: 1; position: relative; background: #111; }
   .game-modal-frame iframe {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -565,20 +584,39 @@
       <div class="game-card" onclick="openGame('Bad Time Simulator')">
         <div class="game-card-art">
           <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="260" height="120" fill="#0a0a1a"/>
-            <circle cx="130" cy="60" r="44" fill="none" stroke="#e94560" stroke-width="2" opacity="0.4"/>
-            <circle cx="130" cy="60" r="32" fill="none" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
-            <circle cx="130" cy="60" r="20" fill="none" stroke="#e94560" stroke-width="1.5"/>
-            <circle cx="130" cy="60" r="7" fill="#e94560"/>
-            <line x1="130" y1="16" x2="130" y2="38" stroke="#e94560" stroke-width="2.5"/>
-            <line x1="130" y1="82" x2="130" y2="104" stroke="#e94560" stroke-width="2.5"/>
-            <line x1="86" y1="60" x2="108" y2="60" stroke="#e94560" stroke-width="2.5"/>
-            <line x1="152" y1="60" x2="174" y2="60" stroke="#e94560" stroke-width="2.5"/>
-            <line x1="98" y1="28" x2="112" y2="42" stroke="#e94560" stroke-width="1.5" opacity="0.5"/>
-            <line x1="162" y1="28" x2="148" y2="42" stroke="#e94560" stroke-width="1.5" opacity="0.5"/>
-            <line x1="98" y1="92" x2="112" y2="78" stroke="#e94560" stroke-width="1.5" opacity="0.5"/>
-            <line x1="162" y1="92" x2="148" y2="78" stroke="#e94560" stroke-width="1.5" opacity="0.5"/>
-            <text x="130" y="114" font-family="Arial" font-size="8" fill="#e94560" text-anchor="middle" opacity="0.7" letter-spacing="3">* UNDERTALE *</text>
+            <rect width="260" height="120" fill="#000"/>
+            <g shape-rendering="crispEdges">
+              <rect x="105" y="24" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="115" y="24" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="135" y="24" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="145" y="24" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="95" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="105" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="115" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="125" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="135" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="145" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="155" y="34" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="95" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="105" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="115" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="125" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="135" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="145" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="155" y="44" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="105" y="54" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="115" y="54" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="125" y="54" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="135" y="54" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="145" y="54" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="115" y="64" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="125" y="64" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="135" y="64" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="125" y="74" width="10" height="10" fill="#ff2a2a"/>
+              <rect x="105" y="24" width="10" height="10" fill="#ff5252" opacity="0.35"/>
+              <rect x="105" y="34" width="10" height="10" fill="#ff5252" opacity="0.35"/>
+              <rect x="115" y="44" width="10" height="10" fill="#ff5252" opacity="0.35"/>
+            </g>
           </svg>
         </div>
         <div class="game-card-name">Bad Time Simulator</div>
@@ -591,27 +629,17 @@
       <div class="game-card" onclick="openGame('Eagle Craft')">
         <div class="game-card-art">
           <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="260" height="120" fill="#87ceeb"/>
-            <rect x="0" y="80" width="260" height="40" fill="#5a8a3a"/>
-            <rect x="0" y="70" width="260" height="12" fill="#6aaa44"/>
-            <!-- clouds -->
-            <ellipse cx="60" cy="28" rx="22" ry="12" fill="white" opacity="0.9"/>
-            <ellipse cx="80" cy="24" rx="18" ry="11" fill="white" opacity="0.9"/>
-            <ellipse cx="200" cy="32" rx="20" ry="10" fill="white" opacity="0.85"/>
-            <!-- trees -->
-            <rect x="30" y="55" width="8" height="20" fill="#8b6914"/>
-            <rect x="22" y="38" width="24" height="22" fill="#2a7a2a"/>
-            <rect x="180" y="52" width="8" height="22" fill="#8b6914"/>
-            <rect x="172" y="36" width="24" height="22" fill="#2a7a2a"/>
-            <!-- dirt blocks -->
-            <rect x="80" y="68" width="16" height="16" fill="#8b6914" stroke="#7a5a0a" stroke-width="1"/>
-            <rect x="96" y="68" width="16" height="16" fill="#5a8a3a" stroke="#4a7a2a" stroke-width="1"/>
-            <rect x="112" y="68" width="16" height="16" fill="#8b6914" stroke="#7a5a0a" stroke-width="1"/>
-            <rect x="128" y="68" width="16" height="16" fill="#888" stroke="#666" stroke-width="1"/>
-            <rect x="144" y="68" width="16" height="16" fill="#5a8a3a" stroke="#4a7a2a" stroke-width="1"/>
-            <!-- pickaxe icon -->
-            <line x1="140" y1="20" x2="156" y2="36" stroke="#aaa" stroke-width="3" stroke-linecap="round"/>
-            <rect x="138" y="15" width="10" height="7" fill="#888" rx="1"/>
+            <rect width="260" height="120" fill="#111"/>
+            <g shape-rendering="crispEdges">
+              <rect x="124" y="42" width="12" height="54" fill="#8b5a2b"/>
+              <rect x="124" y="42" width="12" height="18" fill="#9f6a33"/>
+              <rect x="108" y="30" width="44" height="8" fill="#959595"/>
+              <rect x="98" y="38" width="10" height="8" fill="#7e7e7e"/>
+              <rect x="152" y="38" width="10" height="8" fill="#7e7e7e"/>
+              <rect x="90" y="46" width="8" height="8" fill="#6f6f6f"/>
+              <rect x="162" y="46" width="8" height="8" fill="#6f6f6f"/>
+              <rect x="116" y="96" width="28" height="8" fill="#6a431f"/>
+            </g>
           </svg>
         </div>
         <div class="game-card-name">Eagle Craft</div>
@@ -624,24 +652,12 @@
       <div class="game-card" onclick="openGame('Slope')">
         <div class="game-card-art">
           <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="260" height="120" fill="#050520"/>
-            <!-- grid lines -->
-            <line x1="0" y1="30" x2="260" y2="30" stroke="#1a1a4a" stroke-width="1"/>
-            <line x1="0" y1="60" x2="260" y2="60" stroke="#1a1a4a" stroke-width="1"/>
-            <line x1="0" y1="90" x2="260" y2="90" stroke="#1a1a4a" stroke-width="1"/>
-            <line x1="65" y1="0" x2="65" y2="120" stroke="#1a1a4a" stroke-width="1"/>
-            <line x1="130" y1="0" x2="130" y2="120" stroke="#1a1a4a" stroke-width="1"/>
-            <line x1="195" y1="0" x2="195" y2="120" stroke="#1a1a4a" stroke-width="1"/>
-            <!-- slope path -->
-            <polyline points="0,100 40,78 80,90 120,50 160,30 210,55 260,20" fill="none" stroke="#00e5ff" stroke-width="3"/>
-            <!-- glow effect -->
-            <polyline points="0,100 40,78 80,90 120,50 160,30 210,55 260,20" fill="none" stroke="#00e5ff" stroke-width="8" opacity="0.15"/>
-            <!-- ball -->
-            <circle cx="160" cy="30" r="9" fill="#00b8d4"/>
-            <circle cx="157" cy="27" r="3" fill="white" opacity="0.4"/>
-            <!-- obstacles -->
-            <rect x="95" y="42" width="8" height="16" fill="#ff2255" opacity="0.8"/>
-            <rect x="185" y="47" width="8" height="16" fill="#ff2255" opacity="0.8"/>
+            <rect width="260" height="120" fill="#000"/>
+            <ellipse cx="130" cy="86" rx="44" ry="13" fill="#0a1a0e"/>
+            <circle cx="130" cy="58" r="34" fill="#0a0a0a" stroke="#2de34b" stroke-width="6"/>
+            <circle cx="140" cy="48" r="18" fill="#16361c" opacity="0.9"/>
+            <path d="M103 72C115 58 145 52 162 66C150 78 120 83 103 72Z" fill="#2de34b" opacity="0.3"/>
+            <circle cx="119" cy="45" r="6" fill="#7dff92" opacity="0.95"/>
           </svg>
         </div>
         <div class="game-card-name">Slope</div>
@@ -654,31 +670,19 @@
       <div class="game-card" onclick="openGame('Drive Mad')">
         <div class="game-card-art">
           <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
-            <rect width="260" height="120" fill="#c8e0f0"/>
-            <!-- sky -->
-            <rect width="260" height="70" fill="#c8e0f0"/>
-            <!-- ground -->
-            <rect x="0" y="70" width="260" height="50" fill="#8b7355"/>
-            <!-- road / ramp -->
-            <polygon points="0,70 260,70 220,100 0,100" fill="#666"/>
-            <polygon points="100,70 180,70 160,90 80,90" fill="#555"/>
-            <!-- ramp bump -->
-            <ellipse cx="130" cy="68" rx="40" ry="10" fill="#777"/>
-            <!-- car body -->
-            <rect x="80" y="42" width="60" height="20" fill="#e05000"/>
-            <rect x="90" y="30" width="40" height="16" fill="#ff7020"/>
-            <!-- windows -->
-            <rect x="94" y="33" width="14" height="10" fill="#aaddff" opacity="0.85"/>
-            <rect x="112" y="33" width="14" height="10" fill="#aaddff" opacity="0.85"/>
-            <!-- wheels -->
-            <circle cx="96" cy="62" r="11" fill="#222"/>
-            <circle cx="96" cy="62" r="5" fill="#888"/>
-            <circle cx="128" cy="62" r="11" fill="#222"/>
-            <circle cx="128" cy="62" r="5" fill="#888"/>
-            <!-- speed lines -->
-            <line x1="50" y1="48" x2="76" y2="50" stroke="white" stroke-width="2" opacity="0.6"/>
-            <line x1="44" y1="54" x2="76" y2="54" stroke="white" stroke-width="1.5" opacity="0.4"/>
-            <line x1="50" y1="60" x2="76" y2="58" stroke="white" stroke-width="2" opacity="0.6"/>
+            <rect width="260" height="120" fill="#8ecbff"/>
+            <rect y="72" width="260" height="8" fill="#2f8f3c"/>
+            <rect y="80" width="260" height="40" fill="#8f6236"/>
+            <g>
+              <rect x="84" y="50" width="92" height="20" rx="6" fill="#ffd82f"/>
+              <path d="M102 50L124 38H152L166 50Z" fill="#ffe66a"/>
+              <rect x="120" y="42" width="14" height="8" rx="2" fill="#84d5ff"/>
+              <rect x="136" y="42" width="14" height="8" rx="2" fill="#84d5ff"/>
+              <circle cx="106" cy="74" r="10" fill="#0e0e0e"/>
+              <circle cx="156" cy="74" r="10" fill="#0e0e0e"/>
+              <circle cx="106" cy="74" r="4" fill="#3a3a3a"/>
+              <circle cx="156" cy="74" r="4" fill="#3a3a3a"/>
+            </g>
           </svg>
         </div>
         <div class="game-card-name">Drive Mad</div>
@@ -696,7 +700,10 @@
   <div class="game-modal">
     <div class="game-modal-header">
       <div class="game-modal-title" id="modal-title">Game</div>
-      <div class="game-modal-close" onclick="closeModalBtn()">&#x2715;</div>
+      <div class="game-modal-actions">
+        <button class="game-modal-home" onclick="backToHomepage()">Back to Homepage</button>
+        <div class="game-modal-close" onclick="closeModalBtn()">&#x2715;</div>
+      </div>
     </div>
     <div class="game-modal-frame">
       <iframe id="game-iframe" allowfullscreen allow="fullscreen; pointer-lock" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>
@@ -713,20 +720,22 @@
   };
 
   var gameIcons = {
-    'Bad Time Simulator': '<svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="14" stroke="#e94560" stroke-width="2"/><circle cx="22" cy="22" r="4" fill="#e94560"/><line x1="22" y1="8" x2="22" y2="16" stroke="#e94560" stroke-width="2"/><line x1="22" y1="28" x2="22" y2="36" stroke="#e94560" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="#e94560" stroke-width="2"/><line x1="28" y1="22" x2="36" y2="22" stroke="#e94560" stroke-width="2"/></svg>',
-    'Eagle Craft':        '<svg viewBox="0 0 44 44" fill="none"><rect x="6" y="24" width="32" height="14" fill="#4a6a20"/><rect x="10" y="14" width="10" height="10" fill="#8b6914"/><rect x="24" y="10" width="10" height="14" fill="#8b6914"/><rect x="14" y="6" width="6" height="8" fill="#2a7a2a"/><rect x="28" y="4" width="6" height="6" fill="#2a7a2a"/></svg>',
-    'Slope':              '<svg viewBox="0 0 44 44" fill="none"><polyline points="0,38 12,20 24,28 36,10 44,16" stroke="#00e5ff" stroke-width="2.5"/><circle cx="24" cy="22" r="5" fill="#00b8d4"/></svg>',
-    'Drive Mad':          '<svg viewBox="0 0 44 44" fill="none"><rect x="6" y="22" width="32" height="10" fill="#e05000"/><rect x="10" y="16" width="24" height="10" fill="#ff7020"/><circle cx="13" cy="33" r="5" fill="#222" stroke="#888" stroke-width="2"/><circle cx="31" cy="33" r="5" fill="#222" stroke="#888" stroke-width="2"/><rect x="28" y="18" width="6" height="5" fill="#aaddff"/><rect x="10" y="18" width="8" height="5" fill="#aaddff"/></svg>'
+    'Bad Time Simulator': '<svg viewBox="0 0 44 44" fill="none"><rect width="44" height="44" fill="#000"/><g shape-rendering="crispEdges"><rect x="14" y="10" width="4" height="4" fill="#ff2a2a"/><rect x="18" y="10" width="4" height="4" fill="#ff2a2a"/><rect x="26" y="10" width="4" height="4" fill="#ff2a2a"/><rect x="30" y="10" width="4" height="4" fill="#ff2a2a"/><rect x="10" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="14" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="18" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="22" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="26" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="30" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="34" y="14" width="4" height="4" fill="#ff2a2a"/><rect x="10" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="14" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="18" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="22" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="26" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="30" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="34" y="18" width="4" height="4" fill="#ff2a2a"/><rect x="14" y="22" width="4" height="4" fill="#ff2a2a"/><rect x="18" y="22" width="4" height="4" fill="#ff2a2a"/><rect x="22" y="22" width="4" height="4" fill="#ff2a2a"/><rect x="26" y="22" width="4" height="4" fill="#ff2a2a"/><rect x="30" y="22" width="4" height="4" fill="#ff2a2a"/><rect x="18" y="26" width="4" height="4" fill="#ff2a2a"/><rect x="22" y="26" width="4" height="4" fill="#ff2a2a"/><rect x="26" y="26" width="4" height="4" fill="#ff2a2a"/><rect x="22" y="30" width="4" height="4" fill="#ff2a2a"/><rect x="14" y="10" width="4" height="4" fill="#ff4f4f" opacity="0.35"/><rect x="14" y="14" width="4" height="4" fill="#ff4f4f" opacity="0.35"/></g></svg>',
+    'Eagle Craft':        '<svg viewBox="0 0 44 44" fill="none"><rect width="44" height="44" fill="#111"/><g shape-rendering="crispEdges"><rect x="20" y="14" width="4" height="18" fill="#8b5a2b"/><rect x="16" y="10" width="12" height="4" fill="#959595"/><rect x="12" y="14" width="4" height="4" fill="#7e7e7e"/><rect x="28" y="14" width="4" height="4" fill="#7e7e7e"/></g></svg>',
+    'Slope':              '<svg viewBox="0 0 44 44" fill="none"><rect width="44" height="44" fill="#000"/><ellipse cx="22" cy="31" rx="11" ry="4" fill="#102015"/><circle cx="22" cy="20" r="10" fill="#0a0a0a" stroke="#2de34b" stroke-width="2.5"/><circle cx="25" cy="17" r="5" fill="#17381f" opacity="0.9"/><circle cx="19" cy="16" r="2" fill="#7dff92"/></svg>',
+    'Drive Mad':          '<svg viewBox="0 0 44 44" fill="none"><rect width="44" height="44" fill="#8ecbff"/><rect x="0" y="28" width="44" height="4" fill="#2d8f3b"/><rect x="0" y="32" width="44" height="12" fill="#8f6236"/><rect x="10" y="21" width="24" height="7" rx="2" fill="#ffd82f"/><path d="M14 21L20 16H29L32 21Z" fill="#ffe66a"/><rect x="20" y="18" width="4" height="3" fill="#84d5ff"/><rect x="25" y="18" width="4" height="3" fill="#84d5ff"/><circle cx="16" cy="30" r="4" fill="#0e0e0e"/><circle cx="30" cy="30" r="4" fill="#0e0e0e"/></svg>'
   };
 
   document.getElementById('resources-btn').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('resources-page').classList.add('open');
+    updateScrollLock();
   });
 
   function closeResources() {
     document.getElementById('resources-page').classList.remove('open');
     closeModalBtn();
+    updateScrollLock();
   }
 
   function openGame(name) {
@@ -735,6 +744,7 @@
     document.getElementById('modal-title').innerHTML = (gameIcons[name] || '') + name;
     document.getElementById('game-iframe').src = url;
     document.getElementById('game-modal-overlay').classList.add('open');
+    updateScrollLock();
   }
 
   function closeModal(e) {
@@ -744,7 +754,34 @@
   function closeModalBtn() {
     document.getElementById('game-modal-overlay').classList.remove('open');
     document.getElementById('game-iframe').src = 'about:blank';
+    updateScrollLock();
   }
+
+  function backToHomepage() {
+    closeModalBtn();
+    closeResources();
+    window.scrollTo(0, 0);
+  }
+
+  function updateScrollLock() {
+    var resourcesOpen = document.getElementById('resources-page').classList.contains('open');
+    var modalOpen = document.getElementById('game-modal-overlay').classList.contains('open');
+    document.body.classList.toggle('no-page-scroll', resourcesOpen || modalOpen);
+    document.querySelector('.nav').classList.toggle('resources-open', resourcesOpen);
+  }
+
+  document.querySelectorAll('.nav-link:not(#resources-btn)').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Press Resources');
+    });
+  });
+
+  document.querySelectorAll('.nav-icon, .user-name').forEach(function(item) {
+    item.addEventListener('click', function() {
+      alert('Press Resources');
+    });
+  });
 </script>
 </body>
 </html>
