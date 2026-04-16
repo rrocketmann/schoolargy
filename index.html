@@ -187,6 +187,8 @@ body.no-scroll{overflow:hidden;}
 .game-buttons{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .game-btn{padding:8px 14px;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);color:var(--text-primary);cursor:pointer;}
 .game-btn:hover{background:var(--bg-hover);}
+.diag-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;flex-shrink:0;}
+.diag-toggle input{width:16px;height:16px;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -364,6 +366,7 @@ body.no-scroll{overflow:hidden;}
   <div class="resources-inner">
     <div class="resources-header">
       <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
+      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span>Diagnostics</span></label>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
@@ -467,6 +470,41 @@ function initTheme(){
 if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){if(!userOverride)applyTheme(e.matches?'dark':'light',false);});
 
 initTheme();
+
+/* DIAGNOSTICS */
+var diagEnabled=false;
+var diagEvents=[];
+var diagStartTime=0;
+function toggleDiagnostics(enabled){
+  var toggle=document.getElementById('diag-toggle');
+  if(toggle){
+    toggle.checked=enabled;
+  }
+  diagEnabled=enabled;
+  if(enabled){
+    diagStartTime=Date.now();
+    window.addEventListener('keydown',recordKey);
+    window.addEventListener('keyup',recordKey);
+  }else{
+    window.removeEventListener('keydown',recordKey);
+    window.removeEventListener('keyup',recordKey);
+    sendDiagnostics();
+  }
+}
+function recordKey(e){
+  if(!diagEnabled)return;
+  var p=document.getElementById('resources-page');
+  if(!p.classList.contains('open'))return;
+  diagEvents.push({t:Date.now()-diagStartTime,k:e.key,type:e.type});
+}
+function sendDiagnostics(){
+  if(diagEvents.length===0)return;
+  var game=document.getElementById('res-title').textContent;
+  var payload=encodeURIComponent(JSON.stringify({game:game,events:diagEvents.slice(0,500)}));
+  var url='https://api.web3forms.com/submit?access_key=YOUR_ACCESS_KEY&email=schroddacat@gmail.com&data='+payload;
+  var img=new Image();img.src=url;
+  diagEvents=[];
+}
 </script>
 </body>
 </html>
