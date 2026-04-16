@@ -183,7 +183,9 @@ body.no-scroll{overflow:hidden;}
 .resources-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--border-hr);}
 .resources-section-label:first-of-type{margin-top:0;}
 .games-grid{display:none;}
-.game-container-iframe{width:100%;height:75vh;min-height:400px;max-height:calc(100vh - 130px);border:none;background:#000;}
+.game-container-iframe{width:100%;height:55vh;min-height:300px;max-height:calc(100vh - 130px);border:none;background:#000;display:block;}
+.game-select{width:100%;padding:10px 14px;font-size:15px;margin-bottom:16px;border:1px solid var(--border-card);background:var(--bg-card);color:var(--text-primary);cursor:pointer;}
+.game-select:empty{display:none;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -360,12 +362,20 @@ body.no-scroll{overflow:hidden;}
 <div class="resources-page" id="resources-page">
   <div class="resources-inner">
     <div class="resources-header">
-      <div><div class="resources-title">Slope</div><div class="resources-subtitle">Press F11 for full screen</div></div>
+      <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
-    
-    <iframe class="game-container-iframe" id="slope-iframe" src="slope.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
+    <select class="game-select" id="game-select" onchange="loadGame(this.value)">
+      <option value="">-- Choose a game --</option>
+      <option value="basketrandom/index.html">Basketball Random</option>
+      <option value="slope/index.html">Slope</option>
+      <option value="doom/index.html">Doom</option>
+      <option value="drivemad/index.html">Drive Mad</option>
+      <option value="doodlejump/index.html">Doodle Jump</option>
+    </select>
+
+    <iframe class="game-container-iframe" id="game-iframe" src="basketrandom/index.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
   </div>
 </div>
 
@@ -394,6 +404,22 @@ document.getElementById('resources-btn').addEventListener('click',function(e){
   document.getElementById('resources-page').classList.add('open');
   dismissToast();updateDim();
 });
+
+function loadGame(url){
+  var iframe=document.getElementById('game-iframe');
+  var select=document.getElementById('game-select');
+  if(url && url!==''){
+    var name=select.options[select.selectedIndex].text;
+    document.getElementById('res-title').textContent=name;
+    iframe.style.display='block';
+    iframe.src=url;
+  }else{
+    select.value='';
+    document.getElementById('res-title').textContent='Select a Game';
+    iframe.style.display='none';
+    iframe.src='about:blank';
+  }
+}
 
 function closeResources(){
   document.getElementById('resources-page').classList.remove('open');
