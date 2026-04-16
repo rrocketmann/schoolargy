@@ -174,28 +174,14 @@ body.no-scroll{overflow:hidden;}
 .resources-close-btn:hover{background:var(--bg-hover);color:var(--text-primary);}
 .resources-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--border-hr);}
 .resources-section-label:first-of-type{margin-top:0;}
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+.games-grid{display:none;}
+.game-container-iframe{width:100%;height:600px;border:none;background:#000;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
 .game-card-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:12px;}
 .game-card-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;background:var(--bg-tag);color:var(--text-tag);border:1px solid var(--border-tag);text-transform:uppercase;letter-spacing:.5px;}
-.game-card-play{margin-top:12px;padding:7px 0;width:100%;background:var(--text-link);color:#fff;border:none;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.5px;}
-.game-card-play:hover{background:var(--text-link-h);}
-
-/* GAME MODAL */
-.game-modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.8);z-index:500;align-items:center;justify-content:center;}
-.game-modal-overlay.open{display:flex;}
-.game-modal{background:var(--bg-card);width:92vw;height:88vh;display:flex;flex-direction:column;border:1px solid var(--border-card);}
-.game-modal-header{display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:48px;border-bottom:1px solid var(--border-card);flex-shrink:0;background:var(--bg-card);}
-.game-modal-title{font-size:15px;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:10px;}
-.game-modal-close{width:34px;height:34px;background:var(--bg-page);border:1px solid var(--border-card);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;color:var(--text-secondary);}
-.game-modal-close:hover{background:var(--bg-hover);color:var(--text-primary);}
-.game-modal-actions{display:flex;align-items:center;gap:8px;}
-.game-modal-home{height:34px;padding:0 12px;border:1px solid var(--border-tag);background:var(--bg-tag);color:var(--text-link-h);font-size:12px;font-weight:700;cursor:pointer;}
-.game-modal-home:hover{background:var(--bg-hover);}
-.game-modal-frame{flex:1;position:relative;background:#111;}
-.game-modal-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;}
+.game-card-play{display:none;}
 
 /* TOAST */
 .s-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toast-bg);border:2px solid var(--toast-border);box-shadow:var(--shadow-toast);display:flex;align-items:center;gap:14px;padding:14px 20px;min-width:320px;max-width:500px;z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s,background .25s,border-color .25s;}
@@ -366,65 +352,12 @@ body.no-scroll{overflow:hidden;}
 <div class="resources-page" id="resources-page">
   <div class="resources-inner">
     <div class="resources-header">
-      <div><div class="resources-title">Resources</div><div class="resources-subtitle">Games &amp; Activities</div></div>
+      <div><div class="resources-title">Slope</div><div class="resources-subtitle">Press F11 for full screen</div></div>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
-    <div class="resources-section-label">🎮 Games</div>
-    <div class="games-grid">
-
-      <div class="game-card" onclick="openGame('Dadish')">
-        <div class="game-card-name">Dadish</div>
-        <div class="game-card-desc">Help Dadish the radish find his missing kids across dozens of tricky platformer levels.</div>
-        <div class="game-card-tag">Platformer</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('10 Minutes Till Dawn')">
-        <div class="game-card-name">10 Minutes Till Dawn</div>
-        <div class="game-card-desc">Survive waves of monsters for 10 minutes. Upgrade your weapons and abilities to stay alive.</div>
-        <div class="game-card-tag">Survival</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Basketball Random')">
-        <div class="game-card-name">Basketball Random</div>
-        <div class="game-card-desc">Chaotic 1v1 basketball with wild random physics and players.</div>
-        <div class="game-card-tag">Sports</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Drive Mad')">
-        <div class="game-card-name">Drive Mad</div>
-        <div class="game-card-desc">Navigate obstacle courses without flipping — 100 physics-based levels of driving chaos.</div>
-        <div class="game-card-tag">Racing</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Doom 64')">
-        <div class="game-card-name">Doom 64</div>
-        <div class="game-card-desc">The classic first-person shooter — blast through demons across 32 dark and atmospheric levels.</div>
-        <div class="game-card-tag">Action</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- GAME MODAL -->
-<div class="game-modal-overlay" id="game-modal-overlay" onclick="closeModal(event)">
-  <div class="game-modal">
-    <div class="game-modal-header">
-      <div class="game-modal-title" id="modal-title">Game</div>
-      <div class="game-modal-actions">
-        <button class="game-modal-home" onclick="backToHomepage()">Back to Homepage</button>
-        <div class="game-modal-close" onclick="closeModalBtn()">&#x2715;</div>
-      </div>
-    </div>
-    <div class="game-modal-frame">
-      <iframe id="game-iframe" allowfullscreen allow="fullscreen; pointer-lock" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock"></iframe>
-    </div>
+    
+    <iframe class="game-container-iframe" id="slope-iframe" src="Slope.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
   </div>
 </div>
 
@@ -440,29 +373,12 @@ body.no-scroll{overflow:hidden;}
 
 <script>
 
-var gameUrls = {
-  'Dadish': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgamefile%2Fdadish.html',
-  '10 Minutes Till Dawn': 'https://truffled.lol.cdn.cloudflare.net/unityframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2F10minutestilldawn%2Findex.html',
-  'Basketball Random': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2Fbasket-random%2Findex.html',
-  'Drive Mad': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2Fdrive-mad%2Findex.html',
-  'Doom 64': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgamefile%2Fdoom64.html'
-};
-
-function openGame(name) {
-  var url = gameUrls[name];
-  if (!url) return;
-  document.getElementById('modal-title').textContent = name;
-  document.getElementById('game-iframe').src = url;
-  document.getElementById('game-modal-overlay').classList.add('open');
-  document.body.classList.add('no-scroll');
-}
-
 /* DIM */
 function isResOpen(){return document.getElementById('resources-page').classList.contains('open');}
 function updateDim(){
   var open=isResOpen();
   document.getElementById('page-wrap').classList.toggle('dimmed',open);
-  document.body.classList.toggle('no-scroll',open||document.getElementById('game-modal-overlay').classList.contains('open'));
+  document.body.classList.add('no-scroll');
 }
 
 document.getElementById('resources-btn').addEventListener('click',function(e){
@@ -473,21 +389,12 @@ document.getElementById('resources-btn').addEventListener('click',function(e){
 
 function closeResources(){
   document.getElementById('resources-page').classList.remove('open');
-  closeModalBtn();updateDim();
+  updateDim();
 }
 
 document.getElementById('resources-page').addEventListener('click',function(e){
   if(e.target===this)showToast('Resources is open','Close the panel first, or keep playing — your choice!');
 });
-
-/* GAME MODAL */
-function closeModal(e){if(e.target===document.getElementById('game-modal-overlay'))closeModalBtn();}
-function closeModalBtn(){
-  document.getElementById('game-modal-overlay').classList.remove('open');
-  document.getElementById('game-iframe').src='about:blank';
-  document.body.classList.toggle('no-scroll',isResOpen());
-}
-function backToHomepage(){closeModalBtn();closeResources();window.scrollTo(0,0);}
 
 /* TOAST */
 var toastTimer=null;
