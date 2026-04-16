@@ -55,7 +55,6 @@
 html,body{height:100%;background:var(--bg-page);color:var(--text-primary);transition:background .25s,color .25s;}
 body.no-scroll{overflow:hidden;}
 
-/* THE FIX: single wrapper that dims everything when resources open */
 #page-wrap{
   min-height:100vh;background:var(--bg-page);
   transition:filter .22s ease,background .25s;
@@ -65,8 +64,6 @@ body.no-scroll{overflow:hidden;}
   filter:brightness(0.42) saturate(0.7);
   pointer-events:none;
 }
-
-/* Resources and modal live OUTSIDE #page-wrap so they're never dimmed */
 
 /* NAV */
 .nav{background:var(--bg-nav);border-bottom:1px solid var(--border-nav);padding:0 80px;display:flex;align-items:center;height:56px;position:sticky;top:0;z-index:100;transition:background .25s,border-color .25s;}
@@ -177,16 +174,12 @@ body.no-scroll{overflow:hidden;}
 .resources-close-btn:hover{background:var(--bg-hover);color:var(--text-primary);}
 .resources-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--border-hr);}
 .resources-section-label:first-of-type{margin-top:0;}
-.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;}
-.game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:22px 20px;cursor:pointer;transition:border-color .15s,background .25s;}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+.game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
-.game-card-art{width:100%;height:110px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.game-card-art svg,.game-card-art canvas{width:100%;height:100%;}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
 .game-card-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:12px;}
 .game-card-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;background:var(--bg-tag);color:var(--text-tag);border:1px solid var(--border-tag);text-transform:uppercase;letter-spacing:.5px;}
-.game-card-built{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;background:#e8f8e8;color:#2a7a2a;border:1px solid #a0d8a0;text-transform:uppercase;letter-spacing:.5px;margin-left:5px;}
-[data-theme="dark"] .game-card-built{background:#1a3020;color:#4ab86a;border-color:#2a5038;}
 .game-card-play{margin-top:12px;padding:7px 0;width:100%;background:var(--text-link);color:#fff;border:none;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.5px;}
 .game-card-play:hover{background:var(--text-link-h);}
 
@@ -224,13 +217,11 @@ body.no-scroll{overflow:hidden;}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-C7MHSFPRSE');
-</script> 
+</script>
 </head>
 <body>
 
-<!-- EVERYTHING THAT DIMS LIVES IN #page-wrap -->
 <div id="page-wrap">
 
   <nav class="nav">
@@ -371,7 +362,7 @@ body.no-scroll{overflow:hidden;}
   </div>
 </div><!-- end #page-wrap -->
 
-<!-- RESOURCES PAGE — outside page-wrap so it never dims -->
+<!-- RESOURCES PAGE -->
 <div class="resources-page" id="resources-page">
   <div class="resources-inner">
     <div class="resources-header">
@@ -379,131 +370,41 @@ body.no-scroll{overflow:hidden;}
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
-    <div class="resources-section-label">🟢 Built-in Games (always available)</div>
+    <div class="resources-section-label">🎮 Games</div>
     <div class="games-grid">
 
-      <div class="game-card" onclick="openBuiltIn('birdslaunch')">
-        <div class="game-card-art">
-          <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg">
-            <rect width="240" height="110" fill="#87ceeb"/>
-            <rect x="0" y="75" width="240" height="35" fill="#5d8a3c"/>
-            <rect x="0" y="68" width="240" height="10" fill="#7ab04a"/>
-            <rect x="160" y="30" width="14" height="45" fill="#8B6914"/>
-            <rect x="145" y="22" width="44" height="14" fill="#c8522a"/>
-            <rect x="145" y="36" width="44" height="14" fill="#c8522a" opacity=".7"/>
-            <circle cx="50" cy="62" r="13" fill="#e82020"/>
-            <circle cx="46" cy="58" r="4" fill="white"/>
-            <circle cx="47" cy="58" r="2" fill="#222"/>
-            <polygon points="50,68 44,73 56,73" fill="#ffaa00"/>
-            <circle cx="82" cy="65" r="10" fill="#ffcc00"/>
-            <circle cx="79" cy="62" r="3" fill="white"/>
-            <circle cx="80" cy="62" r="1.5" fill="#222"/>
-            <polygon points="82,72 77,76 87,76" fill="#ff8800"/>
-            <path d="M10 45 Q30 25 50 62" stroke="#555" stroke-width="3" fill="none"/>
-            <circle cx="10" cy="45" r="5" fill="#888"/>
-          </svg>
-        </div>
-        <div class="game-card-name">Angry Birds Launch</div>
-        <div class="game-card-desc">Fling birds at pig fortresses with realistic slingshot physics. Built-in, no internet needed.</div>
-        <div class="game-card-tag">Physics</div><span class="game-card-built">Built-in</span>
+      <div class="game-card" onclick="openGame('Dadish')">
+        <div class="game-card-name">Dadish</div>
+        <div class="game-card-desc">Help Dadish the radish find his missing kids across dozens of tricky platformer levels.</div>
+        <div class="game-card-tag">Platformer</div>
         <button class="game-card-play">Play Now</button>
       </div>
 
-      <div class="game-card" onclick="openBuiltIn('drivemadclone')">
-        <div class="game-card-art">
-          <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg">
-            <rect width="240" height="110" fill="#1a1a2e"/>
-            <path d="M0 80 Q60 50 120 70 Q180 90 240 60" stroke="#ff6b35" stroke-width="4" fill="none"/>
-            <path d="M0 90 Q60 60 120 80 Q180 100 240 70" stroke="#ff6b35" stroke-width="2" fill="none" opacity=".4"/>
-            <rect x="85" y="58" width="50" height="16" rx="4" fill="#ffd700"/>
-            <path d="M95 58 L108 48 H132 L145 58Z" fill="#ffec6e"/>
-            <rect x="108" y="50" width="10" height="8" rx="1" fill="#aaddff"/>
-            <rect x="122" y="50" width="10" height="8" rx="1" fill="#aaddff"/>
-            <circle cx="100" cy="76" r="8" fill="#222"/><circle cx="100" cy="76" r="3" fill="#555"/>
-            <circle cx="136" cy="76" r="8" fill="#222"/><circle cx="136" cy="76" r="3" fill="#555"/>
-          </svg>
-        </div>
-        <div class="game-card-name">Hill Racer</div>
-        <div class="game-card-desc">Drive over crazy procedural hills without flipping. Physics-based — built in, zero internet needed.</div>
-        <div class="game-card-tag">Racing</div><span class="game-card-built">Built-in</span>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openBuiltIn('slopeclone')">
-        <div class="game-card-art">
-          <svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg">
-            <rect width="240" height="110" fill="#050518"/>
-            <polygon points="0,110 40,40 80,80 120,20 160,65 200,10 240,50 240,110" fill="#0a0a30" stroke="#2de34b" stroke-width="1.5"/>
-            <polygon points="40,40 80,80 80,110 40,110" fill="#0d1a0d" opacity=".8"/>
-            <polygon points="120,20 160,65 160,110 120,110" fill="#0d1a0d" opacity=".8"/>
-            <circle cx="120" cy="20" r="8" fill="#2de34b" opacity=".9"/>
-            <circle cx="120" cy="20" r="4" fill="#7dff92"/>
-          </svg>
-        </div>
-        <div class="game-card-name">Neon Drop</div>
-        <div class="game-card-desc">Roll a glowing ball down a neon infinite slope, dodge tiles, survive as long as you can.</div>
-        <div class="game-card-tag">Reflex</div><span class="game-card-built">Built-in</span>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-    </div>
-
-    <div class="resources-section-label">🌐 Online Games (requires internet)</div>
-    <div class="games-grid">
-
-      <div class="game-card" onclick="openGame('Slope')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#000"/><ellipse cx="120" cy="86" rx="44" ry="13" fill="#0a1a0e"/><circle cx="120" cy="54" r="32" fill="#0a0a0a" stroke="#2de34b" stroke-width="5"/><circle cx="130" cy="44" r="17" fill="#16361c" opacity=".9"/><circle cx="109" cy="41" r="6" fill="#7dff92" opacity=".95"/></svg></div>
-        <div class="game-card-name">Slope</div>
-        <div class="game-card-desc">Roll a ball down an endless 3D slope. Neon speed runner.</div>
-        <div class="game-card-tag">Reflex</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Bad Time Simulator')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#000"/><g shape-rendering="crispEdges"><rect x="95" y="20" width="10" height="10" fill="#ff2a2a"/><rect x="105" y="20" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="20" width="10" height="10" fill="#ff2a2a"/><rect x="135" y="20" width="10" height="10" fill="#ff2a2a"/><rect x="85" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="95" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="105" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="115" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="135" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="145" y="30" width="10" height="10" fill="#ff2a2a"/><rect x="85" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="105" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="115" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="135" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="145" y="40" width="10" height="10" fill="#ff2a2a"/><rect x="105" y="50" width="10" height="10" fill="#ff2a2a"/><rect x="115" y="50" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="50" width="10" height="10" fill="#ff2a2a"/><rect x="135" y="50" width="10" height="10" fill="#ff2a2a"/><rect x="115" y="60" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="60" width="10" height="10" fill="#ff2a2a"/><rect x="125" y="70" width="10" height="10" fill="#ff2a2a"/></g></svg></div>
-        <div class="game-card-name">Bad Time Simulator</div>
-        <div class="game-card-desc">Face Sans in the ultimate bullet-hell boss fight.</div>
-        <div class="game-card-tag">Arcade</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Eagle Craft')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#111"/><g shape-rendering="crispEdges"><rect x="114" y="38" width="12" height="52" fill="#8b5a2b"/><rect x="98" y="26" width="44" height="8" fill="#959595"/><rect x="88" y="34" width="10" height="8" fill="#7e7e7e"/><rect x="142" y="34" width="10" height="8" fill="#7e7e7e"/><rect x="80" y="42" width="8" height="8" fill="#6f6f6f"/><rect x="152" y="42" width="8" height="8" fill="#6f6f6f"/><rect x="106" y="90" width="28" height="8" fill="#6a431f"/></g></svg></div>
-        <div class="game-card-name">Eagle Craft</div>
-        <div class="game-card-desc">Browser Minecraft 1.8.8 — build, survive, explore.</div>
-        <div class="game-card-tag">Sandbox</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Drive Mad')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#8ecbff"/><rect y="70" width="240" height="8" fill="#2f8f3c"/><rect y="78" width="240" height="32" fill="#8f6236"/><rect x="80" y="48" width="80" height="20" rx="5" fill="#ffd82f"/><path d="M92 48L110 36H142L158 48Z" fill="#ffe66a"/><rect x="110" y="40" width="12" height="8" rx="2" fill="#84d5ff"/><rect x="126" y="40" width="12" height="8" rx="2" fill="#84d5ff"/><circle cx="98" cy="72" r="9" fill="#0e0e0e"/><circle cx="144" cy="72" r="9" fill="#0e0e0e"/><circle cx="98" cy="72" r="4" fill="#3a3a3a"/><circle cx="144" cy="72" r="4" fill="#3a3a3a"/></svg></div>
-        <div class="game-card-name">Drive Mad</div>
-        <div class="game-card-desc">Navigate obstacle courses without flipping — 100 physics levels.</div>
-        <div class="game-card-tag">Racing</div>
-        <button class="game-card-play">Play Now</button>
-      </div>
-
-      <div class="game-card" onclick="openGame('Angry Birds')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#87ceeb"/><rect x="0" y="78" width="240" height="32" fill="#5d8a3c"/><rect x="150" y="35" width="12" height="43" fill="#8B6914"/><rect x="136" y="26" width="40" height="13" fill="#c8522a"/><rect x="136" y="39" width="40" height="13" fill="#c8522a" opacity=".6"/><circle cx="48" cy="62" r="14" fill="#e82020"/><circle cx="43" cy="57" r="4.5" fill="white"/><circle cx="44" cy="57" r="2" fill="#222"/><polygon points="48,69 41,75 55,75" fill="#ffaa00"/><circle cx="80" cy="65" r="11" fill="#ffcc00"/><circle cx="77" cy="62" r="3.5" fill="white"/><circle cx="78" cy="62" r="1.5" fill="#222"/><polygon points="80,72 75,77 85,77" fill="#ff8800"/><path d="M8 48 Q28 28 48 62" stroke="#555" stroke-width="3" fill="none"/><circle cx="8" cy="48" r="5" fill="#888"/></svg></div>
-        <div class="game-card-name">Angry Birds Online</div>
-        <div class="game-card-desc">The original Angry Birds — fling birds at pig fortresses.</div>
-        <div class="game-card-tag">Physics</div>
+      <div class="game-card" onclick="openGame('10 Minutes Till Dawn')">
+        <div class="game-card-name">10 Minutes Till Dawn</div>
+        <div class="game-card-desc">Survive waves of monsters for 10 minutes. Upgrade your weapons and abilities to stay alive.</div>
+        <div class="game-card-tag">Survival</div>
         <button class="game-card-play">Play Now</button>
       </div>
 
       <div class="game-card" onclick="openGame('Basketball Random')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#1a1a2e"/><rect x="0" y="90" width="240" height="20" fill="#333"/><rect x="180" y="40" width="5" height="52" fill="#888"/><rect x="155" y="40" width="30" height="5" fill="#888"/><rect x="155" y="40" width="4" height="20" fill="#ff6b35"/><circle cx="100" cy="65" r="18" fill="#ff6b35"/><path d="M82 65 Q100 55 118 65" stroke="#111" stroke-width="2" fill="none"/><path d="M82 65 Q100 75 118 65" stroke="#111" stroke-width="2" fill="none"/><path d="M100 47 L100 83" stroke="#111" stroke-width="2"/><circle cx="50" cy="70" r="15" fill="#ff6b35"/><path d="M35 70 Q50 62 65 70" stroke="#111" stroke-width="1.5" fill="none"/><path d="M35 70 Q50 78 65 70" stroke="#111" stroke-width="1.5" fill="none"/></svg></div>
         <div class="game-card-name">Basketball Random</div>
         <div class="game-card-desc">Chaotic 1v1 basketball with wild random physics and players.</div>
         <div class="game-card-tag">Sports</div>
         <button class="game-card-play">Play Now</button>
       </div>
 
-      <div class="game-card" onclick="openGame('Clover Pit')">
-        <div class="game-card-art"><svg viewBox="0 0 240 110" xmlns="http://www.w3.org/2000/svg"><rect width="240" height="110" fill="#0d0d0d"/><circle cx="80" cy="55" r="22" fill="#1a4a1a" stroke="#2de34b" stroke-width="2"/><circle cx="80" cy="45" r="8" fill="#2de34b" opacity=".5"/><circle cx="73" cy="60" r="8" fill="#2de34b" opacity=".5"/><circle cx="87" cy="60" r="8" fill="#2de34b" opacity=".5"/><rect x="78" y="65" width="4" height="14" fill="#2de34b"/><circle cx="160" cy="55" r="22" fill="#1a4a1a" stroke="#2de34b" stroke-width="2"/><circle cx="160" cy="45" r="8" fill="#2de34b" opacity=".5"/><circle cx="153" cy="60" r="8" fill="#2de34b" opacity=".5"/><circle cx="167" cy="60" r="8" fill="#2de34b" opacity=".5"/><rect x="158" y="65" width="4" height="14" fill="#2de34b"/></svg></div>
-        <div class="game-card-name">Clover Pit</div>
-        <div class="game-card-desc">Multiplayer arena brawler — knock opponents into the pit.</div>
-        <div class="game-card-tag">Brawler</div>
+      <div class="game-card" onclick="openGame('Drive Mad')">
+        <div class="game-card-name">Drive Mad</div>
+        <div class="game-card-desc">Navigate obstacle courses without flipping — 100 physics-based levels of driving chaos.</div>
+        <div class="game-card-tag">Racing</div>
+        <button class="game-card-play">Play Now</button>
+      </div>
+
+      <div class="game-card" onclick="openGame('Doom 64')">
+        <div class="game-card-name">Doom 64</div>
+        <div class="game-card-desc">The classic first-person shooter — blast through demons across 32 dark and atmospheric levels.</div>
+        <div class="game-card-tag">Action</div>
         <button class="game-card-play">Play Now</button>
       </div>
 
@@ -537,685 +438,26 @@ body.no-scroll{overflow:hidden;}
   <div class="s-toast-close" onclick="dismissToast()">&#x2715;</div>
 </div>
 
-<!-- BUILT-IN GAME SOURCES as data URIs -->
 <script>
 
-/* ============================================================
-   BUILT-IN GAME: ANGRY BIRDS LAUNCH
-   ============================================================ */
-var birdsLaunchSrc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:#87ceeb;overflow:hidden;font-family:Arial,sans-serif;}
-canvas{display:block;}
-#ui{position:absolute;top:10px;left:10px;color:#fff;font-weight:bold;font-size:16px;text-shadow:1px 1px 2px #000;}
-#msg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#fff;padding:20px 32px;border-radius:10px;font-size:22px;font-weight:bold;display:none;text-align:center;}
-#restart{margin-top:14px;padding:10px 24px;font-size:16px;cursor:pointer;background:#ff6b35;color:#fff;border:none;border-radius:6px;}
-</style></head><body>
-<canvas id="c"></canvas>
-<div id="ui">Birds: <span id="birds-left">5</span> | Score: <span id="score">0</span></div>
-<div id="msg" id="msg"><span id="msg-text"></span><br><button id="restart" onclick="init()">Play Again</button></div>
-<script>
-var c=document.getElementById('c'),ctx=c.getContext('2d');
-var W,H,birds,pigs,blocks,proj,dragging,dragStart,score,birdsLeft;
-function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-window.addEventListener('resize',resize);resize();
-
-var GROUND,SLING_X,SLING_Y,SLING_R=110;
-var GRAVITY=0.4,BIRD_R=16,PIG_R=14;
-var colors=['#e82020','#ffcc00','#00bbff','#ff88ff','#ffffff'];
-
-function init(){
-  GROUND=H-60;SLING_X=120;SLING_Y=GROUND-80;
-  score=0;birdsLeft=5;dragging=false;proj=null;
-  document.getElementById('score').textContent=0;
-  document.getElementById('birds-left').textContent=5;
-  document.getElementById('msg').style.display='none';
-
-  birds=[];
-  for(var i=0;i<birdsLeft;i++) birds.push({x:SLING_X-30-i*36,y:SLING_Y,r:BIRD_R,color:colors[i%colors.length],used:false});
-
-  pigs=[
-    {x:W*0.55,y:GROUND-PIG_R,r:PIG_R,hp:2},
-    {x:W*0.65,y:GROUND-PIG_R,r:PIG_R,hp:2},
-    {x:W*0.60,y:GROUND-80,r:PIG_R,hp:1},
-    {x:W*0.75,y:GROUND-PIG_R,r:PIG_R,hp:2},
-  ];
-
-  blocks=[];
-  // left tower
-  for(var j=0;j<4;j++) blocks.push({x:W*0.52,y:GROUND-30-j*30,w:12,h:30,hp:2});
-  for(var j=0;j<4;j++) blocks.push({x:W*0.68,y:GROUND-30-j*30,w:12,h:30,hp:2});
-  blocks.push({x:W*0.52,y:GROUND-145,w:170,h:12,hp:3});
-  // right tower
-  for(var j=0;j<3;j++) blocks.push({x:W*0.72,y:GROUND-30-j*30,w:12,h:30,hp:2});
-  for(var j=0;j<3;j++) blocks.push({x:W*0.82,y:GROUND-30-j*30,w:12,h:30,hp:2});
-  blocks.push({x:W*0.72,y:GROUND-115,w:110,h:12,hp:3});
-}
-
-function getLaunchBird(){for(var i=0;i<birds.length;i++)if(!birds[i].used)return birds[i];return null;}
-
-c.addEventListener('mousedown',function(e){
-  var b=getLaunchBird();if(!b||proj)return;
-  var dx=e.clientX-SLING_X,dy=e.clientY-SLING_Y;
-  if(dx*dx+dy*dy<(BIRD_R+20)*(BIRD_R+20)){dragging=true;dragStart={x:SLING_X,y:SLING_Y};}
-});
-c.addEventListener('mousemove',function(e){if(!dragging)return;
-  var dx=e.clientX-SLING_X,dy=e.clientY-SLING_Y;
-  var d=Math.sqrt(dx*dx+dy*dy);if(d>SLING_R){dx=dx/d*SLING_R;dy=dy/d*SLING_R;}
-  dragStart={x:SLING_X+dx,y:SLING_Y+dy};
-});
-c.addEventListener('mouseup',function(){
-  if(!dragging)return;dragging=false;
-  var b=getLaunchBird();if(!b)return;
-  var vx=(SLING_X-dragStart.x)*0.18,vy=(SLING_Y-dragStart.y)*0.18;
-  proj={x:SLING_X,y:SLING_Y,vx:vx,vy:vy,r:BIRD_R,color:b.color,trail:[]};
-  b.used=true;birdsLeft--;
-  document.getElementById('birds-left').textContent=Math.max(0,birdsLeft);
-  dragStart=null;
-});
-// touch
-c.addEventListener('touchstart',function(e){e.preventDefault();var t=e.touches[0];c.dispatchEvent(new MouseEvent('mousedown',{clientX:t.clientX,clientY:t.clientY}));});
-c.addEventListener('touchmove',function(e){e.preventDefault();var t=e.touches[0];c.dispatchEvent(new MouseEvent('mousemove',{clientX:t.clientX,clientY:t.clientY}));});
-c.addEventListener('touchend',function(e){e.preventDefault();c.dispatchEvent(new MouseEvent('mouseup',{}));});
-
-function circle(x,y,r,fill,stroke,sw){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=sw||2;ctx.stroke();}}
-
-function drawBird(x,y,r,color){
-  circle(x,y,r,color,'rgba(0,0,0,.3)',2);
-  // eyes
-  ctx.fillStyle='white';ctx.beginPath();ctx.arc(x-r*.3,y-r*.2,r*.35,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#111';ctx.beginPath();ctx.arc(x-r*.22,y-r*.2,r*.18,0,Math.PI*2);ctx.fill();
-  // beak
-  ctx.fillStyle='#ffaa00';ctx.beginPath();ctx.moveTo(x+r*.1,y+r*.1);ctx.lineTo(x+r*.7,y);ctx.lineTo(x+r*.1,y+r*.3);ctx.closePath();ctx.fill();
-  // eyebrow
-  ctx.strokeStyle='#333';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x-r*.5,y-r*.5);ctx.lineTo(x-r*.05,y-r*.4);ctx.stroke();
-}
-
-function drawPig(p){
-  circle(p.x,p.y,p.r,'#4caf50','#2a7a2a',2);
-  ctx.fillStyle='white';ctx.beginPath();ctx.arc(p.x-p.r*.3,p.y-p.r*.15,p.r*.3,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#111';ctx.beginPath();ctx.arc(p.x-p.r*.2,p.y-p.r*.15,p.r*.15,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#33cc33';ctx.beginPath();ctx.arc(p.x,p.y+p.r*.15,p.r*.35,0,Math.PI*2);ctx.fill();
-  ctx.fillStyle='#111';ctx.font='bold '+(p.r*.5)+'px Arial';ctx.textAlign='center';ctx.fillText(p.hp,p.x,p.y+p.r*.4);
-}
-
-var projTimer=0;
-function update(){
-  if(!proj)return;
-  proj.trail.push({x:proj.x,y:proj.y});
-  if(proj.trail.length>20)proj.trail.shift();
-  proj.vx*=0.99;proj.vy+=GRAVITY;
-  proj.x+=proj.vx;proj.y+=proj.vy;
-
-  // ground
-  if(proj.y+proj.r>GROUND){proj=null;projTimer=60;return;}
-  if(proj.x>W+50){proj=null;projTimer=60;return;}
-
-  // pigs
-  for(var i=pigs.length-1;i>=0;i--){
-    var p=pigs[i],dx=proj.x-p.x,dy=proj.y-p.y;
-    if(dx*dx+dy*dy<(proj.r+p.r)*(proj.r+p.r)){
-      p.hp--;score+=100;document.getElementById('score').textContent=score;
-      if(p.hp<=0){pigs.splice(i,1);score+=200;document.getElementById('score').textContent=score;}
-      proj=null;projTimer=60;return;
-    }
-  }
-  // blocks
-  for(var i=blocks.length-1;i>=0;i--){
-    var bl=blocks[i];
-    if(proj.x+proj.r>bl.x&&proj.x-proj.r<bl.x+bl.w&&proj.y+proj.r>bl.y&&proj.y-proj.r<bl.y+bl.h){
-      bl.hp--;if(bl.hp<=0)blocks.splice(i,1);
-      proj.vx*=-0.3;proj.vy*=-0.5;
-      proj=null;projTimer=60;return;
-    }
-  }
-}
-
-function checkEnd(){
-  if(pigs.length===0){showMsg('🎉 Level Clear! Score: '+score);}
-  else if(!proj&&birdsLeft===0&&projTimer<=0){showMsg('😢 No birds left! Score: '+score);}
-}
-
-function showMsg(txt){document.getElementById('msg-text').textContent=txt;document.getElementById('msg').style.display='block';}
-
-function draw(){
-  // sky gradient
-  var g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#5bc8f5');g.addColorStop(1,'#87ceeb');
-  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-  // ground
-  ctx.fillStyle='#5d8a3c';ctx.fillRect(0,GROUND,W,H-GROUND);
-  ctx.fillStyle='#7ab04a';ctx.fillRect(0,GROUND,W,10);
-  // sling
-  ctx.strokeStyle='#8B6914';ctx.lineWidth=5;
-  ctx.beginPath();ctx.moveTo(SLING_X,SLING_Y);ctx.lineTo(SLING_X-18,GROUND);ctx.stroke();
-  ctx.beginPath();ctx.moveTo(SLING_X,SLING_Y);ctx.lineTo(SLING_X+18,GROUND);ctx.stroke();
-  // rubber band
-  var b=getLaunchBird();
-  if(dragging&&dragStart){
-    ctx.strokeStyle='#8b5a1a';ctx.lineWidth=3;
-    ctx.beginPath();ctx.moveTo(SLING_X-10,SLING_Y);ctx.lineTo(dragStart.x,dragStart.y);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(SLING_X+10,SLING_Y);ctx.lineTo(dragStart.x,dragStart.y);ctx.stroke();
-  } else if(b&&!proj){
-    ctx.strokeStyle='#8b5a1a';ctx.lineWidth=3;
-    ctx.beginPath();ctx.moveTo(SLING_X-10,SLING_Y);ctx.lineTo(b.x,b.y);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(SLING_X+10,SLING_Y);ctx.lineTo(b.x,b.y);ctx.stroke();
-  }
-  // queued birds
-  for(var i=0;i<birds.length;i++)if(!birds[i].used)drawBird(birds[i].x,birds[i].y,birds[i].r,birds[i].color);
-  // active bird on sling (dragging)
-  if(dragging&&dragStart&&b){drawBird(dragStart.x,dragStart.y,BIRD_R,b.color);}
-  // trajectory hint
-  if(dragging&&dragStart){
-    var vx=(SLING_X-dragStart.x)*0.18,vy=(SLING_Y-dragStart.y)*0.18,tx=SLING_X,ty=SLING_Y;
-    ctx.fillStyle='rgba(255,255,255,.5)';
-    for(var i=0;i<15;i++){tx+=vx;ty+=vy;vy+=GRAVITY;if(i%2===0)circle(tx,ty,3,'rgba(255,255,255,.5)');}
-  }
-  // trail
-  if(proj){
-    for(var i=0;i<proj.trail.length;i++){var a=i/proj.trail.length;circle(proj.trail[i].x,proj.trail[i].y,proj.r*a*.5,'rgba(255,200,100,'+a*.4+')');}
-    drawBird(proj.x,proj.y,proj.r,proj.color);
-  }
-  // blocks
-  for(var i=0;i<blocks.length;i++){
-    var bl=blocks[i];
-    var hp=bl.hp,c2=hp>=3?'#c8522a':hp>=2?'#d4782a':'#e0a050';
-    ctx.fillStyle=c2;ctx.fillRect(bl.x,bl.y,bl.w,bl.h);
-    ctx.strokeStyle='rgba(0,0,0,.3)';ctx.lineWidth=1;ctx.strokeRect(bl.x,bl.y,bl.w,bl.h);
-  }
-  // pigs
-  for(var i=0;i<pigs.length;i++)drawPig(pigs[i]);
-}
-
-function loop(){
-  update();
-  if(projTimer>0)projTimer--;
-  draw();
-  checkEnd();
-  requestAnimationFrame(loop);
-}
-init();loop();
-<\/script></body></html>`;
-
-/* ============================================================
-   BUILT-IN GAME: HILL RACER (Drive Mad clone)
-   ============================================================ */
-var hillRacerSrc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-*{margin:0;padding:0;box-sizing:border-box;}body{background:#1a1a2e;overflow:hidden;font-family:Arial,sans-serif;}
-canvas{display:block;}
-#ui{position:absolute;top:10px;left:10px;color:#ff6b35;font-weight:bold;font-size:16px;}
-#msg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.8);color:#fff;padding:20px 32px;border-radius:10px;font-size:20px;font-weight:bold;display:none;text-align:center;}
-#restart{margin-top:14px;padding:10px 24px;font-size:16px;cursor:pointer;background:#ff6b35;color:#fff;border:none;border-radius:6px;}
-#hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:13px;}
-</style></head><body>
-<canvas id="c"></canvas>
-<div id="ui">Distance: <span id="dist">0</span>m | Best: <span id="best">0</span>m</div>
-<div id="msg"><span id="msg-text"></span><br><button id="restart" onclick="init()">Try Again</button></div>
-<div id="hint">Hold RIGHT arrow or D to accelerate · LEFT or A to reverse</div>
-<script>
-var c=document.getElementById('c'),ctx=c.getContext('2d');
-var W,H;function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-window.addEventListener('resize',resize);resize();
-
-var SEGS=200,SEG_W=120;
-var terrain,camX,car,keys,dead,dist,best,frame;
-
-function makeTerrain(seed){
-  var pts=[];var y=H*0.55,amp=0;
-  for(var i=0;i<SEGS;i++){
-    // gradually increase difficulty
-    amp=Math.min(120,30+i*0.6);
-    var freq=0.04+i*0.0001;
-    y+=( Math.sin(i*freq*7+seed)*amp*0.06 + (Math.random()-.5)*3 );
-    y=Math.max(H*0.25,Math.min(H*0.85,y));
-    pts.push({x:i*SEG_W,y:y});
-  }
-  return pts;
-}
-
-function getTerrainY(wx){
-  var si=Math.floor(wx/SEG_W);
-  if(si<0)return terrain[0].y;
-  if(si>=terrain.length-1)return terrain[terrain.length-1].y;
-  var t=(wx-terrain[si].x)/SEG_W;
-  return terrain[si].y*(1-t)+terrain[si+1].y*t;
-}
-
-function init(){
-  terrain=makeTerrain(Date.now()%1000);
-  camX=0;dist=0;frame=0;dead=false;
-  best=parseInt(localStorage.getItem('hillbest')||'0');
-  document.getElementById('best').textContent=best;
-  document.getElementById('msg').style.display='none';
-
-  var startY=getTerrainY(80)-30;
-  car={
-    x:80,y:startY,vx:0,vy:0,angle:0,av:0,
-    w:52,h:22,
-    wx:[−20,20,20,−20],wy:[−11,−11,11,11], // wheel offsets
-    hp:3
-  };
-  keys={};
-}
-
-document.addEventListener('keydown',function(e){keys[e.code]=true;});
-document.addEventListener('keyup',function(e){keys[e.code]=false;});
-// mobile
-var touchLeft=false,touchRight=false;
-document.addEventListener('touchstart',function(e){
-  var t=e.touches[0];
-  if(t.clientX<W/2)touchLeft=true;else touchRight=true;
-},{passive:true});
-document.addEventListener('touchend',function(){touchLeft=false;touchRight=false;},{passive:true});
-
-function update(){
-  if(dead)return;
-  frame++;
-
-  var accel=0;
-  var gas=(keys['ArrowRight']||keys['KeyD']||touchRight);
-  var rev=(keys['ArrowLeft']||keys['KeyA']||touchLeft);
-  if(gas)accel=0.18;
-  if(rev)accel=-0.1;
-
-  // Drive force applied along car angle
-  car.vx+=Math.cos(car.angle)*accel;
-  car.vy+=Math.sin(car.angle)*accel;
-
-  // Gravity
-  car.vy+=0.38;
-
-  // Ground collision - simple: find terrain y at car center
-  var ty=getTerrainY(car.x);
-  var groundContact=car.y+car.h/2>ty-2;
-
-  if(groundContact){
-    car.y=ty-car.h/2;
-    car.vy*=-0.1;
-    car.vx*=0.88;
-    // align car to slope
-    var ty2=getTerrainY(car.x+5);
-    var targetAngle=Math.atan2(ty2-ty,5);
-    car.angle+=(targetAngle-car.angle)*0.3;
-    car.av*=0.5;
-  } else {
-    car.av+=(gas?0.04:rev?-0.04:0);
-    car.angle+=car.av;
-    car.av*=0.95;
-  }
-
-  car.vx=Math.max(-12,Math.min(14,car.vx));
-  car.x+=car.vx;
-  car.y+=car.vy;
-
-  // Update camera
-  camX+=(car.x-camX-W*0.35)*0.1;
-
-  dist=Math.max(0,Math.floor((car.x-80)/SEG_W));
-  document.getElementById('dist').textContent=dist;
-
-  // Flip detection
-  var rollDeg=((car.angle%(Math.PI*2))+Math.PI*2)%(Math.PI*2);
-  if(rollDeg>Math.PI*0.6&&rollDeg<Math.PI*1.4){
-    dead=true;
-    if(dist>best){best=dist;localStorage.setItem('hillbest',best);}
-    document.getElementById('best').textContent=best;
-    document.getElementById('msg-text').textContent='💥 You Flipped! Distance: '+dist+'m';
-    document.getElementById('msg').style.display='block';
-  }
-
-  // End of map
-  if(car.x>=(SEGS-2)*SEG_W){
-    dead=true;
-    document.getElementById('msg-text').textContent='🏁 You made it! Distance: '+dist+'m';
-    document.getElementById('msg').style.display='block';
-  }
-}
-
-function drawCar(){
-  ctx.save();
-  ctx.translate(car.x-camX,car.y);
-  ctx.rotate(car.angle);
-
-  // body shadow
-  ctx.fillStyle='rgba(0,0,0,.3)';
-  ctx.beginPath();ctx.ellipse(0,car.h/2+4,car.w/2+4,6,0,0,Math.PI*2);ctx.fill();
-
-  // body
-  ctx.fillStyle='#ffd700';
-  ctx.beginPath();ctx.roundRect(-car.w/2,-car.h/2,car.w,car.h,4);ctx.fill();
-  // cabin
-  ctx.fillStyle='#ffe870';
-  ctx.beginPath();ctx.roundRect(-car.w/4,-car.h/2-12,car.w/2.2,14,3);ctx.fill();
-  // windows
-  ctx.fillStyle='rgba(160,220,255,.7)';
-  ctx.beginPath();ctx.roundRect(-car.w/4+2,-car.h/2-10,car.w/2.2-4,10,2);ctx.fill();
-
-  // wheels
-  var wy=car.h/2+2;
-  var spin=car.x*0.05;
-  [-car.w/3,car.w/3].forEach(function(wx){
-    ctx.save();ctx.translate(wx,wy);ctx.rotate(spin);
-    ctx.fillStyle='#222';ctx.beginPath();ctx.arc(0,0,9,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#555';ctx.beginPath();ctx.arc(0,0,5,0,Math.PI*2);ctx.fill();
-    ctx.strokeStyle='#888';ctx.lineWidth=1.5;
-    ctx.beginPath();ctx.moveTo(0,-5);ctx.lineTo(0,5);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(-5,0);ctx.lineTo(5,0);ctx.stroke();
-    ctx.restore();
-  });
-
-  // exhaust if reversing
-  if(keys['ArrowLeft']||keys['KeyA']){
-    ctx.fillStyle='rgba(200,200,200,.5)';
-    ctx.beginPath();ctx.arc(-car.w/2-8,0,6,0,Math.PI*2);ctx.fill();
-  }
-  ctx.restore();
-}
-
-function draw(){
-  // sky
-  var g=ctx.createLinearGradient(0,0,0,H);
-  g.addColorStop(0,'#1a1a2e');g.addColorStop(1,'#16213e');
-  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
-
-  // stars
-  ctx.fillStyle='rgba(255,255,255,.5)';
-  for(var i=0;i<40;i++){
-    var sx=(i*137+camX*0.02)%W,sy=(i*97)%H*0.6;
-    ctx.beginPath();ctx.arc(sx,sy,1,0,Math.PI*2);ctx.fill();
-  }
-
-  // terrain fill
-  ctx.beginPath();
-  ctx.moveTo(terrain[0].x-camX,H);
-  for(var i=0;i<terrain.length;i++)ctx.lineTo(terrain[i].x-camX,terrain[i].y);
-  ctx.lineTo(terrain[terrain.length-1].x-camX,H);ctx.closePath();
-  ctx.fillStyle='#2a1a0a';ctx.fill();
-
-  // terrain surface
-  ctx.beginPath();ctx.moveTo(terrain[0].x-camX,terrain[0].y);
-  for(var i=1;i<terrain.length;i++)ctx.lineTo(terrain[i].x-camX,terrain[i].y);
-  ctx.strokeStyle='#ff6b35';ctx.lineWidth=3;ctx.stroke();
-
-  // surface highlight
-  ctx.beginPath();ctx.moveTo(terrain[0].x-camX,terrain[0].y);
-  for(var i=1;i<terrain.length;i++)ctx.lineTo(terrain[i].x-camX,terrain[i].y);
-  ctx.strokeStyle='rgba(255,200,100,.2)';ctx.lineWidth=8;ctx.stroke();
-
-  drawCar();
-
-  // HUD distance markers
-  for(var i=0;i<SEGS;i+=5){
-    var mx=terrain[i].x-camX;
-    if(mx>0&&mx<W){
-      ctx.fillStyle='rgba(255,107,53,.4)';ctx.font='11px Arial';ctx.textAlign='center';
-      ctx.fillText(i+'m',mx,terrain[i].y-8);
-    }
-  }
-}
-
-function loop(){update();draw();requestAnimationFrame(loop);}
-init();loop();
-<\/script></body></html>`;
-
-/* ============================================================
-   BUILT-IN GAME: NEON DROP (Slope clone)
-   ============================================================ */
-var neonDropSrc = `<!DOCTYPE html><html><head><meta charset="UTF-8"><style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:#050518;overflow:hidden;font-family:Arial,sans-serif;}
-canvas{display:block;}
-#ui{position:absolute;top:12px;left:50%;transform:translateX(-50%);color:#2de34b;font-weight:bold;font-size:18px;text-align:center;text-shadow:0 0 10px #2de34b;}
-#msg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.85);color:#2de34b;padding:24px 40px;border:2px solid #2de34b;font-size:22px;font-weight:bold;display:none;text-align:center;box-shadow:0 0 30px rgba(45,227,75,.3);}
-#restart{margin-top:16px;padding:10px 28px;font-size:15px;cursor:pointer;background:transparent;color:#2de34b;border:2px solid #2de34b;font-weight:bold;}
-#restart:hover{background:#2de34b;color:#050518;}
-#hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:rgba(45,227,75,.4);font-size:13px;}
-</style></head><body>
-<canvas id="c"></canvas>
-<div id="ui">Score: <span id="score">0</span> | Best: <span id="best">0</span></div>
-<div id="msg"><span id="msg-text">GAME OVER</span><br><div style="font-size:15px;color:#7dff92;margin-top:6px" id="final-score"></div><br><button id="restart" onclick="init()">RESTART</button></div>
-<div id="hint">← → Arrow keys or A/D to steer</div>
-<script>
-var c=document.getElementById('c'),ctx=c.getContext('2d');
-var W,H;
-function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
-window.addEventListener('resize',resize);resize();
-
-var LANE_W=90,LANES=7,TOTAL_W=LANE_W*LANES;
-var TILE_H=60,VIS_TILES=Math.ceil(H/TILE_H)+4;
-var CAM_SPEED_START=3,keys={},ball,tiles,score,best,dead,speed,frame,camY;
-
-function init(){
-  score=0;dead=false;frame=0;speed=CAM_SPEED_START;camY=0;
-  best=parseInt(localStorage.getItem('neondrop')||'0');
-  document.getElementById('best').textContent=best;
-  document.getElementById('msg').style.display='none';
-
-  ball={x:W/2,y:H*0.35,vx:0,r:14,lane:3};
-
-  tiles=[];
-  // initial safe path
-  for(var row=0;row<VIS_TILES+10;row++){
-    tiles.push(makeRow(row,row<5));
-  }
-  keys={};
-}
-
-function makeRow(row,safe){
-  var holes=[];
-  if(!safe){
-    var numHoles=Math.min(3,Math.floor(1+row/20));
-    while(holes.length<numHoles){
-      var h=Math.floor(Math.random()*LANES);
-      if(!holes.includes(h))holes.push(h);
-    }
-  }
-  return {row:row,holes:holes,y:row*TILE_H};
-}
-
-document.addEventListener('keydown',function(e){keys[e.code]=true;e.preventDefault&&e.preventDefault();});
-document.addEventListener('keyup',function(e){keys[e.code]=false;});
-
-var touchX=null;
-document.addEventListener('touchstart',function(e){touchX=e.touches[0].clientX;},{passive:true});
-document.addEventListener('touchmove',function(e){
-  if(touchX===null)return;
-  var dx=e.touches[0].clientX-touchX;
-  ball.vx+=dx*0.15;touchX=e.touches[0].clientX;
-},{passive:true});
-document.addEventListener('touchend',function(){touchX=null;},{passive:true});
-
-function update(){
-  if(dead)return;
-  frame++;
-  speed=CAM_SPEED_START+frame*0.0015;
-  score=Math.floor(frame*speed/10);
-  document.getElementById('score').textContent=score;
-
-  // steer
-  if(keys['ArrowLeft']||keys['KeyA'])ball.vx-=0.6;
-  if(keys['ArrowRight']||keys['KeyD'])ball.vx+=0.6;
-  ball.vx*=0.82;
-  ball.vx=Math.max(-8,Math.min(8,ball.vx));
-  ball.x+=ball.vx;
-
-  // wall wrap
-  var left=(W-TOTAL_W)/2;
-  if(ball.x<left+ball.r)ball.x=left+ball.r,ball.vx=Math.abs(ball.vx)*0.5;
-  if(ball.x>left+TOTAL_W-ball.r)ball.x=left+TOTAL_W-ball.r,ball.vx=-Math.abs(ball.vx)*0.5;
-
-  camY+=speed;
-
-  // generate new tiles
-  var lastRow=tiles[tiles.length-1].row;
-  while(tiles[tiles.length-1].y<camY+H+TILE_H*2){
-    lastRow++;
-    tiles.push(makeRow(lastRow,false));
-  }
-  // remove old tiles
-  while(tiles.length>0&&tiles[0].y<camY-TILE_H*2)tiles.shift();
-
-  // collision: check tile row ball is on
-  var left2=(W-TOTAL_W)/2;
-  var ballWorldY=ball.y+camY;
-  for(var i=0;i<tiles.length;i++){
-    var t=tiles[i];
-    var tTop=t.y,tBot=t.y+TILE_H;
-    if(ballWorldY+ball.r>tTop&&ballWorldY-ball.r<tBot){
-      var laneIdx=Math.floor((ball.x-left2)/LANE_W);
-      laneIdx=Math.max(0,Math.min(LANES-1,laneIdx));
-      if(t.holes.includes(laneIdx)){
-        // in a hole — die
-        dead=true;
-        if(score>best){best=score;localStorage.setItem('neondrop',best);}
-        document.getElementById('best').textContent=best;
-        document.getElementById('msg-text').textContent='GAME OVER';
-        document.getElementById('final-score').textContent='Score: '+score+' | Best: '+best;
-        document.getElementById('msg').style.display='block';
-        return;
-      }
-    }
-  }
-}
-
-function draw(){
-  ctx.fillStyle='#050518';ctx.fillRect(0,0,W,H);
-
-  var left=(W-TOTAL_W)/2;
-
-  // draw tiles
-  for(var i=0;i<tiles.length;i++){
-    var t=tiles[i];
-    var ty=t.y-camY;
-    for(var lane=0;lane<LANES;lane++){
-      if(!t.holes.includes(lane)){
-        var tx=left+lane*LANE_W;
-        // tile base
-        var brightness=Math.max(0.3,1-i/VIS_TILES*0.4);
-        ctx.fillStyle='rgba(10,30,60,'+brightness+')';
-        ctx.fillRect(tx+1,ty+1,LANE_W-2,TILE_H-2);
-        // neon edge
-        ctx.strokeStyle='rgba(45,227,75,'+(0.4*brightness)+')';
-        ctx.lineWidth=1.5;ctx.strokeRect(tx+1,ty+1,LANE_W-2,TILE_H-2);
-        // top glow
-        ctx.fillStyle='rgba(45,227,75,'+(0.15*brightness)+')';
-        ctx.fillRect(tx+2,ty+2,LANE_W-4,4);
-      }
-    }
-  }
-
-  // wall glow
-  ctx.fillStyle='rgba(45,227,75,.08)';
-  ctx.fillRect(left-8,0,8,H);ctx.fillRect(left+TOTAL_W,0,8,H);
-
-  // ball trail
-  for(var t2=8;t2>0;t2--){
-    var a=t2/8;
-    ctx.beginPath();ctx.arc(ball.x,ball.y,ball.r*a,'0',Math.PI*2);
-    ctx.fillStyle='rgba(45,227,75,'+a*.15+')';ctx.fill();
-  }
-  // ball
-  var grad=ctx.createRadialGradient(ball.x-ball.r*.3,ball.y-ball.r*.3,2,ball.x,ball.y,ball.r);
-  grad.addColorStop(0,'#7dff92');grad.addColorStop(1,'#2de34b');
-  ctx.beginPath();ctx.arc(ball.x,ball.y,ball.r,0,Math.PI*2);
-  ctx.fillStyle=grad;ctx.fill();
-  ctx.strokeStyle='rgba(255,255,255,.5)';ctx.lineWidth=1.5;ctx.stroke();
-
-  // speed indicator
-  ctx.fillStyle='rgba(45,227,75,.5)';ctx.font='12px Arial';ctx.textAlign='right';
-  ctx.fillText('Speed: '+speed.toFixed(1)+'x',W-12,H-14);
-}
-
-function loop(){update();draw();requestAnimationFrame(loop);}
-init();loop();
-<\/script></body></html>`;
-
-/* ============================================================
-   ONLINE GAME URLS (multiple fallbacks)
-   ============================================================ */
-var onlineGames = {
-  'Slope': [
-    'https://slope-game.github.io/',
-    'https://slope-unblocked.github.io/slope/',
-    'https://slopegame.online/'
-  ],
-  'Bad Time Simulator': [
-    'https://jcw87.github.io/c2-sans-fight/',
-    'https://undertale-online.github.io/sans-fight/',
-    'https://sans-fight.io/'
-  ],
-  'Eagle Craft': [
-    'https://eaglercraft.com/mc/1.8.8-wasm/',
-    'https://eaglercraft1-8.github.io/',
-    'https://eaglercraftx.lax1dude.net/clients/1.8.8/web/index.html'
-  ],
-  'Drive Mad': [
-    'https://drivemad.com/',
-    'https://html5.gamedistribution.com/rvvASMiM/?gd_sdk_referrer_url=https://gamedistribution.com/games/drive-mad',
-    'https://www.crazygames.com/embed/drive-mad'
-  ],
-  'Angry Birds': [
-    'https://chrome.angrybirds.com/',
-    'https://www.msn.com/en-us/play/angry-birds-reloaded/ap-9pbnnppbln75?ocid=games-scorecard&fromMSN=1',
-    'https://poki.com/en/g/angry-birds'
-  ],
-  'Basketball Random': [
-    'https://www.crazygames.com/embed/basketball-random',
-    'https://html5.gamedistribution.com/31d487e7aa574e77b34fe0d45de68f3c/?gd_sdk_referrer_url=https://gamedistribution.com/games/basketball-random',
-    'https://basketball-random.io/'
-  ],
-  'Clover Pit': [
-    'https://cloverpit.io/',
-    'https://www.crazygames.com/embed/cloverpit',
-    'https://poki.com/en/g/clover-pit'
-  ]
+var gameUrls = {
+  'Dadish': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgamefile%2Fdadish.html',
+  '10 Minutes Till Dawn': 'https://truffled.lol.cdn.cloudflare.net/unityframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2F10minutestilldawn%2Findex.html',
+  'Basketball Random': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2Fbasket-random%2Findex.html',
+  'Drive Mad': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgames%2Fdrive-mad%2Findex.html',
+  'Doom 64': 'https://truffled.lol.cdn.cloudflare.net/iframe.html?url=https%3A%2F%2Ftruffled.lol.cdn.cloudflare.net%2Fgamefile%2Fdoom64.html'
 };
 
-/* BUILT-IN GAME OPENER */
-function openBuiltIn(which){
-  var src='';
-  if(which==='birdslaunch')src=birdsLaunchSrc;
-  else if(which==='drivemadclone')src=hillRacerSrc;
-  else if(which==='slopeclone')src=neonDropSrc;
-  if(!src)return;
-  var names={birdslaunch:'Angry Birds Launch',drivemadclone:'Hill Racer',slopeclone:'Neon Drop'};
-  document.getElementById('modal-title').textContent=names[which]||which;
-  var blob=new Blob([src],{type:'text/html'});
-  var url=URL.createObjectURL(blob);
-  document.getElementById('game-iframe').src=url;
+function openGame(name) {
+  var url = gameUrls[name];
+  if (!url) return;
+  document.getElementById('modal-title').textContent = name;
+  document.getElementById('game-iframe').src = url;
   document.getElementById('game-modal-overlay').classList.add('open');
   document.body.classList.add('no-scroll');
 }
 
-/* ONLINE GAME OPENER — try fallback URLs */
-var currentGameUrls=[];
-var currentGameUrlIndex=0;
-function openGame(name){
-  var urls=onlineGames[name];
-  if(!urls||urls.length===0)return;
-  currentGameUrls=urls;
-  currentGameUrlIndex=0;
-  document.getElementById('modal-title').textContent=name;
-  tryLoadGameUrl();
-  document.getElementById('game-modal-overlay').classList.add('open');
-  document.body.classList.add('no-scroll');
-}
-
-function tryLoadGameUrl(){
-  if(currentGameUrlIndex>=currentGameUrls.length){
-    // all failed — show message in iframe
-    var msg='<html><body style="background:#1a1a2e;color:#aaa;font-family:Arial;display:flex;align-items:center;justify-content:center;height:100vh;text-align:center"><div><div style="font-size:48px;margin-bottom:20px">🚫</div><div style="font-size:20px;color:#ff6b35;margin-bottom:10px">Game Blocked</div><div style="font-size:14px">This game is blocked by your network.<br>Try the built-in games instead — they always work!</div></div></body></html>';
-    var blob=new Blob([msg],{type:'text/html'});
-    document.getElementById('game-iframe').src=URL.createObjectURL(blob);
-    return;
-  }
-  document.getElementById('game-iframe').src=currentGameUrls[currentGameUrlIndex];
-}
-
-document.getElementById('game-iframe').addEventListener('error',function(){
-  currentGameUrlIndex++;tryLoadGameUrl();
-});
-
-/* DIM — wraps entire page including nav */
+/* DIM */
 function isResOpen(){return document.getElementById('resources-page').classList.contains('open');}
 function updateDim(){
   var open=isResOpen();
@@ -1234,7 +476,6 @@ function closeResources(){
   closeModalBtn();updateDim();
 }
 
-/* Click outside resources panel (on the dimmed page beneath) */
 document.getElementById('resources-page').addEventListener('click',function(e){
   if(e.target===this)showToast('Resources is open','Close the panel first, or keep playing — your choice!');
 });
@@ -1289,7 +530,6 @@ function initTheme(){
 }
 if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){if(!userOverride)applyTheme(e.matches?'dark':'light',false);});
 
-/* INIT */
 initTheme();
 </script>
 </body>
