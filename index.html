@@ -187,8 +187,13 @@ body.no-scroll{overflow:hidden;}
 .game-buttons{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .game-btn{padding:8px 14px;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);color:var(--text-primary);cursor:pointer;}
 .game-btn:hover{background:var(--bg-hover);}
-.diag-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;flex-shrink:0;}
-.diag-toggle input{width:16px;height:16px;}
+.diag-toggle{position:relative;display:inline-flex;align-items:center;cursor:pointer;flex-shrink:0;}
+.diag-toggle input{display:none;}
+.diag-slider{width:40px;height:22px;background:var(--border-card);border-radius:11px;position:relative;transition:.25s;}
+.diag-slider:before{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.diag-toggle input:checked+.diag-slider{background:var(--text-link);}
+.diag-toggle input:checked+.diag-slider:before{transform:translateX(18px);}
+.diag-label{font-size:12px;color:var(--text-secondary);margin-left:8px;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -366,7 +371,7 @@ body.no-scroll{overflow:hidden;}
   <div class="resources-inner">
     <div class="resources-header">
       <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
-      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span>Diagnostics</span></label>
+      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span class="diag-slider"></span><span class="diag-label">Send Anonymous Diagnostics</span></label>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
@@ -500,9 +505,14 @@ function recordKey(e){
 function sendDiagnostics(){
   if(diagEvents.length===0)return;
   var game=document.getElementById('res-title').textContent;
-  var payload=encodeURIComponent(JSON.stringify({game:game,events:diagEvents.slice(0,500)}));
-  var url='https://api.web3forms.com/submit?access_key=YOUR_ACCESS_KEY&email=schroddacat@gmail.com&data='+payload;
-  var img=new Image();img.src=url;
+  var data=btoa(JSON.stringify({game:game,events:diagEvents.slice(0,500)}));
+  navigator.clipboard.writeText(data).then(function(){
+    showToast('Diagnostics Copied','Please email to schroddacat@gmail.com');
+  }).catch(function(){
+    var link=document.createElement('a');
+    link.href='mailto:schroddacat@gmail.com?subject=Diag:'+game+'&body='+data;
+    link.click();
+  });
   diagEvents=[];
 }
 </script>
