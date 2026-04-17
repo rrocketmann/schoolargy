@@ -187,13 +187,6 @@ body.no-scroll{overflow:hidden;}
 .game-buttons{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .game-btn{padding:8px 14px;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);color:var(--text-primary);cursor:pointer;}
 .game-btn:hover{background:var(--bg-hover);}
-.diag-toggle{position:relative;display:inline-flex;align-items:center;cursor:pointer;flex-shrink:0;}
-.diag-toggle input{display:none;}
-.diag-slider{width:40px;height:22px;background:var(--border-card);border-radius:11px;position:relative;transition:.25s;}
-.diag-slider:before{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:2px;left:2px;transition:.25s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
-.diag-toggle input:checked+.diag-slider{background:var(--text-link);}
-.diag-toggle input:checked+.diag-slider:before{transform:translateX(18px);}
-.diag-label{font-size:12px;color:var(--text-secondary);margin-left:8px;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -371,7 +364,6 @@ body.no-scroll{overflow:hidden;}
   <div class="resources-inner">
     <div class="resources-header">
       <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
-      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span class="diag-slider"></span><span class="diag-label" title="Records keystrokes for training open-source AI. No personal data is collected. Your contribution helps open AI research!">Send Anonymous Diagnostics</span></label>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
@@ -476,46 +468,6 @@ if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventL
 
 initTheme();
 
-/* DIAGNOSTICS */
-var diagEnabled=false;
-var diagEvents=[];
-var diagStartTime=0;
-function toggleDiagnostics(enabled){
-  var toggle=document.getElementById('diag-toggle');
-  if(toggle){
-    toggle.checked=enabled;
-  }
-  diagEnabled=enabled;
-  if(enabled){
-    diagStartTime=Date.now();
-    showToast('Diagnostics On','Only keystrokes & timestamps collected. No personal data. Used to train open-source AI models.');
-    window.addEventListener('keydown',recordKey);
-    window.addEventListener('keyup',recordKey);
-  }else{
-    window.removeEventListener('keydown',recordKey);
-    window.removeEventListener('keyup',recordKey);
-    sendDiagnostics();
-  }
-}
-function recordKey(e){
-  if(!diagEnabled)return;
-  var p=document.getElementById('resources-page');
-  if(!p.classList.contains('open'))return;
-  diagEvents.push({t:Date.now()-diagStartTime,k:e.key,type:e.type});
-}
-function sendDiagnostics(){
-  if(diagEvents.length===0)return;
-  var game=document.getElementById('res-title').textContent;
-  var data=btoa(JSON.stringify({game:game,events:diagEvents.slice(0,500)}));
-  navigator.clipboard.writeText(data).then(function(){
-    showToast('Helpful! Anonymous keystroke data copied. No personal info included. Email to schroddacat@gmail.com or paste as data to contribute to open-source AI research!');
-  }).catch(function(){
-    var link=document.createElement('a');
-    link.href='mailto:schroddacat@gmail.com?subject=Diag:'+game+'&body='+data;
-    link.click();
-  });
-  diagEvents=[];
-}
 </script>
 </body>
 </html>
