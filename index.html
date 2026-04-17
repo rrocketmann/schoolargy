@@ -454,7 +454,6 @@ function applyTheme(t,save){
 }
 function toggleTheme(){
   applyTheme(currentTheme==='light'?'dark':'light',true);
-  showToast(currentTheme==='dark'?'Dark Mode On':'Light Mode On','Preference saved — Schoolargy will remember this.');
 }
 function initTheme(){
   var saved=getCookie('s_theme');
