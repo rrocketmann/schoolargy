@@ -371,7 +371,7 @@ body.no-scroll{overflow:hidden;}
   <div class="resources-inner">
     <div class="resources-header">
       <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
-      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span class="diag-slider"></span><span class="diag-label">Send Anonymous Diagnostics</span></label>
+      <label class="diag-toggle"><input type="checkbox" id="diag-toggle" onchange="toggleDiagnostics(this.checked)"><span class="diag-slider"></span><span class="diag-label" title="Records keystrokes for training open-source AI. No personal data is collected. Your contribution helps open AI research!">Send Anonymous Diagnostics</span></label>
       <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
     </div>
 
@@ -488,6 +488,7 @@ function toggleDiagnostics(enabled){
   diagEnabled=enabled;
   if(enabled){
     diagStartTime=Date.now();
+    showToast('Diagnostics On','Only keystrokes & timestamps collected. No personal data. Used to train open-source AI models.');
     window.addEventListener('keydown',recordKey);
     window.addEventListener('keyup',recordKey);
   }else{
@@ -507,7 +508,7 @@ function sendDiagnostics(){
   var game=document.getElementById('res-title').textContent;
   var data=btoa(JSON.stringify({game:game,events:diagEvents.slice(0,500)}));
   navigator.clipboard.writeText(data).then(function(){
-    showToast('Diagnostics Copied','Please email to schroddacat@gmail.com');
+    showToast('Helpful! Anonymous keystroke data copied. No personal info included. Email to schroddacat@gmail.com or paste as data to contribute to open-source AI research!');
   }).catch(function(){
     var link=document.createElement('a');
     link.href='mailto:schroddacat@gmail.com?subject=Diag:'+game+'&body='+data;
