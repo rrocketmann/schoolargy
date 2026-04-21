@@ -80,17 +80,21 @@ body.no-scroll{overflow:hidden;}
 .nav-logo-p{font-size:32px;font-weight:900;color:#49a8e0;line-height:1;width:38px;height:38px;display:flex;align-items:center;justify-content:center;user-select:none;}
 .nav-logo-text{font-size:10px;color:var(--text-muted);line-height:1.5;}
 .nav-brand{font-size:16px;font-weight:700;color:var(--text-brand);letter-spacing:-.3px;transition:color .25s;}
-.nav-link{padding:0 14px;height:56px;display:flex;align-items:center;font-size:14px;color:var(--text-nav);cursor:pointer;border-bottom:2px solid transparent;gap:4px;text-decoration:none;transition:color .25s;}
-.nav-link:hover{color:var(--text-link);}
+.nav-link{padding:0 14px;height:56px;display:flex;align-items:center;font-size:14px;color:var(--text-nav);cursor:pointer;border-bottom:2px solid transparent;gap:4px;text-decoration:none;transition:color .15s,background .15s,border-color .15s;}
+.nav-link:hover{color:var(--text-link);background:var(--bg-hover);border-bottom-color:var(--text-link);}
 .caret{font-size:9px;color:var(--caret-color);}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:18px;}
-.nav-icon{width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;position:relative;}
+.nav-icon{width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;position:relative;transition:color .15s,transform .15s;}
 .nav-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .nav-icon.bell svg{stroke:var(--bell-color);}
+.nav-icon:hover{color:var(--text-link);transform:scale(1.15);}
+.nav-icon.bell:hover{transform:scale(1.15) rotate(15deg);}
 .badge{position:absolute;top:-2px;right:-2px;background:var(--badge-bg);color:#fff;width:15px;height:15px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:700;}
-.user-avatar{width:34px;height:34px;flex-shrink:0;}
+.user-avatar{width:34px;height:34px;flex-shrink:0;cursor:pointer;transition:transform .15s;}
 .user-avatar svg{width:34px;height:34px;display:block;}
-.user-name{font-size:14px;color:var(--text-nav);cursor:pointer;}
+.user-avatar:hover{transform:scale(1.1);}
+.user-name{font-size:14px;color:var(--text-nav);cursor:pointer;transition:color .15s;}
+.user-name:hover{color:var(--text-link);}
 
 /* LAYOUT */
 .layout{display:flex;max-width:1400px;margin:0 auto;padding:0 80px;}
@@ -99,15 +103,18 @@ body.no-scroll{overflow:hidden;}
 
 /* TABS */
 .tabs{display:flex;border-bottom:1px solid var(--border-tab);margin-bottom:18px;}
-.tab{padding:11px 22px;font-size:14px;font-weight:600;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.5px;transition:color .25s;}
+.tab{padding:11px 22px;font-size:14px;font-weight:600;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;text-transform:uppercase;letter-spacing:.5px;transition:color .15s,border-color .15s;}
+.tab:hover{color:var(--text-primary);}
 .tab.active{color:var(--text-primary);border-bottom-color:var(--text-primary);}
 
 /* POST BAR */
 .post-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .post-label{font-size:14px;color:var(--text-secondary);display:flex;align-items:center;gap:8px;}
-.post-type{background:var(--bg-card);border:1px solid var(--border-input);padding:4px 10px;font-size:13px;color:#c07020;display:flex;align-items:center;gap:5px;cursor:pointer;}
+.post-type{background:var(--bg-card);border:1px solid var(--border-input);padding:4px 10px;font-size:13px;color:#c07020;display:flex;align-items:center;gap:5px;cursor:pointer;transition:background .15s,border-color .15s;}
 .post-type svg{width:13px;height:13px;fill:none;stroke:#c07020;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-.most-recent{font-size:14px;color:var(--text-link);cursor:pointer;}
+.post-type:hover{background:var(--bg-hover);border-color:var(--text-link);}
+.most-recent{font-size:14px;color:var(--text-link);cursor:pointer;transition:color .15s;}
+.most-recent:hover{color:var(--text-link-h);}
 
 /* POST */
 .post-item{background:var(--bg-card);border:1px solid var(--border-card);padding:18px;margin-bottom:14px;transition:background .25s,border-color .25s;}
@@ -115,8 +122,10 @@ body.no-scroll{overflow:hidden;}
 .avatar{width:42px;height:42px;flex-shrink:0;}
 .avatar svg{width:42px;height:42px;display:block;}
 .post-meta{flex:1;}
-.post-author{font-size:14px;font-weight:600;color:var(--text-link);cursor:pointer;}
-.post-course{font-size:13px;color:var(--text-link);cursor:pointer;}
+.post-author{font-size:14px;font-weight:600;color:var(--text-link);cursor:pointer;transition:color .15s;}
+.post-author:hover{color:var(--text-link-h);}
+.post-course{font-size:13px;color:var(--text-link);cursor:pointer;transition:color .15s;}
+.post-course:hover{color:var(--text-link-h);}
 .post-arrow{color:var(--post-arrow);font-size:12px;}
 .post-title{font-size:16px;font-weight:700;color:var(--text-primary);margin:4px 0 2px;}
 .announce-tag{display:inline-block;background:var(--announce-bg);color:var(--text-announce);font-size:13px;font-weight:600;padding:2px 8px;margin-bottom:6px;}
@@ -128,7 +137,9 @@ body.no-scroll{overflow:hidden;}
 .show-more{color:var(--text-link);font-size:14px;cursor:pointer;margin-top:4px;display:flex;align-items:center;gap:4px;}
 .post-footer{margin-top:10px;display:flex;align-items:center;gap:12px;}
 .post-time{font-size:13px;color:var(--text-muted);}
-.post-like{font-size:13px;color:var(--text-link);cursor:pointer;}
+.post-like{font-size:13px;color:var(--text-link);cursor:pointer;transition:color .15s,font-weight .15s;user-select:none;}
+.post-like:hover{color:var(--text-link-h);font-weight:700;}
+.post-like.liked{font-weight:700;}
 .dot-sep{color:var(--border-main);}
 .likes{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:14px;color:var(--text-likes);border-top:1px solid var(--border-likes);padding-top:8px;}
 .like-dot{width:20px;height:20px;background:var(--bg-like-dot);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-secondary);}
@@ -155,17 +166,20 @@ body.no-scroll{overflow:hidden;}
 .todo-icon{width:26px;height:26px;background:var(--bg-todo-icon);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;color:var(--text-todo-icon);font-weight:700;border:1px solid var(--border-todo);}
 .todo-icon.theme-icon{font-size:15px;}
 .todo-content{flex:1;}
-.todo-name{font-size:14px;color:var(--text-link);font-weight:600;cursor:pointer;}
+.todo-name{font-size:14px;color:var(--text-link);font-weight:600;cursor:pointer;transition:color .15s;}
+.todo-name:hover{color:var(--text-link-h);}
 .todo-due{font-size:12px;color:var(--text-secondary);}
 .todo-course{font-size:12px;color:var(--text-muted);}
 .todo-clock{margin-left:auto;flex-shrink:0;}
 .todo-clock svg{width:17px;height:17px;fill:none;stroke:var(--text-link);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .sidebar-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
-.calendar-link{font-size:13px;color:var(--text-link);cursor:pointer;font-weight:600;text-decoration:none;}
+.calendar-link{font-size:13px;color:var(--text-link);cursor:pointer;font-weight:600;text-decoration:none;transition:color .15s;}
+.calendar-link:hover{color:var(--text-link-h);}
 .event-date-label{font-size:12px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin:6px 0;font-weight:600;}
 .event-item{display:flex;gap:8px;align-items:flex-start;padding:5px 0;}
 .event-icon{width:26px;height:26px;background:var(--bg-event-icon);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--text-event);flex-shrink:0;border:1px solid var(--border-event);font-weight:700;}
-.event-name{font-size:14px;color:var(--text-link);cursor:pointer;font-weight:600;}
+.event-name{font-size:14px;color:var(--text-link);cursor:pointer;font-weight:600;transition:color .15s;}
+.event-name:hover{color:var(--text-link-h);}
 .event-time{font-size:13px;color:var(--text-secondary);}
 .recently-label{font-size:14px;color:var(--text-muted);margin:8px 0;}
 .load-link{font-size:14px;color:var(--text-link);cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;}
@@ -187,6 +201,7 @@ body.no-scroll{overflow:hidden;}
 .game-buttons{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .game-btn{padding:8px 14px;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);color:var(--text-primary);cursor:pointer;}
 .game-btn:hover{background:var(--bg-hover);}
+#fullscreen-btn{float:right;margin-top:-50px;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -274,7 +289,7 @@ body.no-scroll{overflow:hidden;}
           <div class="show-more"><span style="font-size:9px">&#9660;</span> Show More</div>
         </div>
         <div class="post-footer"><span class="post-time">Today at 8:15 am</span><span class="dot-sep">·</span><span class="post-like">Like</span></div>
-        <div class="likes"><div class="like-dot">+</div><a>7 people</a> liked this</div>
+        <div class="likes"><a>7 people</a> liked this</div>
       </div>
 
       <div class="post-item">
@@ -291,7 +306,7 @@ body.no-scroll{overflow:hidden;}
           <div class="spirit-caption">Dress from your favorite decade &amp;<strong>show your Panther pride!</strong></div>
         </div>
         <div class="post-footer" style="margin-top:12px"><span class="post-time">Yesterday at 2:40 pm</span><span class="dot-sep">·</span><span class="post-like">Like</span></div>
-        <div class="likes"><div class="like-dot">+</div><a>12 people</a> liked this</div>
+        <div class="likes"><a>12 people</a> liked this</div>
       </div>
 
       <div class="post-item">
@@ -307,7 +322,25 @@ body.no-scroll{overflow:hidden;}
           <p style="margin-top:8px">The library will reopen Tuesday morning at 7:30 am. Thank you for your patience!</p>
         </div>
         <div class="post-footer"><span class="post-time">Yesterday at 11:05 am</span><span class="dot-sep">·</span><span class="post-like">Like</span></div>
-        <div class="likes"><div class="like-dot">+</div><a>3 people</a> liked this</div>
+        <div class="likes"><a>3 people</a> liked this</div>
+      </div>
+
+      <div class="post-item">
+        <div class="post-header">
+          <div class="avatar"><svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#0770a2"/><circle cx="20" cy="20" r="12" fill="#5ab3e8"/><text x="20" y="25" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">?</text></svg></div>
+          <div class="post-meta">
+            <div><span class="post-author">Schoolargy Team</span><span class="post-arrow"> &#9658; </span><span class="post-course">JLS: Game Requests</span></div>
+            <div class="post-title">Recommend a New Game</div>
+          </div>
+        </div>
+        <div class="post-body">
+          <p style="margin-bottom:12px">Help us grow our library! Select a game from the list below that you'd like to see added, and we'll get an email with your recommendation.</p>
+          <select id="game-recommend-select" style="width:100%;padding:8px;font-size:14px;border:1px solid var(--border-input);background:var(--bg-input);color:var(--text-primary);margin-bottom:12px;">
+          </select>
+          <div class="game-btn" onclick="sendRecommendation()" style="display:inline-block;text-align:center;">Send Recommendation</div>
+        </div>
+        <div class="post-footer"><span class="post-time">April 21, 2026 at 12:00 pm</span><span class="dot-sep">·</span><span class="post-like">Like</span></div>
+        <div class="likes"><a>0 people</a> liked this</div>
       </div>
     </main>
 
@@ -376,6 +409,7 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="retrobowl/index.html">Retro Bowl</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="1v1lol/index.html">1v1.lol</div>
     </div>
+    <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
 
     <iframe class="game-container-iframe" id="game-iframe" src="basketrandom/index.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
   </div>
@@ -466,6 +500,153 @@ function initTheme(){
 if(window.matchMedia)window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(e){if(!userOverride)applyTheme(e.matches?'dark':'light',false);});
 
 initTheme();
+
+/* GAME RECOMMENDATIONS */
+var allGames = [
+  {dir:'2048',name:'2048'},{dir:'adarkroom',name:'A Dark Room'},{dir:'asciispace',name:'Ascii Space'},
+  {dir:'assessmentexamination',name:'Assessment Examination'},{dir:'asteroids',name:'Asteroids'},
+  {dir:'astray',name:'Astray'},{dir:'backcountry',name:'Backcountry'},{dir:'baldisbasics',name:"Baldi's Basics"},
+  {dir:'basketballlegends',name:'Basketball Legends'},{dir:'basketballstars',name:'Basketball Stars'},
+  {dir:'basketbrosio',name:'Basket Bros IO'},{dir:'bitlife',name:'BitLife'},{dir:'blackholesquare',name:'Black Hole Square'},
+  {dir:'bounceback',name:'Bounce Back'},{dir:'boxingrandom',name:'Boxing Random'},{dir:'breaklock',name:'Break Lock'},
+  {dir:'breakout',name:'Breakout'},{dir:'btd4',name:'Bloons TD 4'},{dir:'captaincallisto',name:'Captain Callisto'},
+  {dir:'chess',name:'Chess'},{dir:'chromaincident',name:'Chroma Incident'},{dir:'chromedino',name:'Chrome Dino'},
+  {dir:'clickerheroes',name:'Clicker Heroes'},{dir:'clusterrush',name:'Cluster Rush'},{dir:'connect3',name:'Connect 3'},
+  {dir:'cookieclicker',name:'Cookie Clicker'},{dir:'crossyroad',name:'Crossy Road'},{dir:'csgoclicker',name:'CSGO Clicker'},
+  {dir:'cubefield',name:'Cubefield'},{dir:'cubitomayhem',name:'Cubito Mayhem'},{dir:'cuttherope',name:'Cut the Rope'},
+  {dir:'cuttheropeholiday',name:'Cut the Rope Holiday'},{dir:'cuttheropetimetravel',name:'Cut the Rope Time Travel'},
+  {dir:'deathrun3d',name:'Death Run 3D'},{dir:'deepestsword',name:'Deepest Sword'},{dir:'doodlejump',name:'Doodle Jump'},
+  {dir:'doom',name:'DOOM'},{dir:'drawthehill',name:'Draw the Hill'},{dir:'drift',name:'Drift'},
+  {dir:'drifthunters',name:'Drift Hunters'},{dir:'ducklife',name:'Duck Life'},{dir:'ducklife2',name:'Duck Life 2'},
+  {dir:'ducklife3',name:'Duck Life 3'},{dir:'ducklife4',name:'Duck Life 4'},{dir:'ducklife5',name:'Duck Life 5'},
+  {dir:'earntodie',name:'Earn to Die'},{dir:'edgenotfound',name:'Edge Not Found'},{dir:'eggycar',name:'Eggy Car'},
+  {dir:'evilglitch',name:'Evil Glitch'},{dir:'factoryballsforever',name:'Factory Balls Forever'},
+  {dir:'fireboyandwatergirlforesttemple',name:'Fireboy and Watergirl'},{dir:'flappy2048',name:'Flappy 2048'},
+  {dir:'flappybird',name:'Flappy Bird'},{dir:'flappyplane',name:'Flappy Plane'},{dir:'flightsimulator',name:'Flight Simulator'},
+  {dir:'fridaynightfunkin',name:'Friday Night Funkin'},{dir:'friendlyfire',name:'Friendly Fire'},
+  {dir:'fruitninja',name:'Fruit Ninja'},{dir:'geometrydash',name:'Geometry Dash'},
+  {dir:'getawayshootoutnew',name:'Getaway Shootout'},{dir:'gladihoppers',name:'Gladihoppers'},
+  {dir:'googlesnake',name:'Google Snake'},{dir:'gopherkart',name:'Gopher Kart'},{dir:'grindcraft',name:'Grindcraft'},
+  {dir:'hexgl',name:'HexGL'},{dir:'hextris',name:'Hextris'},{dir:'highwaytraffic',name:'Highway Traffic'},
+  {dir:'konnekt',name:'Konnekt'},{dir:'learntofly',name:'Learn to Fly'},{dir:'letssurf',name:'Let\'s Surf'},
+  {dir:'littlealchemy',name:'Little Alchemy'},{dir:'mergeroundracers',name:'Merge Round Racers'},
+  {dir:'monkeymart',name:'Monkey Mart'},{dir:'motoroadrash3d',name:'Moto Road Rash 3D'},{dir:'motox3m',name:'Moto X3M'},
+  {dir:'ninjavsevilcorp',name:'Ninja vs Evil Corp'},{dir:'omnombounce',name:'Om Nom Bounce'},{dir:'ovo',name:'Ovo'},
+  {dir:'ovo2',name:'Ovo 2'},{dir:'packabunchas',name:'Packabunchas'},{dir:'pacman',name:'Pac-Man'},
+  {dir:'paperio',name:'Paper.io'},{dir:'particleclicker',name:'Particle Clicker'},{dir:'pushback',name:'Push Back'},
+  {dir:'q1k3',name:'Q1k3'},{dir:'r3',name:'Racer 3'},{dir:'racer',name:'Racer'},{dir:'radiusraid',name:'Radius Raid'},
+  {dir:'redball4',name:'Red Ball 4'},{dir:'retrohaunt',name:'Retro Haunt'},{dir:'riddleschool2',name:'Riddle School 2'},
+  {dir:'ritz',name:'Ritz'},{dir:'roadblocks',name:'Road Blocks'},{dir:'rooftopsnipers',name:'Rooftop Snipers'},
+  {dir:'run3',name:'Run 3'},{dir:'scrapmetal3',name:'Scrap Metal 3'},{dir:'shuttledeck',name:'Shuttledeck'},
+  {dir:'sketchbook04',name:'Sketchbook 04'},{dir:'sleepingbeauty',name:'Sleeping Beauty'},{dir:'slitherio',name:'Slither.io'},
+  {dir:'slope2',name:'Slope 2'},{dir:'snake',name:'Snake'},{dir:'snowbattle',name:'Snow Battle'},
+  {dir:'soccerrandom',name:'Soccer Random'},{dir:'solitaire',name:'Solitaire'},{dir:'spacecompany',name:'Space Company'},
+  {dir:'spacegarden',name:'Space Garden'},{dir:'spacehuggers',name:'Space Huggers'},{dir:'spaceinvaders',name:'Space Invaders'},
+  {dir:'stack',name:'Stack'},{dir:'stackball',name:'Stack Ball'},{dir:'stickman-hook',name:'Stickman Hook'},
+  {dir:'stickmanboost',name:'Stickman Boost'},{dir:'stickmanclimb',name:'Stickman Climb'},{dir:'stickmangolf',name:'Stickman Golf'},
+  {dir:'stickmanhook',name:'Stickman Hook'},{dir:'stickmansurvival',name:'Stickman Survival'},
+  {dir:'tanukisunset',name:'Tanuki Sunset'},{dir:'tetris',name:'Tetris'},{dir:'themazeofspacegoblins',name:'Maze of Space Goblins'},
+  {dir:'timeshooter',name:'Time Shooter'},{dir:'timeshooter2',name:'Time Shooter 2'},{dir:'timeshooter3',name:'Time Shooter 3'},
+  {dir:'tinyfishing',name:'Tiny Fishing'},{dir:'tombofthemask',name:'Tomb of the Mask'},{dir:'topspeedracing3d',name:'Top Speed Racing 3D'},
+  {dir:'towermaster',name:'Tower Master'},{dir:'trimps',name:'Trimps'},{dir:'tunnelrush',name:'Tunnel Rush'},
+  {dir:'vex3',name:'Vex 3'},{dir:'vex4',name:'Vex 4'},{dir:'vex5',name:'Vex 5'},{dir:'vex6',name:'Vex 6'},
+  {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
+  {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
+];
+var integratedGames = ['basketrandom','slope','drivemad','subwaysurfers','subwaysurferssingapore','retrobowl','1v1lol'];
+var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
+var select = document.getElementById('game-recommend-select');
+for(var i=0;i<availableGames.length;i++){
+  var opt = document.createElement('option');
+  opt.value = availableGames[i].name;
+  opt.textContent = availableGames[i].name;
+  select.appendChild(opt);
+}
+
+function sendRecommendation(){
+  var sel = document.getElementById('game-recommend-select');
+  var game = sel.value;
+  if(!game){alert('Please select a game first.');return;}
+  var subject = encodeURIComponent('Game Recommendation: ' + game);
+  var body = encodeURIComponent('Hi,\n\nI would like to recommend adding the game "' + game + '" to Schoolargy.\n\nThanks!');
+  window.location.href = 'mailto:schroddacat@gmail.com?subject=' + subject + '&body=' + body;
+}
+
+/* FULLSCREEN */
+function toggleFullscreen(){
+  var iframe = document.getElementById('game-iframe');
+  if(iframe.requestFullscreen){iframe.requestFullscreen();}
+  else if(iframe.webkitRequestFullscreen){iframe.webkitRequestFullscreen();}
+  else if(iframe.mozRequestFullScreen){iframe.mozRequestFullScreen();}
+  else if(iframe.msRequestFullscreen){iframe.msRequestFullscreen();}
+}
+
+/* LIKES */
+function loadLikes(){
+  var posts=document.querySelectorAll('.post-item');
+  for(var i=0;i<posts.length;i++){
+    var likeBtn=posts[i].querySelector('.post-like');
+    var likeCount=posts[i].querySelector('.likes a');
+    if(!likeBtn||!likeCount)continue;
+    var postId='post_like_'+i;
+    var liked=getCookie(postId)==='1';
+    var baseCount=parseInt(likeCount.textContent)||0;
+    if(liked){
+      likeBtn.textContent='Unlike';
+      likeBtn.classList.add('liked');
+      likeCount.textContent=(baseCount+1)+' people';
+    }
+    likeBtn.setAttribute('data-post-id',postId);
+    likeBtn.setAttribute('data-base-count',baseCount);
+    likeBtn.addEventListener('click',function(){
+      var id=this.getAttribute('data-post-id');
+      var base=parseInt(this.getAttribute('data-base-count'));
+      var countEl=this.closest('.post-item').querySelector('.likes a');
+      if(this.classList.contains('liked')){
+        this.classList.remove('liked');
+        this.textContent='Like';
+        setCookie(id,'0',365);
+        countEl.textContent=base+' people';
+      }else{
+        this.classList.add('liked');
+        this.textContent='Unlike';
+        setCookie(id,'1',365);
+        countEl.textContent=(base+1)+' people';
+      }
+    });
+  }
+}
+loadLikes();
+
+/* FAKE PAGES */
+var fakePageMessages = {
+  courses: {title: 'Courses', body: 'You have no courses. But you do have <strong>unlimited games</strong>!'},
+  groups: {title: 'Groups', body: 'The only group that matters here is the <strong>gaming group</strong>.'},
+  grades: {title: 'Grades', body: 'Your grade in Gaming 101: <strong>A+</strong>. Keep it up!'},
+  search: {title: 'Search', body: 'Search results for "homework": <strong>0 results found</strong>. Try searching for games instead.'},
+  apps: {title: 'Apps', body: 'All installed apps: <strong>Schoolargy Games</strong>. That\'s the only one you need.'},
+  calendar: {title: 'Calendar', body: 'Upcoming events: <strong>Game Time</strong> (All day, Every day).'},
+  messages: {title: 'Messages', body: 'You have <strong>0 new messages</strong>. But you have <strong>100+ games</strong> to play!'},
+  notifications: {title: 'Notifications', body: 'Notification: <strong>It\'s time to play some games!</strong>'},
+  profile: {title: 'Profile', body: 'Name: <strong>Pro Gamer</strong><br>Status: <strong>Currently avoiding homework</strong><br>Level: <strong>Legend</strong>'}
+};
+
+function showFakePage(page){
+  var msg = fakePageMessages[page] || {title: 'Nice Try!', body: 'This page doesn\'t exist.'};
+  document.getElementById('fake-page-title').textContent = msg.title;
+  document.getElementById('fake-page-body').innerHTML = msg.body;
+  document.getElementById('fake-page').classList.add('open');
+  updateDim();
+}
+
+function closeFakePage(){
+  document.getElementById('fake-page').classList.remove('open');
+  updateDim();
+}
+
+document.getElementById('fake-page').addEventListener('click', function(e){
+  if(e.target === this) closeFakePage();
+});
 
 </script>
 </body>
