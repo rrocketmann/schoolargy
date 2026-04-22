@@ -408,6 +408,12 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="retrobowl/index.html">Retro Bowl</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="1v1lol/index.html">1v1.lol</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="geometrydash/index.html">Geometry Dash</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="crossyroad/index.html">Crossy Road</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="cookieclicker/index.html">Cookie Clicker</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="breakout/index.html">Breakout</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="boxingrandom/index.html">Boxing Random</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="2048/index.html">2048</div>
     </div>
     <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
 
@@ -553,7 +559,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','subwaysurfers','subwaysurferssingapore','retrobowl','1v1lol'];
+var integratedGames = ['basketrandom','slope','drivemad','subwaysurfers','subwaysurferssingapore','retrobowl','1v1lol','geometrydash','crossyroad','cookieclicker','breakout','boxingrandom','2048'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
