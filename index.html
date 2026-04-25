@@ -406,6 +406,9 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="drivemad/index.html">Drive Mad</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="retrobowl/index.html">Retro Bowl</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="2048/index.html">2048</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="bitlife/index.html">BitLife</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="slope2/index.html">Slope 2</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
     </div>
     <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
 
@@ -538,7 +541,7 @@ var allGames = [
   {dir:'run3',name:'Run 3'},{dir:'scrapmetal3',name:'Scrap Metal 3'},{dir:'shuttledeck',name:'Shuttledeck'},
   {dir:'sketchbook04',name:'Sketchbook 04'},{dir:'sleepingbeauty',name:'Sleeping Beauty'},{dir:'slitherio',name:'Slither.io'},
   {dir:'slope2',name:'Slope 2'},{dir:'snake',name:'Snake'},{dir:'snowbattle',name:'Snow Battle'},
-  {dir:'soccerrandom',name:'Soccer Random'},{dir:'solitaire',name:'Solitaire'},{dir:'spacecompany',name:'Space Company'},
+  {dir:'soccerrandom',name:'Soccer Random'},{dir:'solitaire',name:'Solitaire'},{dir:'spacecompany',name:'Space Company'},{dir:'subwaysurferssingapore',name:'Subway Surfers Singapore'},
   {dir:'spacegarden',name:'Space Garden'},{dir:'spacehuggers',name:'Space Huggers'},{dir:'spaceinvaders',name:'Space Invaders'},
   {dir:'stack',name:'Stack'},{dir:'stackball',name:'Stack Ball'},{dir:'stickman-hook',name:'Stickman Hook'},
   {dir:'stickmanboost',name:'Stickman Boost'},{dir:'stickmanclimb',name:'Stickman Climb'},{dir:'stickmangolf',name:'Stickman Golf'},
@@ -551,7 +554,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','slope2','subwaysurferssingapore'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
