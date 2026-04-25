@@ -190,17 +190,17 @@ body.no-scroll{overflow:hidden;}
 .load-link svg{width:13px;height:13px;fill:none;stroke:var(--text-link);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 
 /* RESOURCES */
-.resources-page{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:400;padding:24px;overflow:auto;background:transparent;}
-.resources-page.open{display:flex;align-items:center;justify-content:center;}
-.resources-inner{width:min(1280px,calc(100vw - 48px));background:var(--bg-modal);border:1px solid var(--border-card);box-shadow:var(--shadow-res);padding:12px 16px 16px;transition:background .25s,border-color .25s;display:flex;flex-direction:column;max-height:calc(100vh - 48px);}
-.resources-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-shrink:0;}
+.resources-page{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:400;padding:24px;padding-top:80px;overflow:auto;background:transparent;}
+.resources-page.open{display:flex;align-items:flex-start;justify-content:center;}
+.resources-inner{width:min(1280px,calc(100vw - 48px));background:var(--bg-modal);border:1px solid var(--border-card);box-shadow:var(--shadow-res);padding:36px 56px;transition:background .25s,border-color .25s;}
+.resources-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
 .resources-title{font-size:22px;font-weight:700;color:var(--text-primary);}
 
 .resources-close-btn{width:38px;height:38px;background:var(--bg-card);border:1px solid var(--border-card);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--text-secondary);flex-shrink:0;}
 .resources-close-btn:hover{background:var(--bg-hover);color:var(--text-primary);}
 .resources-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--border-hr);}
 .resources-section-label:first-of-type{margin-top:0;}
-.game-container-iframe{width:100%;flex:1;border:none;background:#000;display:block;min-height:300px;}
+.game-container-iframe{width:100%;height:55vh;min-height:300px;max-height:calc(100vh - 130px);border:none;background:#000;display:block;}
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
@@ -262,7 +262,6 @@ body.no-scroll{overflow:hidden;}
           <div class="nav-dropdown-item" data-url="tetris/index.html">Tetris</div>
           <div class="nav-dropdown-item" data-url="tinyfishing/index.html">Tiny Fishing</div>
           <div class="nav-dropdown-item" data-url="eaglercraft/index.html">Eaglercraft</div>
-          <div class="nav-dropdown-item" data-url="polytrack/index.html">PolyTrack</div>
         </div>
       </a>
     <a class="nav-link" href="#">Grades <span class="caret">&#9660;</span></a>
@@ -561,7 +560,7 @@ var allGames = [
   {dir:'monkeymart',name:'Monkey Mart'},{dir:'motoroadrash3d',name:'Moto Road Rash 3D'},{dir:'motox3m',name:'Moto X3M'},
   {dir:'ninjavsevilcorp',name:'Ninja vs Evil Corp'},{dir:'omnombounce',name:'Om Nom Bounce'},{dir:'ovo',name:'Ovo'},
   {dir:'ovo2',name:'Ovo 2'},{dir:'packabunchas',name:'Packabunchas'},{dir:'pacman',name:'Pac-Man'},
-  {dir:'paperio',name:'Paper.io'},{dir:'particleclicker',name:'Particle Clicker'},{dir:'polytrack',name:'PolyTrack'},{dir:'pushback',name:'Push Back'},
+  {dir:'paperio',name:'Paper.io'},{dir:'particleclicker',name:'Particle Clicker'},{dir:'pushback',name:'Push Back'},
   {dir:'q1k3',name:'Q1k3'},{dir:'r3',name:'Racer 3'},{dir:'racer',name:'Racer'},{dir:'radiusraid',name:'Radius Raid'},
   {dir:'redball4',name:'Red Ball 4'},{dir:'retrohaunt',name:'Retro Haunt'},{dir:'riddleschool2',name:'Riddle School 2'},
   {dir:'ritz',name:'Ritz'},{dir:'roadblocks',name:'Road Blocks'},{dir:'rooftopsnipers',name:'Rooftop Snipers'},
@@ -581,7 +580,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex3','vex4','vex5','vex6','tetris','tinyfishing','eaglercraft','polytrack'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex3','vex4','vex5','vex6','tetris','tinyfishing','eaglercraft'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
