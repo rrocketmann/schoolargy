@@ -409,6 +409,14 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="bitlife/index.html">BitLife</div>
       
       <div class="game-btn" onclick="selectGame(this)" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="vex6/index.html">Vex 6</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="tunnelrush/index.html">Tunnel Rush</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="tetris/index.html">Tetris</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="tinyfishing/index.html">Tiny Fishing</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="ovo2/index.html">Ovo 2</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="grindcraft/index.html">Grindcraft</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="fruitninja/index.html">Fruit Ninja</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="fireboyandwatergirlforesttemple/index.html">Fireboy and Watergirl</div>
     </div>
     <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
 
@@ -554,7 +562,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex6','tunnelrush','tetris','tinyfishing','ovo2','grindcraft','fruitninja','fireboyandwatergirlforesttemple'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
