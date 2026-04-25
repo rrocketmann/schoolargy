@@ -407,7 +407,7 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="retrobowl/index.html">Retro Bowl</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="2048/index.html">2048</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="bitlife/index.html">BitLife</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="slope2/index.html">Slope 2</div>
+      
       <div class="game-btn" onclick="selectGame(this)" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
     </div>
     <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
@@ -554,7 +554,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','slope2','subwaysurferssingapore'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
