@@ -191,7 +191,7 @@ body.no-scroll{overflow:hidden;}
 .resources-inner{width:min(1280px,calc(100vw - 48px));background:var(--bg-modal);border:1px solid var(--border-card);box-shadow:var(--shadow-res);padding:36px 56px;transition:background .25s,border-color .25s;}
 .resources-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;padding-bottom:16px;border-bottom:2px solid var(--border-hr);}
 .resources-title{font-size:22px;font-weight:700;color:var(--text-primary);}
-.resources-subtitle{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-top:4px;}
+
 .resources-close-btn{width:38px;height:38px;background:var(--bg-card);border:1px solid var(--border-card);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--text-secondary);flex-shrink:0;}
 .resources-close-btn:hover{background:var(--bg-hover);color:var(--text-primary);}
 .resources-section-label{font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px;margin-top:28px;padding-bottom:6px;border-bottom:1px solid var(--border-hr);}
@@ -201,13 +201,13 @@ body.no-scroll{overflow:hidden;}
 .game-buttons{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
 .game-btn{padding:8px 14px;font-size:13px;background:var(--bg-card);border:1px solid var(--border-card);color:var(--text-primary);cursor:pointer;}
 .game-btn:hover{background:var(--bg-hover);}
-#fullscreen-btn{float:right;margin-top:-50px;}
+
 .game-card{background:var(--bg-card);border:1px solid var(--border-card);padding:18px 18px 16px;cursor:pointer;transition:border-color .15s,background .25s;}
 .game-card:hover{border-color:var(--text-link);}
 .game-card-name{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:5px;}
 .game-card-desc{font-size:12px;color:var(--text-secondary);line-height:1.5;margin-bottom:12px;}
 .game-card-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;background:var(--bg-tag);color:var(--text-tag);border:1px solid var(--border-tag);text-transform:uppercase;letter-spacing:.5px;}
-.game-card-play{display:none;}
+
 
 /* TOAST */
 .s-toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toast-bg);border:2px solid var(--toast-border);box-shadow:var(--shadow-toast);display:flex;align-items:center;gap:14px;padding:14px 20px;min-width:320px;max-width:500px;z-index:9999;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s,background .25s,border-color .25s;}
@@ -396,8 +396,11 @@ body.no-scroll{overflow:hidden;}
 <div class="resources-page" id="resources-page">
   <div class="resources-inner">
     <div class="resources-header">
-      <div><div class="resources-title" id="res-title">Select a Game</div><div class="resources-subtitle">Press F11 for full screen</div></div>
-      <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
+      <div><div class="resources-title" id="res-title">Select a Game</div></div>
+      <div style="display:flex;align-items:center;gap:0">
+        <div class="resources-close-btn" onclick="toggleFullscreen()" title="Fullscreen"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></div>
+        <div class="resources-close-btn" onclick="closeResources()">&#x2715;</div>
+      </div>
     </div>
 
     <div class="game-buttons" id="game-buttons">
@@ -407,18 +410,15 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="retrobowl/index.html">Retro Bowl</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="2048/index.html">2048</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="bitlife/index.html">BitLife</div>
-      
       <div class="game-btn" onclick="selectGame(this)" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="vex3/index.html">Vex 3</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="vex4/index.html">Vex 4</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="vex5/index.html">Vex 5</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="vex6/index.html">Vex 6</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="tunnelrush/index.html">Tunnel Rush</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="tetris/index.html">Tetris</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="tinyfishing/index.html">Tiny Fishing</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="ovo2/index.html">Ovo 2</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="grindcraft/index.html">Grindcraft</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="fruitninja/index.html">Fruit Ninja</div>
-      <div class="game-btn" onclick="selectGame(this)" data-url="fireboyandwatergirlforesttemple/index.html">Fireboy and Watergirl</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="eaglercraft/index.html">Eaglercraft</div>
     </div>
-    <div class="game-btn" id="fullscreen-btn" onclick="toggleFullscreen()">&#x26F6; Fullscreen</div>
 
     <iframe class="game-container-iframe" id="game-iframe" src="basketrandom/index.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
   </div>
@@ -528,7 +528,7 @@ var allGames = [
   {dir:'doom',name:'DOOM'},{dir:'drawthehill',name:'Draw the Hill'},{dir:'drift',name:'Drift'},
   {dir:'drifthunters',name:'Drift Hunters'},{dir:'ducklife',name:'Duck Life'},{dir:'ducklife2',name:'Duck Life 2'},
   {dir:'ducklife3',name:'Duck Life 3'},{dir:'ducklife4',name:'Duck Life 4'},{dir:'ducklife5',name:'Duck Life 5'},
-  {dir:'earntodie',name:'Earn to Die'},{dir:'edgenotfound',name:'Edge Not Found'},{dir:'eggycar',name:'Eggy Car'},
+  {dir:'earntodie',name:'Earn to Die'},{dir:'eaglercraft',name:'Eaglercraft'},{dir:'edgenotfound',name:'Edge Not Found'},{dir:'eggycar',name:'Eggy Car'},
   {dir:'evilglitch',name:'Evil Glitch'},{dir:'factoryballsforever',name:'Factory Balls Forever'},
   {dir:'fireboyandwatergirlforesttemple',name:'Fireboy and Watergirl'},{dir:'flappy2048',name:'Flappy 2048'},
   {dir:'flappybird',name:'Flappy Bird'},{dir:'flappyplane',name:'Flappy Plane'},{dir:'flightsimulator',name:'Flight Simulator'},
@@ -562,7 +562,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex6','tunnelrush','tetris','tinyfishing','ovo2','grindcraft','fruitninja','fireboyandwatergirlforesttemple'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex3','vex4','vex5','vex6','tetris','tinyfishing','eaglercraft'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
