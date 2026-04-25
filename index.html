@@ -418,6 +418,7 @@ body.no-scroll{overflow:hidden;}
       <div class="game-btn" onclick="selectGame(this)" data-url="tetris/index.html">Tetris</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="tinyfishing/index.html">Tiny Fishing</div>
       <div class="game-btn" onclick="selectGame(this)" data-url="eaglercraft/index.html">Eaglercraft</div>
+      <div class="game-btn" onclick="selectGame(this)" data-url="polytrack/index.html">PolyTrack</div>
     </div>
 
     <iframe class="game-container-iframe" id="game-iframe" src="basketrandom/index.html" allowfullscreen allow="fullscreen; pointer-lock"></iframe>
@@ -542,7 +543,7 @@ var allGames = [
   {dir:'monkeymart',name:'Monkey Mart'},{dir:'motoroadrash3d',name:'Moto Road Rash 3D'},{dir:'motox3m',name:'Moto X3M'},
   {dir:'ninjavsevilcorp',name:'Ninja vs Evil Corp'},{dir:'omnombounce',name:'Om Nom Bounce'},{dir:'ovo',name:'Ovo'},
   {dir:'ovo2',name:'Ovo 2'},{dir:'packabunchas',name:'Packabunchas'},{dir:'pacman',name:'Pac-Man'},
-  {dir:'paperio',name:'Paper.io'},{dir:'particleclicker',name:'Particle Clicker'},{dir:'pushback',name:'Push Back'},
+  {dir:'paperio',name:'Paper.io'},{dir:'particleclicker',name:'Particle Clicker'},{dir:'polytrack',name:'PolyTrack'},{dir:'pushback',name:'Push Back'},
   {dir:'q1k3',name:'Q1k3'},{dir:'r3',name:'Racer 3'},{dir:'racer',name:'Racer'},{dir:'radiusraid',name:'Radius Raid'},
   {dir:'redball4',name:'Red Ball 4'},{dir:'retrohaunt',name:'Retro Haunt'},{dir:'riddleschool2',name:'Riddle School 2'},
   {dir:'ritz',name:'Ritz'},{dir:'roadblocks',name:'Road Blocks'},{dir:'rooftopsnipers',name:'Rooftop Snipers'},
@@ -562,7 +563,7 @@ var allGames = [
   {dir:'webecomewhatwebehold',name:'We Become What We Behold'},{dir:'worldshardestgame2',name:'World\'s Hardest Game 2'},
   {dir:'xx142b2exe',name:'xx142-b2exe'},{dir:'zombsroyale',name:'Zombs Royale'}
 ];
-var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex3','vex4','vex5','vex6','tetris','tinyfishing','eaglercraft'];
+var integratedGames = ['basketrandom','slope','drivemad','retrobowl','2048','bitlife','subwaysurferssingapore','vex3','vex4','vex5','vex6','tetris','tinyfishing','eaglercraft','polytrack'];
 var availableGames = allGames.filter(function(g){return integratedGames.indexOf(g.dir)===-1;});
 var select = document.getElementById('game-recommend-select');
 for(var i=0;i<availableGames.length;i++){
