@@ -80,9 +80,13 @@ body.no-scroll{overflow:hidden;}
 .nav-logo-p{font-size:32px;font-weight:900;color:#49a8e0;line-height:1;width:38px;height:38px;display:flex;align-items:center;justify-content:center;user-select:none;}
 .nav-logo-text{font-size:10px;color:var(--text-muted);line-height:1.5;}
 .nav-brand{font-size:16px;font-weight:700;color:var(--text-brand);letter-spacing:-.3px;transition:color .25s;}
-.nav-link{padding:0 14px;height:56px;display:flex;align-items:center;font-size:14px;color:var(--text-nav);cursor:pointer;border-bottom:2px solid transparent;gap:4px;text-decoration:none;transition:color .15s,background .15s,border-color .15s;}
+.nav-link{padding:0 14px;height:56px;display:flex;align-items:center;font-size:14px;color:var(--text-nav);cursor:pointer;border-bottom:2px solid transparent;gap:4px;text-decoration:none;transition:color .15s,background .15s,border-color .15s;position:relative;}
 .nav-link:hover{color:var(--text-link);background:var(--bg-hover);border-bottom-color:var(--text-link);}
 .caret{font-size:9px;color:var(--caret-color);}
+.nav-dropdown{position:absolute;top:100%;left:0;min-width:240px;max-height:70vh;overflow-y:auto;background:var(--bg-card);border:1px solid var(--border-card);box-shadow:var(--shadow-toast);z-index:200;display:none;padding:4px 0;}
+.nav-dropdown.open{display:block;}
+.nav-dropdown-item{padding:10px 16px;font-size:14px;color:var(--text-primary);cursor:pointer;transition:background .12s,color .12s;}
+.nav-dropdown-item:hover{background:var(--bg-hover);color:var(--text-link);}
 .nav-right{margin-left:auto;display:flex;align-items:center;gap:18px;}
 .nav-icon{width:30px;height:30px;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);cursor:pointer;position:relative;transition:color .15s,transform .15s;}
 .nav-icon svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
@@ -247,7 +251,24 @@ body.no-scroll{overflow:hidden;}
     <div style="width:20px;flex-shrink:0"></div>
     <a class="nav-link" href="#">Courses <span class="caret">&#9660;</span></a>
     <a class="nav-link" href="#">Groups <span class="caret">&#9660;</span></a>
-    <a class="nav-link" href="#" id="resources-btn">Resources</a>
+    <a class="nav-link" href="#" id="resources-btn">Resources <span class="caret">&#9660;</span></a>
+      <div class="nav-dropdown" id="resources-dropdown">
+        <div class="nav-dropdown-item" data-url="basketrandom/index.html">Basketball Random</div>
+        <div class="nav-dropdown-item" data-url="slope/index.html">Slope</div>
+        <div class="nav-dropdown-item" data-url="drivemad/index.html">Drive Mad</div>
+        <div class="nav-dropdown-item" data-url="retrobowl/index.html">Retro Bowl</div>
+        <div class="nav-dropdown-item" data-url="2048/index.html">2048</div>
+        <div class="nav-dropdown-item" data-url="bitlife/index.html">BitLife</div>
+        <div class="nav-dropdown-item" data-url="subwaysurferssingapore/index.html">Subway Surfers Singapore</div>
+        <div class="nav-dropdown-item" data-url="vex3/index.html">Vex 3</div>
+        <div class="nav-dropdown-item" data-url="vex4/index.html">Vex 4</div>
+        <div class="nav-dropdown-item" data-url="vex5/index.html">Vex 5</div>
+        <div class="nav-dropdown-item" data-url="vex6/index.html">Vex 6</div>
+        <div class="nav-dropdown-item" data-url="tetris/index.html">Tetris</div>
+        <div class="nav-dropdown-item" data-url="tinyfishing/index.html">Tiny Fishing</div>
+        <div class="nav-dropdown-item" data-url="eaglercraft/index.html">Eaglercraft</div>
+        <div class="nav-dropdown-item" data-url="polytrack/index.html">PolyTrack</div>
+      </div>
     <a class="nav-link" href="#">Grades <span class="caret">&#9660;</span></a>
     <div class="nav-right">
       <div class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg></div>
@@ -447,12 +468,29 @@ function updateDim(){
 
 document.getElementById('resources-btn').addEventListener('click',function(e){
   e.preventDefault();
-  var btns=document.getElementById('game-buttons');
-  if(btns.firstElementChild){
-    selectGame(btns.firstElementChild);
+  var dd=document.getElementById('resources-dropdown');
+  dd.classList.toggle('open');
+  dismissToast();
+});
+
+document.querySelectorAll('.nav-dropdown-item').forEach(function(item){
+  item.addEventListener('click',function(){
+    var url=this.getAttribute('data-url');
+    var name=this.textContent;
+    document.getElementById('res-title').textContent=name;
+    document.getElementById('game-iframe').src=url;
+    document.getElementById('resources-dropdown').classList.remove('open');
+    document.getElementById('resources-page').classList.add('open');
+    updateDim();
+  });
+});
+
+document.addEventListener('click',function(e){
+  var dd=document.getElementById('resources-dropdown');
+  var btn=document.getElementById('resources-btn');
+  if(!dd.contains(e.target)&&!btn.contains(e.target)){
+    dd.classList.remove('open');
   }
-  document.getElementById('resources-page').classList.add('open');
-  dismissToast();updateDim();
 });
 
 function selectGame(btn){
